@@ -1,0 +1,3 @@
+{{ $post->id }}
+
+{{ $post->body }}
