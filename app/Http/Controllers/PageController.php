@@ -36,7 +36,8 @@ class PageController extends Controller
     public function post($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
-        return view('pages.post', compact('post'));
+        $tags = Tag::all();
+        return view('pages.post', compact('post', 'tags'));
     }
 
     public function tag($tag)

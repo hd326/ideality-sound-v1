@@ -23,7 +23,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Add Post</h3>
@@ -85,13 +85,118 @@
                                     <label for="">Image</label>
                                     <input name="image" type="file" class="form-control-file">
                                 </div>
-                                <button class="btn btn-primary" type="submit">Add Post</button>
-                            </form>
+                                
+
                         </div>
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
                 </div>
+                <div class="col-md-6">
+                    <div class="card card-warning">
+                        <div class="card-header">
+                            <h3 class="card-title">Sound Details</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    data-toggle="tooltip" title="Collapse">
+                                    <i class="fas fa-minus"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="">Tonal Balance / Neutrality</label>
+                                <input name="tonal_balance_neutrality" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Price / Performance Ratio</label>
+                                <input name="price_performance" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Sound Fidelity</label>
+                                <input name="sound_fidelity" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Musicality</label>
+                                <input name="musicality" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Build Quality</label>
+                                <input name="build_quality" type="number" id="" class="form-control">
+                            </div>
+                            <hr>
+                            <div class="form-group">
+                                <label for="">Bass Extension</label>
+                                <input name="bass_extension" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Bass Balance</label>
+                                <input name="bass_balance" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Lower Midrange Balance</label>
+                                <input name="lower_midrange_balance" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Midrange Proper Balance</label>
+                                <input name="midrange_proper_balance" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Upper Midrange Balance</label>
+                                <input name="upper_midrange_balance" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Treble Balance</label>
+                                <input name="treble_balance" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Treble Extension</label>
+                                <input name="treble_extension" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Bass Control</label>
+                                <input name="bass_control" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tone Density</label>
+                                <input name="tone_density" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Macro Dynamics</label>
+                                <input name="macro_dynamics" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Micro Dynamics</label>
+                                <input name="micro_dynamics" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Soundstage Width</label>
+                                <input name="soundstage_width" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Soundstage Depth</label>
+                                <input name="soundstage_depth" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Resolution</label>
+                                <input name="resolution" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Clarity</label>
+                                <input name="clarity" type="number" id="" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Score</label>
+                                <input name="score" type="number" id="" class="form-control">
+                            </div>
+                            <button class="btn btn-primary" type="submit">Add Post</button>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+            </form>
             </div>
         </div>
     </div>
@@ -117,5 +222,6 @@
         plugins: 'link code',
         menubar: false
     });
-    </script>
+
+</script>
 @endsection

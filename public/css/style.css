@@ -462,6 +462,11 @@ header ul li.categories nav ul li:hover {
   padding: 5px;
 }
 
+#pre-footer #pre-footer-container #tags .tag a {
+  text-decoration: none;
+  color: white;
+}
+
 #pre-footer #pre-footer-container .pre-footer-col:nth-of-type(1) {
   padding: 35px;
 }
@@ -538,9 +543,9 @@ footer span.dot {
   position: absolute;
   bottom: 0;
   padding-bottom: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 10px;
+  padding-left: 37.5px;
+  padding-right: 20px;
+  padding-top: 20px;
   background-color: white;
   font-family: "Oswald";
 }
