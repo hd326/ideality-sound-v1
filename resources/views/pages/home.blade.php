@@ -1,8 +1,6 @@
 @extends('layouts.frontLayout.front_design')
 @section('content')
-<div id="sponsor-placement">
-    Sponsor Here
-</div>
+
 <div id="main-page-content">
 @foreach($posts as $post)
      <div class="post-card">
@@ -44,7 +42,5 @@
     </div> --}}
 </div>
 <div class="d-flex justify-content-center">{{ $posts->links() }}</div>
-<div id="sponsor-placement">
-    Sponsor Here
-</div>
+
 @endsection

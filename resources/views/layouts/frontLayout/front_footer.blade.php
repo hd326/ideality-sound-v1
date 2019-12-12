@@ -1,3 +1,7 @@
+<div id="sponsor-placement">
+    Sponsor Here
+</div>
+
 <div id="pre-footer">
         <div id="pre-footer-divider"></div>
         <div id="pre-footer-container">

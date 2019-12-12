@@ -1,3 +1,0 @@
-{{ $post->id }}
-
-{{ $post->body }}

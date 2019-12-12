@@ -16,7 +16,6 @@ class PageController extends Controller
         return view('pages.home', compact('posts', 'tags'));
     }
 
-
     public function categories($slug, $subslug = null)
     {
         // The first level slug (parent category)
@@ -30,7 +29,8 @@ class PageController extends Controller
                 $sub_categories = Category::where('parent_id', $category->id)->get();
             }
         }
-        return view('pages.category', compact('category', 'sub_categories'));
+        $tags = Tag::all();
+        return view('pages.category', compact('category', 'sub_categories', 'tags'));
     }
 
     public function post($slug)
@@ -43,6 +43,14 @@ class PageController extends Controller
     public function tag($tag)
     {
         $tag = Tag::where('name', $tag)->first();
-        return view('pages.tag', compact('tag'));
+        $tags = Tag::all();
+        return view('pages.tag', compact('tag', 'tags'));
+    }
+    
+    public function review()
+    {
+        $reviews = Tag::where('name', 'review')->first();
+        $tags = Tag::all();
+        return view('pages.reviews', compact('reviews', 'tags'));
     }
 }

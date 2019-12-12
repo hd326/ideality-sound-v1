@@ -40,13 +40,13 @@
                 </div>
             </li>-->
             <li class="categories">
-                <a href="index.html">Home</a>
+                <a href="/">Home</a>
             </li>
             <li class="categories">
-                Reviews
+                <a href="/reviews">Reviews</a>
             </li>
             <li class="categories">
-                Blog
+                <a href="/blog">Blog</a>
             </li>
             <li class="categories">
                 Headphones <i class="caret fas fa-chevron-down fa-1x"></i>
@@ -95,4 +95,7 @@
             <li><a href="terms.html">Disclaimer/Copyright</a></li>
         </ul>
     </nav>
+</div>
+<div id="sponsor-placement">
+    Sponsor Here
 </div>

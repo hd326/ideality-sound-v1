@@ -52,10 +52,26 @@ Route::group(['middleware' => ['admin']], function(){
 
 });
 
+// Blog post routes
+//Route::get('/blog', 'BlogController@index');
+//Route::get('/blog/{slug}', 'BlogController@show');
+
+// Blog routes as a tag
+// Review routes as a tag
+// Cause they are tags
+// Categories are not tags
+// Everything leads back to a post however...
+
+
 // Standard page routes
 Route::get('/', 'PageController@home');
-Route::get('/categories/{slug}/{subslug?}', 'PageController@categories');
+    // Page consisting of the *review tags
+//Route::get('/reviews', 'PageController@review');
+    // Page consisting of the *categories 
+Route::get('/category/{slug}/{subslug?}', 'PageController@categories');
+    // Page consisting of an *actual post
 Route::get('/{slug}', 'PageController@post');
-Route::get('/tags/{tag}', 'PageController@tag');
+    // Page consisting of *specified tags
+Route::get('/tags/{tag}/', 'PageController@tag');
 
 Route::get('/home', 'HomeController@index')->name('home');

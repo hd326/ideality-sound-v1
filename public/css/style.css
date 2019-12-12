@@ -544,7 +544,7 @@ footer span.dot {
   bottom: 0;
   padding-bottom: 20px;
   padding-left: 37.5px;
-  padding-right: 20px;
+  padding-right: 45px;
   padding-top: 20px;
   background-color: white;
   font-family: "Oswald";
@@ -553,6 +553,7 @@ footer span.dot {
 #review-image #review-info h1 {
   letter-spacing: 2px;
   color: #2b2b2b;
+  text-transform: uppercase;
 }
 
 #review-image #review-info img {
@@ -560,9 +561,14 @@ footer span.dot {
 }
 
 #review-image #review-info i {
-  letter-spacing: 5px;
-  margin-left: 5px;
+  letter-spacing: 2.5px;
+  margin-top: 20px;
+  margin-left: 10px;
   color: #575757;
+}
+
+#review-image #review-info i:nth-of-type(1) {
+  margin-left: 0px;
 }
 
 #review-image #review-info span {
@@ -1044,5 +1050,14 @@ footer span.dot {
 
 #terms-split .terms-column:nth-of-type(2) #sponsors .sponsor {
   height: 250px;
+}
+
+#main {
+  padding-left: 37.5px;
+}
+
+#main #main-content-holder {
+  display: grid;
+  grid-template-columns: 0.7fr 0.3fr;
 }
 

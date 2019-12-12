@@ -611,15 +611,18 @@ footer {
         bottom: 0;
         padding-bottom: 20px;
         padding-left: 37.5px;
-        padding-right: 20px;
+        padding-right: 45px;
         padding-top: 20px;
         background-color: white;
         font-family: "Oswald";
+        
 
 
         h1 {
             letter-spacing: 2px;
             color: #2b2b2b;
+            text-transform: uppercase;
+            
         }
 
         img {
@@ -627,9 +630,13 @@ footer {
         }
 
         i {
-            letter-spacing: 5px;
-            margin-left: 5px;
+            letter-spacing: 2.5px;
+            margin-top: 20px;
+            margin-left: 10px;
             color: #575757;
+            &:nth-of-type(1) {
+                margin-left: 0px;
+            }
         }
 
         span {
@@ -1141,5 +1148,21 @@ footer {
                 height: 250px;
             }
         }
+    }
+}
+
+// begin the categories / tags / blog display page
+
+#main {
+    padding-left: 37.5px;
+    #main-content-holder{
+        display:grid;
+        grid-template-columns: .7fr .3fr;
+      #main-content{
+
+      }  
+      #side-content{
+
+      }
     }
 }

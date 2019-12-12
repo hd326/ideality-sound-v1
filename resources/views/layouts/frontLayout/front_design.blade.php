@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato|Oswald|Roboto:900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e032011ee4.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <title>Ideality Sound | Home Page</title>
 </head>
 
@@ -16,6 +16,7 @@
     @include('layouts.frontLayout.front_header')
 
     @yield('content')
+
     @include('layouts.frontLayout.front_sidebar')
     @include('layouts.frontLayout.front_footer')
 </body>

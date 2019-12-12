@@ -4,10 +4,10 @@
 <div id="review-image">
     <img src="images/yulongmain.jpg">
     <div id="review-info">
-        <h1>YULONG A18/D18/U18 STACK REVIEW</h1>
+        <h1>{{ $post->title }} Review</h1>
         <i class="fas fa-user"></i> <span>Richard</span>
-        <i class="fas fa-clock"></i> <span>December 02, 2019</span>
-        <i class="fas fa-folder"></i> <span>$2000, AMP, DAC, Power Driver</span>
+        <i class="fas fa-clock"></i> <span>{{ $post->created_at->format('F j, Y') }}</span>
+        <i class="fas fa-folder"></i> <span>@foreach($post->tags as $tag){{ $loop->first ? '' : ', ' }}{{ $tag->name }}@endforeach</span>
     </div>
 </div>
 <div id="review-columns">
@@ -205,17 +205,7 @@
     </div>
 
 
-    <div id="sponsors">
-        <div class="sponsor">
-            Sponsor Here
-        </div>
-        <div class="sponsor">
-            Sponsor Here
-        </div>
-        <div class="sponsor">
-            Sponsor Here
-        </div>
-    </div>
+@include('layouts.frontLayout.front_post_sidebar')
 </div>
 
  @endsection
