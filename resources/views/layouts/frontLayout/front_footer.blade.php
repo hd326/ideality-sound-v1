@@ -3,11 +3,21 @@
 </div>
 
 <div id="pre-footer">
-        <div id="pre-footer-divider"></div>
         <div id="pre-footer-container">
             <div class="pre-footer-col">
-                <h3>TAGS</h3>
+                <h3>POPULAR TAGS</h3>
                 <div id="tags">
+                    @foreach($tags as $tag)
+                    <div class="tag-row">
+                        <div class="name">
+                                <a href="{{ url('tags/'.$tag->name) }}">{{ $tag->name }}</a>
+                        </div>
+                        <div class="count">
+                            {{ $tag->posts->count()}}
+                        </div>
+                    </div>
+                    <hr>
+                    @endforeach
                     {{-- <span class="tag">64 audio</span>
                     <span class="tag">Feliks Audio</span>
                     <span class="tag">Audio-gd</span>
@@ -17,25 +27,39 @@
                     <span class="tag">Holo Spring</span>
                     <span class="tag">CanJam</span>
                     <span class="tag">Gustard</span> --}}
-                    @foreach($tags as $tag)
+                    {{-- @foreach($tags as $tag)
                     <span class="tag"><a href="{{ url('tags/'.$tag->name) }}">{{ $tag->name }}</a></span>
-                    @endforeach
+                    @endforeach --}}
+                    
                 </div>
+            </div>
+            <div class="pre-footer-col">
+                <h3>INSTAGRAM</h3>
             </div>
             <div class="pre-footer-col">
                 <h3>LATEST COMMENTS</h3>
                 <div id="footer-comments">
+                    @php($i = 0)
+                    @foreach($latest as $latest)
+                    @php($i++)
                     <div class="comment">
                         <div class="comment-details">
-                            <span class="comment-number">1</span>
-                            <p class="comment-name">ELECTROSTATIC</p>
-                            <p class="comment-thread">Review: Feliks Audio Elise</p>
+                            <span class="comment-number">{{ $i }} </span>
+                            <p class="comment-name">{{ $latest->user->name }}</p>
+                            <p class="comment-thread">
+                                <a href="/{{ $latest->post->slug }}#{{ $latest->id}}">
+                                @foreach($latest->post->tags as $tags)
+                                 {{ $tags->name }}
+                                @endforeach: 
+                                {{ $latest->post->title }}</p>
+                            </a>
                         </div>
                         <div class="comment-text">
-                            This is really cool post..:)
+                                {{ substr(strip_tags($latest->body), 0, 175) }} {{ strlen($latest->body) > 200 ? "..." : "" }}
                         </div>
                     </div>
-                    <div class="comment">
+                    @endforeach
+                    {{-- <div class="comment">
                         <div class="comment-details">
                             <span class="comment-number">2</span>
                             <p class="comment-name">ELECTROSTATIC</p>
@@ -54,7 +78,7 @@
                         <div class="comment-text">
                             This is really cool post..:)
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

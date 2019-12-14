@@ -79,7 +79,7 @@
                                     <label for="">Post Category</label>
                                     <select class="form-control" name="category_id">
                                         @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" @if($post->category_id == $category->id) selected @endif>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -235,10 +235,10 @@
         plugins: [
             "advlist autolink link image lists charmap print preview hr anchor pagebreak",
             "searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking",
-            "table contextmenu directionality emoticons paste textcolor ResponsiveFilemanager"
+            "table contextmenu directionality emoticons paste textcolor ResponsiveFilemanager code"
         ],
         toolbar1: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect",
-        toolbar2: "| ResponsiveFilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code ",
+        toolbar2: "| ResponsiveFilemanager | link unlink anchor | image media | forecolor backcolor  | print preview code",
         image_advtab: true,
         height: '360px'
     });

@@ -49,29 +49,31 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/admin/edit-tag/{id}', 'TagController@edit');
     Route::post('/admin/edit-tag/{id}', 'TagController@update');
     Route::get('/admin/view-tag/{id}', 'TagController@show');
-
 });
 
-// Blog post routes
-//Route::get('/blog', 'BlogController@index');
-//Route::get('/blog/{slug}', 'BlogController@show');
-
-// Blog routes as a tag
-// Review routes as a tag
-// Cause they are tags
-// Categories are not tags
-// Everything leads back to a post however...
-
+// Comment routes
+Route::post('/comment/store', 'CommentController@store');
+Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
 
 // Standard page routes
 Route::get('/', 'PageController@home');
-    // Page consisting of the *review tags
-//Route::get('/reviews', 'PageController@review');
-    // Page consisting of the *categories 
-Route::get('/category/{slug}/{subslug?}', 'PageController@categories');
-    // Page consisting of an *actual post
+
+Route::get('/about-us', 'PageController@about')->name('about');
+
+Route::get('/privacy-policy', 'PageController@privacy')->name('privacy');
+
+Route::get('/disclaimer-copyright', 'PageController@disclaimer')->name('disclaimer');
+
+Route::get('/contact-us', 'PageController@contact')->name('contact');
+
+Route::get('/category/{slug}', 'PageController@category');
+
+Route::get('/category/{slug}/{subslug}', 'PageController@subcategory');
+
 Route::get('/{slug}', 'PageController@post');
-    // Page consisting of *specified tags
+
 Route::get('/tags/{tag}/', 'PageController@tag');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/search', 'PageController@search');
+
+//Route::get('/home', 'HomeController@index')->name('home');

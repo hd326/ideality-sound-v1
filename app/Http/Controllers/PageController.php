@@ -6,51 +6,118 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
 use App\Tag;
+use App\Comment;
 
 class PageController extends Controller
 {
     public function home()
     {
         $posts = Post::paginate(12);
-        $tags = Tag::all();
-        return view('pages.home', compact('posts', 'tags'));
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        return view('pages.home', compact('posts', 'tags', 'latest', 'latestSideCol'));
     }
 
-    public function categories($slug, $subslug = null)
+    public function about()
+    {
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        return view('pages.about', compact('tags', 'latest', 'latestSideCol'));
+    }
+
+    public function privacy()
+    {
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        return view('pages.privacy', compact('tags', 'latest', 'latestSideCol'));
+    }
+
+    public function disclaimer()
+    {
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        return view('pages.disclaimer', compact('tags', 'latest', 'latestSideCol'));
+    }
+
+    public function contact()
+    {
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        return view('pages.contact', compact('tags', 'latest', 'latestSideCol'));
+    }
+
+    public function category($slug)
+    {
+        $category = Category::where('slug', $slug)->first();
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        $meta_title = $category->meta_title;
+        $meta_description = $category->meta_description;
+        $meta_keywords = $category->meta_keywords;
+        return view('pages.category', compact('category', 'tags', 'latest', 'latestSideCol', 'meta_title', 'meta_description', 'meta_keywords'));
+    }
+
+
+    public function subcategory($slug, $subslug = null)
     {
         // The first level slug (parent category)
         $category = Category::where('slug', $slug)->first();
+        
         if($category->parent_id == 0) {
             if(!empty($subslug)) {
                 // If there is a second level of a slug, get the subcategories only
-                $sub_categories = Category::where('slug', $subslug)->get();
-                } else {
-                // Else, grab all of the subcategories of the parent id category
-                $sub_categories = Category::where('parent_id', $category->id)->get();
+                $sub_category = Category::where('slug', $subslug)->first();
             }
         }
-        $tags = Tag::all();
-        return view('pages.category', compact('category', 'sub_categories', 'tags'));
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        return view('pages.subcategory', compact('sub_category', 'tags', 'latest', 'latestSideCol'));
     }
 
     public function post($slug)
     {
         $post = Post::where('slug', $slug)->firstOrFail();
-        $tags = Tag::all();
-        return view('pages.post', compact('post', 'tags'));
+        $previous = Post::where('id', '<', $post->id)->orderBy('id', 'desc')->first();
+        $next = Post::where('id', '>', $post->id)->orderBy('id')->first();
+        $reviews = Tag::where('name', 'reviews')->first();
+        $related = $reviews->posts->take(2);
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        foreach($post->images as $image){
+            $images[] = $image->image;
+        }
+        $mainImage = $images[0];
+        return view('pages.post', compact('post', 'tags', 'previous', 'next', 'related', 'latest', 'latestSideCol', 'mainImage'));
     }
 
     public function tag($tag)
     {
         $tag = Tag::where('name', $tag)->first();
-        $tags = Tag::all();
-        return view('pages.tag', compact('tag', 'tags'));
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        return view('pages.tag', compact('tag', 'tags', 'latest', 'latestSideCol'));
     }
-    
-    public function review()
+
+    public function search(Request $request)
     {
-        $reviews = Tag::where('name', 'review')->first();
-        $tags = Tag::all();
-        return view('pages.reviews', compact('reviews', 'tags'));
+        $q = $request->q;
+        $posts = Post::where('title', 'LIKE', '%' . $q . '%')->orWhere('body', 'LIKE', '%' . $q . '%')->get();
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        if(count($posts) > 0) {
+            return view('pages.search', compact('posts', 'q', 'tags', 'latest', 'latestSideCol'));
+        } else {
+            return view('pages.search', compact('tags', 'q', 'latest', 'latestSideCol'))->withMessage('No results found. Please try to search again!');
+        }
     }
 }

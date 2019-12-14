@@ -1,3 +1,7 @@
+.sharethis-inline-share-buttons {
+  margin-top: 37.5px;
+}
+
 .pagination {
   display: -webkit-box;
   display: flex;
@@ -11,13 +15,13 @@
 .page-link {
   position: relative;
   display: block;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #007bff;
+  color: #2b2b2b;
   background-color: #ffffff;
-  border: 1px solid #dee2e6;
   text-decoration: none;
+  font-size: 1rem;
 }
 
 .page-link:hover {
@@ -48,8 +52,8 @@
 .page-item.active .page-link {
   z-index: 1;
   color: #ffffff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #4DB2EC;
+  border-color: #4DB2EC;
 }
 
 .page-item.disabled .page-link {
@@ -64,16 +68,6 @@
   padding: 0.75rem 1.5rem;
   font-size: 1.25rem;
   line-height: 1.5;
-}
-
-.pagination-lg .page-item:first-child .page-link {
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
-}
-
-.pagination-lg .page-item:last-child .page-link {
-  border-top-right-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem;
 }
 
 .pagination-sm .page-link {
@@ -133,25 +127,37 @@ body {
 
 #logo {
   padding-top: 27.5px;
-  margin-bottom: 27.5px;
+  padding-bottom: 27.5px;
   color: #2b2b2b;
-  font-family: "Roboto";
+  font-family: "Limelight";
   text-indent: 25px;
-  font-size: 24px;
+  font-size: 30px;
   letter-spacing: 1px;
+  position: relative;
 }
 
 #strip {
   display: grid;
-  -webkit-box-pack: end;
-          justify-content: flex-end;
+  grid-template-columns: 1fr 1fr;
   background-color: #2b2b2b;
   color: #ececec;
 }
 
+#strip #date-join {
+  margin-left: 37.5px;
+  display: grid;
+  grid-template-columns: 0.675fr 1fr;
+  align-content: center;
+  font-size: 12px;
+}
+
+#strip nav {
+  justify-self: flex-end;
+}
+
 #strip nav ul li {
-  display: inline;
-  padding: 15px;
+  display: inline-block;
+  padding: 0px 10px;
 }
 
 #strip nav ul li:nth-of-type(5) {
@@ -159,10 +165,17 @@ body {
   position: relative;
 }
 
-#strip nav ul li:nth-of-type(5) i {
+#strip nav ul li:nth-of-type(5) form {
+  position: relative;
+}
+
+#strip nav ul li:nth-of-type(5) button {
   position: absolute;
   right: 5%;
-  top: 10%;
+  top: 30%;
+  background-color: black;
+  border: none;
+  color: #f2f2f2;
 }
 
 #strip nav ul li input {
@@ -184,7 +197,10 @@ body {
           justify-content: flex-end;
   background-color: #454545;
   color: #bebebe;
-  padding: 5px 7.5px;
+  font-size: 16px;
+  font-family: "Lato";
+  padding: 5px 20px;
+  font-size: 13px;
 }
 
 header {
@@ -193,16 +209,15 @@ header {
   text-align: center;
   font-family: "Oswald";
   letter-spacing: 1px;
-  font-size: 21px;
+  font-size: 20px;
   position: relative;
-  border-top: 3px solid #006cff;
+  border-bottom: 5px solid #4DB2EC;
 }
 
 header ul li.categories {
   font-weight: 500;
   display: inline-block;
   margin-left: -5px;
-  padding: 5px 15px;
   text-transform: uppercase;
   position: relative;
   -webkit-transition: 0.25s ease;
@@ -222,6 +237,9 @@ header ul li.categories i {
 header ul li.categories a {
   text-decoration: none;
   color: #f2f2f2;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 17.5px;
 }
 
 header ul li.categories:nth-of-type(1) {
@@ -229,39 +247,49 @@ header ul li.categories:nth-of-type(1) {
 }
 
 header ul li.categories:hover nav ul {
-  display: block;
-  visibility: visible;
   opacity: 1;
-  -webkit-transition: visibility 0s linear 0s, opacity 300ms;
-  transition: visibility 0s linear 0s, opacity 300ms;
+  -webkit-transition: 0.25 ease;
+  transition: 0.25 ease;
+  visibility: visible;
+  -webkit-transition: visibility 0s, opacity 0.25s linear;
+  transition: visibility 0s, opacity 0.25s linear;
 }
 
 header ul li.categories:hover {
-  background-color: #006cff;
+  background-color: #4DB2EC;
 }
 
 header ul li.categories nav ul {
   position: absolute;
   list-style: none;
-  background-color: #006cff;
+  background-color: #2b2b2b;
   width: 100%;
   left: 0;
-  margin-top: 5px;
   z-index: 1;
   width: 200px;
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: visibility 0s linear 300ms, opacity 300ms;
-  transition: visibility 0s linear 300ms, opacity 300ms;
+  -webkit-transition: 0.25 ease;
+  transition: 0.25 ease;
+  -webkit-transition: visibility 0s, opacity 0.25s linear;
+  transition: visibility 0s, opacity 0.25s linear;
 }
 
 header ul li.categories nav ul li {
   border-top: 1px dotted white;
-  padding: 7.5px;
+  width: 100%;
 }
 
 header ul li.categories nav ul li:hover {
-  background-color: #2b2b2b;
+  background-color: #4DB2EC;
+}
+
+header ul li.categories nav ul li a {
+  padding: 7.5px;
+}
+
+.active {
+  background-color: #4DB2EC;
 }
 
 #about-us-strip {
@@ -296,7 +324,7 @@ header ul li.categories nav ul li:hover {
 
 #about-us-strip nav ul li:hover {
   background-color: black;
-  color: #f2f2f2;
+  color: white;
 }
 
 #sponsor-placement {
@@ -318,35 +346,40 @@ header ul li.categories nav ul li:hover {
 }
 
 .post-card {
-  width: 100%;
-  height: 100%;
   font-family: "Oswald";
   font-size: 14px;
   letter-spacing: 1px;
   color: grey;
   text-align: center;
-  display: grid;
 }
 
 .post-card a {
   text-decoration: none;
-  color: #2b2b2b;
+  color: grey;
 }
 
 .post-card hr {
-  color: black;
-  border-top: 1.5px solid black;
-  height: 2px;
+  margin: auto;
   margin-top: 25px;
+  border: none;
+  height: 1px;
+  background-color: #eeeeee;
+  width: 95%;
 }
 
 .post-card .image-container {
   -ms-grid-column-align: center;
   justify-self: center;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
   position: relative;
+  z-index: 0;
+  display: inline-block;
+  height: 250px;
+}
+
+.post-card .image-container img {
+  height: 100%;
+  width: 100%;
 }
 
 .post-card .image-container .image-container-helper {
@@ -354,7 +387,7 @@ header ul li.categories nav ul li:hover {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 147, 255, 0.22);
+  background-color: rgba(0, 162, 255, 0.22);
   z-index: 1;
   opacity: 0;
   -webkit-transition: 1s ease;
@@ -366,11 +399,11 @@ header ul li.categories nav ul li:hover {
 }
 
 .post-card .image-container:hover img {
-  -webkit-transform: scale(1.075);
-  transform: scale(1.075);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
   -webkit-transition: 1s;
-  -webkit-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;
+  -webkit-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .post-card .image-container:focus img {
@@ -385,6 +418,7 @@ header ul li.categories nav ul li:hover {
   text-transform: uppercase;
   margin-top: 10px;
   font-weight: 100;
+  background-color: whitesmoke;
 }
 
 .post-card p:nth-of-type(1) {
@@ -441,7 +475,7 @@ header ul li.categories nav ul li:hover {
 
 #pre-footer #pre-footer-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 #pre-footer #pre-footer-container .pre-footer-col h3 {
@@ -457,14 +491,24 @@ header ul li.categories nav ul li:hover {
   font-family: "Lato";
 }
 
-#pre-footer #pre-footer-container #tags .tag {
-  border: 1px dashed white;
-  padding: 5px;
+#pre-footer #pre-footer-container #tags .tag-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
-#pre-footer #pre-footer-container #tags .tag a {
+#pre-footer #pre-footer-container #tags .tag-row .name a {
   text-decoration: none;
-  color: white;
+  color: #f2f2f2;
+}
+
+#pre-footer #pre-footer-container #tags .tag-row .count {
+  justify-self: flex-end;
+}
+
+#pre-footer #pre-footer-container #tags hr {
+  border: none;
+  height: 1px;
+  background-color: #f2f2f2;
 }
 
 #pre-footer #pre-footer-container .pre-footer-col:nth-of-type(1) {
@@ -472,39 +516,71 @@ header ul li.categories nav ul li:hover {
 }
 
 #pre-footer #pre-footer-container .pre-footer-col:nth-of-type(2) {
+  padding: 35px;
+}
+
+#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(3) {
   position: relative;
   padding: 35px;
 }
 
-#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(2) #footer-comments .comment {
+#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(3) #footer-comments .comment {
   padding: 20px 0px;
   font-size: 25px;
 }
 
-#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(2) #footer-comments .comment-number {
+#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(3) #footer-comments .comment-number {
   font-style: italic;
 }
 
-#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(2) #footer-comments .comment-name {
+#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(3) #footer-comments .comment-name {
   margin-left: 25px;
   margin-top: -32.5px;
   font-size: 14px;
 }
 
-#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(2) #footer-comments .comment-thread {
+#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(3) #footer-comments .comment-thread {
   margin-left: 25px;
   font-family: "Lato";
   font-size: 14px;
-  text-decoration: underline;
 }
 
-#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(2) #footer-comments .comment-text {
+#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(3) #footer-comments .comment-thread a {
+  color: #f2f2f2;
+}
+
+#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(3) #footer-comments .comment-text {
   font-family: "Lato";
   font-style: italic;
   font-size: 14px;
   border: 1px solid #3b3b3b;
   padding: 7.5px;
   margin-top: 20px;
+  position: relative;
+}
+
+#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(3) #footer-comments .comment-text:before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 50px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: #3b3b3b;
+}
+
+#pre-footer #pre-footer-container .pre-footer-col:nth-of-type(3) #footer-comments .comment-text:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 50px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 9px solid transparent;
+  border-bottom-color: #2b2b2b;
 }
 
 footer {
@@ -550,6 +626,11 @@ footer span.dot {
   font-family: "Oswald";
 }
 
+#review-image #review-info a {
+  text-decoration: none;
+  color: #575757;
+}
+
 #review-image #review-info h1 {
   letter-spacing: 2px;
   color: #2b2b2b;
@@ -578,7 +659,7 @@ footer span.dot {
 #review-columns {
   display: grid;
   grid-template-columns: 0.75fr 0.25fr;
-  grid-gap: 30px;
+  grid-gap: 37.5px;
 }
 
 #review-columns #review {
@@ -587,9 +668,13 @@ footer span.dot {
 }
 
 #review-columns #review h2 {
-  margin-top: 50px;
+  margin-top: 25px;
   text-transform: uppercase;
   font-family: "Oswald";
+}
+
+#review-columns #review h2:nth-of-type(1) {
+  margin-top: 50px;
 }
 
 #review-columns #review p:nth-of-type(1) {
@@ -611,16 +696,25 @@ footer span.dot {
 }
 
 #self-rating {
-  background-color: #f0f0f0;
+  background-color: #f2f2f2;
   margin-top: 20px;
   padding: 20px;
   padding-top: 20px;
+}
+
+#self-rating .self-rating-show {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 #self-rating span {
   letter-spacing: 2px;
   font-weight: 1000;
   font-size: 13px;
+}
+
+#self-rating span:nth-of-type(2) {
+  justify-self: flex-end;
 }
 
 #self-rating .self-rating-grey {
@@ -632,26 +726,34 @@ footer span.dot {
 }
 
 #self-rating .self-rating-grey .self-rating-actual {
-  background-color: #006cff;
+  background-color: #4DB2EC;
   height: 8px;
   border-radius: 1px;
-  width: 80%;
 }
 
 #specific-rating {
-  background-color: #f0f0f0;
+  background-color: #f2f2f2;
   margin-top: 20px;
   padding: 20px;
   padding-top: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 25px;
+  grid-gap: 37.5px;
 }
 
-#specific-rating span {
+#specific-rating .specific-rating-show {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+}
+
+#specific-rating .specific-rating-show span {
   letter-spacing: 2px;
   font-weight: 1000;
   font-size: 13px;
+}
+
+#specific-rating .specific-rating-show span:nth-of-type(2) {
+  justify-self: flex-end;
 }
 
 #specific-rating .specific-rating-grey {
@@ -664,7 +766,7 @@ footer span.dot {
 }
 
 #specific-rating .specific-rating-grey .specific-rating-actual {
-  background-color: #006cff;
+  background-color: #4DB2EC;
   height: 8px;
   border-radius: 1px;
   width: 80%;
@@ -686,18 +788,16 @@ footer span.dot {
   font-size: 36px;
 }
 
-#previous-next #previous {
+#previous-next a {
+  text-decoration: none;
+  padding: 10px;
+  height: 125px;
   background-color: #e0e0e0;
+  color: #9a9a9a;
+  position: relative;
+  text-decoration: none;
   display: grid;
   align-content: center;
-  color: #9a9a9a;
-}
-
-#previous-next #next {
-  background-color: #e0e0e0;
-  display: grid;
-  align-content: center;
-  color: #9a9a9a;
 }
 
 #related-articles #related-articles-container {
@@ -706,6 +806,11 @@ footer span.dot {
   grid-gap: 20px;
   padding: 0px;
   font-family: "Oswald";
+}
+
+#related-articles #related-articles-container a {
+  text-decoration: none;
+  color: #2b2b2b;
 }
 
 #related-articles #related-articles-container .related-articles-column {
@@ -762,14 +867,17 @@ footer span.dot {
 
 #comments .comment .comment-info .comment-column:nth-of-type(2) .date {
   color: #afafaf;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 #comments .comment .comment-info .comment-column:nth-of-type(2) .name {
   color: #2b2b2b;
+  text-transform: uppercase;
+  font-size: 18px;
 }
 
 #comments .comment .comment-actual {
-  margin-left: 60px;
   margin-top: 20px;
 }
 
@@ -791,6 +899,9 @@ footer span.dot {
   width: 100%;
   height: 175px;
   margin-top: 7.5px;
+  padding: 7.5px;
+  font-family: "Arial";
+  font-size: 16px;
 }
 
 #leave-a-reply span {
@@ -812,13 +923,115 @@ footer span.dot {
   color: #afafaf;
 }
 
+#leave-a-reply p {
+  font-family: "Oswald";
+  text-transform: none;
+}
+
+#comment-reply {
+  margin-top: 25px;
+}
+
+#comment-reply textarea {
+  width: 100%;
+  height: 75px;
+  padding: 7.5px;
+  font-family: "Arial";
+  font-size: 16px;
+}
+
+#comment-reply #comment-reply-box {
+  width: 75%;
+  display: grid;
+}
+
+#comment-reply input[type=submit] {
+  background-color: black;
+  border: none;
+  padding: 10px 25px;
+  font-family: "Oswald";
+  color: #f2f2f2;
+  display: grid;
+  justify-self: flex-end;
+}
+
 #sponsors {
   margin-top: 20px;
-  text-align: center;
+  padding-right: 37.5px;
 }
 
 #sponsors .sponsor {
-  height: 35%;
+  height: 250px;
+  text-align: center;
+}
+
+#sponsors h2 {
+  background-color: #f7f7f7;
+  padding: 15px 20px;
+  text-align: center;
+  font-family: "Oswald";
+  border-bottom: 5px solid #4DB2EC;
+  text-align: center;
+}
+
+#sponsors .comment {
+  padding: 25px 0px;
+  font-size: 25px;
+}
+
+#sponsors .comment-number {
+  font-style: italic;
+}
+
+#sponsors .comment-name {
+  margin-left: 45px;
+  margin-top: -32.5px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+#sponsors .comment-thread {
+  margin-left: 45px;
+  font-family: "Lato";
+  font-size: 14px;
+}
+
+#sponsors .comment-thread a {
+  color: #2b2b2b;
+}
+
+#sponsors .comment-text {
+  font-family: "Lato";
+  font-style: italic;
+  font-size: 14px;
+  background-color: #f7f7f7;
+  padding: 15px;
+  margin-top: 20px;
+  position: relative;
+}
+
+#sponsors .comment-text:before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 50px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 11px solid transparent;
+  border-bottom-color: #f7f7f7;
+}
+
+#sponsors .comment-text:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 50px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: #f7f7f7;
 }
 
 #contact-us-header {
@@ -829,7 +1042,7 @@ footer span.dot {
   color: #2b2b2b;
   background-color: #ececec;
   padding: 15px;
-  border-bottom: 5px solid #006cff;
+  border-bottom: 5px solid #4DB2EC;
   letter-spacing: 2px;
 }
 
@@ -894,7 +1107,7 @@ footer span.dot {
   color: #2b2b2b;
   background-color: #ececec;
   padding: 15px;
-  border-bottom: 5px solid #006cff;
+  border-bottom: 5px solid #4DB2EC;
   letter-spacing: 2px;
 }
 
@@ -967,7 +1180,7 @@ footer span.dot {
   color: #2b2b2b;
   background-color: #ececec;
   padding: 15px;
-  border-bottom: 5px solid #006cff;
+  border-bottom: 5px solid #4DB2EC;
   letter-spacing: 2px;
 }
 
@@ -1013,7 +1226,7 @@ footer span.dot {
   color: #2b2b2b;
   background-color: #ececec;
   padding: 15px;
-  border-bottom: 5px solid #006cff;
+  border-bottom: 5px solid #4DB2EC;
   letter-spacing: 2px;
 }
 
@@ -1052,12 +1265,110 @@ footer span.dot {
   height: 250px;
 }
 
+#title {
+  text-align: center;
+  font-family: "Oswald";
+  text-transform: uppercase;
+  width: 100%;
+  background-color: #f7f7f7;
+  padding: 27.5px;
+  border-bottom: 5px solid #4DB2EC;
+}
+
 #main {
+  margin-top: 37.5px;
   padding-left: 37.5px;
+  overflow: hidden;
 }
 
 #main #main-content-holder {
   display: grid;
   grid-template-columns: 0.7fr 0.3fr;
+  grid-gap: 25px;
+}
+
+#main #main-content-holder #main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 37.5px;
+  grid-auto-rows: minmax(-webkit-min-content, -webkit-max-content);
+  grid-auto-rows: minmax(min-content, max-content);
+}
+
+#main #main-content-holder #side-content h2 {
+  background-color: #f7f7f7;
+  padding: 15px 20px;
+  text-align: center;
+  font-family: "Oswald";
+  border-bottom: 5px solid #4DB2EC;
+}
+
+#main #main-content-holder #side-content #sponsors {
+  margin-top: 20px;
+}
+
+#main #main-content-holder #side-content #sponsors .sponsor {
+  height: 250px;
+  text-align: center;
+}
+
+#main #main-content-holder #side-content #sponsors .comment {
+  padding: 25px 0px;
+  font-size: 25px;
+}
+
+#main #main-content-holder #side-content #sponsors .comment-number {
+  font-style: italic;
+}
+
+#main #main-content-holder #side-content #sponsors .comment-name {
+  margin-left: 45px;
+  margin-top: -32.5px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+#main #main-content-holder #side-content #sponsors .comment-thread {
+  margin-left: 45px;
+  font-family: "Lato";
+  font-size: 14px;
+}
+
+#main #main-content-holder #side-content #sponsors .comment-thread a {
+  color: #2b2b2b;
+}
+
+#main #main-content-holder #side-content #sponsors .comment-text {
+  font-family: "Lato";
+  font-style: italic;
+  font-size: 14px;
+  background-color: #f7f7f7;
+  padding: 15px;
+  margin-top: 20px;
+  position: relative;
+}
+
+#main #main-content-holder #side-content #sponsors .comment-text:before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 50px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 11px solid transparent;
+  border-bottom-color: #f7f7f7;
+}
+
+#main #main-content-holder #side-content #sponsors .comment-text:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 50px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: #f7f7f7;
 }
 

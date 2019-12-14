@@ -1,11 +1,46 @@
 <div id="strip">
+    <div id="date-join">
+        <div id="date"></div>
+
+        <script>
+            function formatDate(date) {
+                var monthNames = [
+                    "January", "February", "March",
+                    "April", "May", "June", "July",
+                    "August", "September", "October",
+                    "November", "December"
+                ];
+
+                var dayNames = [
+                    "Monday", "Tuesday", "Wednesday",
+                    "Thursday", "Friday", "Saturday", "Sunday"
+                ];
+                var nameDay = dayNames[date.getDay()];
+                var day = date.getDate();
+                var monthIndex = date.getMonth();
+                var year = date.getFullYear();
+
+                return nameDay + ', ' + monthNames[monthIndex] + ' ' + day + ', ' + year;
+            }
+
+            document.getElementById('date').innerHTML = formatDate(new Date());
+
+        </script>
+    </div>
     <nav>
         <ul>
             <li><i class="fab fa-youtube"></i></li>
             <li><i class="fab fa-instagram"></i></li>
             <li><i class="fab fa-twitter"></i></li>
             <li><i class="fab fa-facebook"></i></li>
-            <li><input placeholder="Search"><i class="fas fa-search"></i></li>
+            <li>
+                <form action="/search/" method="POST" role="search">
+                    @csrf
+                    <input placeholder="Search" name="q">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </li>
+
         </ul>
     </nav>
 </div>
@@ -40,48 +75,52 @@
                 </div>
             </li>-->
             <li class="categories">
-                <a href="/">Home</a>
+                <a href="/" class="{{ (request()->is('/')) ? 'active' : '' }}">Home</a>
             </li>
             <li class="categories">
-                <a href="/reviews">Reviews</a>
+                <a href="/tags/reviews" class="{{ (request()->is('tags/reviews')) ? 'active' : '' }}">Reviews</a>
             </li>
             <li class="categories">
-                <a href="/blog">Blog</a>
+                <a href="/tags/blog" class="{{ (request()->is('tags/blog')) ? 'active' : '' }}">Blog</a>
             </li>
             <li class="categories">
-                Headphones <i class="caret fas fa-chevron-down fa-1x"></i>
+                <a href="/category/headphones/"
+                    class="{{ (request()->is('category/headphones*')) ? 'active' : '' }}">Headphones <i
+                        class="caret fas fa-chevron-down fa-1x"></i></a>
                 <nav>
                     <ul>
-                        <li>Full Size</li>
-                        <li>Portable</li>
-                        <li>Planar</li>
-                        <li>Electrostatic</li>
+                        <li><a href="/category/headphones/fullsize">Full Size</a></li>
+                        <li><a href="/category/headphones/portables">Portable</a></li>
+                        <li><a href="/category/headphones/planars">Planar</a></li>
+                        <li><a href="/category/headphones/electrostatics">Electrostatic</a></li>
                     </ul>
                 </nav>
             </li>
             <li class="categories">
-                Sources <i class="caret fas fa-chevron-down fa-1x"></i>
+                <a href="/category/source" class="{{ (request()->is('category/source*')) ? 'active' : '' }}">Sources <i
+                        class="caret fas fa-chevron-down fa-1x"></i></a>
                 <nav>
                     <ul>
-                        <li>DAPS</li>
-                        <li>DACS</li>
-                        <li>Streaming</li>
+                        <li><a href="/category/source/portable-source">DAPs</a></li>
+                        <li><a href="/category/source/desktop-source">DACs</a></li>
                     </ul>
                 </nav>
             </li>
 
             <li class="categories">
-                Amplification <i class="caret fas fa-chevron-down fa-1x"></i>
+                <a href="/category/amplifiers"
+                    class="{{ (request()->is('category/amplifiers*')) ? 'active' : '' }}">Amplification <i
+                        class="caret fas fa-chevron-down fa-1x"></i></a>
                 <nav>
                     <ul>
-                        <li>Portable AMPS</li>
-                        <li>Solid State</li>
-                        <li>Tubes</li>
+                        <li><a href="/category/amplifiers/portable-amplifiers">Portable AMPS</a></li>
+                        <li><a href="/category/amplifiers/solid-state">Solid State</a></li>
+                        <li><a href="/category/amplifiers/tube-amplifiers">Tubes</a></li>
                     </ul>
                 </nav>
             </li>
             <li class="categories">
-                Best Gear
+                <a href="/tags/best-gear" class="{{ (request()->is('tags/best-gear')) ? 'active' : '' }}">Best Gear</a>
             </li>
         </ul>
     </nav>
@@ -89,10 +128,10 @@
 <div id="about-us-strip">
     <nav>
         <ul>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Disclaimer/Copyright</a></li>
+            <li><a href="{{ route('contact') }}">Contact</a></li>
+            <li><a href="{{ route('about') }}">About Us</a></li>
+            <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+            <li><a href="{{ route('disclaimer') }}">Disclaimer/Copyright</a></li>
         </ul>
     </nav>
 </div>

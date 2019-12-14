@@ -49,27 +49,27 @@ class PostController extends Controller
             'meta_description' => 'required',
             'meta_keywords' => 'required',
             'category_id' => 'required',
-            'tonal_balance_neutrality' => 'required',
-            'price_performance' => 'required',
-            'sound_fidelity' => 'required',
-            'musicality' => 'required',
-            'build_quality' => 'required',
-            'bass_extension' => 'required',
-            'bass_balance' => 'required',
-            'lower_midrange_balance' => 'required',
-            'midrange_proper_balance' => 'required',
-            'upper_midrange_balance' => 'required',
-            'treble_balance' => 'required',
-            'treble_extension' => 'required',
-            'bass_control' => 'required',
-            'tone_density' => 'required',
-            'macro_dynamics' => 'required',
-            'micro_dynamics' => 'required',
-            'soundstage_width' => 'required',
-            'soundstage_depth' => 'required',
-            'resolution' => 'required',
-            'clarity' => 'required',
-            'score' => 'required'
+            //'tonal_balance_neutrality' => 'required',
+            //'price_performance' => 'required',
+            //'sound_fidelity' => 'required',
+            //'musicality' => 'required',
+            //'build_quality' => 'required',
+            //'bass_extension' => 'required',
+            //'bass_balance' => 'required',
+            //'lower_midrange_balance' => 'required',
+            //'midrange_proper_balance' => 'required',
+            //'upper_midrange_balance' => 'required',
+            //'treble_balance' => 'required',
+            //'treble_extension' => 'required',
+            //'bass_control' => 'required',
+            //'tone_density' => 'required',
+            //'macro_dynamics' => 'required',
+            //'micro_dynamics' => 'required',
+            //'soundstage_width' => 'required',
+            //'soundstage_depth' => 'required',
+            //'resolution' => 'required',
+            //'clarity' => 'required',
+            //'score' => 'required'
         ]);
 
         $post = new Post();
@@ -188,6 +188,7 @@ class PostController extends Controller
             'meta_keywords' => 'required',
             'category_id' => 'required'
         ]);
+
         $post->title = $request->title;
         $post->body = $request->body;
         $post->slug = $request->slug;
@@ -218,7 +219,7 @@ class PostController extends Controller
         $post->score = $request->score;
         $post->save();
 
-        $post->tags()->sync($request->tags, false);
+        $post->tags()->sync($request->tags, true);
 
         return back();
     }
@@ -233,6 +234,4 @@ class PostController extends Controller
     {
         //
     }
-
-    
 }
