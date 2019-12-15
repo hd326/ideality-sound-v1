@@ -94,7 +94,12 @@ class PageController extends Controller
         foreach($post->images as $image){
             $images[] = $image->image;
         }
-        $mainImage = $images[0];
+        if(!empty($images[0])){
+            $mainImage = $images[0];
+        } else {
+            $mainImage = null;
+        }
+        
         return view('pages.post', compact('post', 'tags', 'previous', 'next', 'related', 'latest', 'latestSideCol', 'mainImage'));
     }
 
