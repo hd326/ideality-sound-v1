@@ -97,12 +97,6 @@
             any disputes.</p>
     </div>
 
-    <div class="terms-column">
-        <div id="sponsors">
-            <div class="sponsor">Sponsor here</div>
-            <div class="sponsor">Sponsor here</div>
-            <div class="sponsor">Sponsor here</div>
-        </div>
-    </div>
+    @include('layouts.frontLayout.front_sidebar')
 </div>
 @endsection

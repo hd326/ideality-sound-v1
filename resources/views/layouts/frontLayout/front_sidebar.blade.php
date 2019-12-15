@@ -25,7 +25,7 @@
             </a>
         </div>
         <div class="comment-text">
-                {{ substr(strip_tags($latest->body), 0, 175) }} {{ strlen($latest->body) > 200 ? "..." : "" }}
+                {{ substr(strip_tags($latest->body), 0, 25) }} {{ strlen($latest->body) > 25 ? "..." : "" }}
         </div>
     </div>
     @endforeach

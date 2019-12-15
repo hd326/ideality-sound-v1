@@ -364,7 +364,7 @@ header ul li.categories nav ul li a {
   border: none;
   height: 1px;
   background-color: #eeeeee;
-  width: 95%;
+  width: 100%;
 }
 
 .post-card .image-container {
@@ -494,6 +494,7 @@ header ul li.categories nav ul li a {
 #pre-footer #pre-footer-container #tags .tag-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  border-bottom: 0.5px dotted white;
 }
 
 #pre-footer #pre-footer-container #tags .tag-row .name a {
@@ -503,12 +504,6 @@ header ul li.categories nav ul li a {
 
 #pre-footer #pre-footer-container #tags .tag-row .count {
   justify-self: flex-end;
-}
-
-#pre-footer #pre-footer-container #tags hr {
-  border: none;
-  height: 1px;
-  background-color: #f2f2f2;
 }
 
 #pre-footer #pre-footer-container .pre-footer-col:nth-of-type(1) {
@@ -1165,7 +1160,6 @@ footer span.dot {
 
 #about-us-split .about-us-column:nth-of-type(2) #sponsors {
   margin-top: 20px;
-  text-align: center;
 }
 
 #about-us-split .about-us-column:nth-of-type(2) #sponsors .sponsor {

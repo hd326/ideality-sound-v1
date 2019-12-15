@@ -24,12 +24,6 @@
                 </li>
             </ul>
         </div>
-        <div class="privacy-column">
-            <div id="sponsors">
-                <div class="sponsor">Sponsor here</div>
-                <div class="sponsor">Sponsor here</div>
-                <div class="sponsor">Sponsor here</div>
-            </div>
-        </div>
+        @include('layouts.frontLayout.front_sidebar')
     </div>
 @endsection

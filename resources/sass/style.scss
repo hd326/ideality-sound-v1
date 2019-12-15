@@ -274,7 +274,7 @@ header {
         position: relative;
         transition: .25s ease;
         z-index: 2;
-
+        
 
         i {
             bottom: 25%;
@@ -342,10 +342,11 @@ header {
             opacity: 0;
             transition: .25 ease;
             transition: visibility 0s, opacity 0.25s linear;
-
+            
+    
             li {
                 border-top: 1px dotted white;
-
+                
                 width: 100%;
 
                 &:hover {
@@ -437,7 +438,7 @@ header {
         border: none;
         height: 1px;
         background-color: rgb(238, 238, 238);
-        width: 95%;
+        width: 100%;
     }
 
     .image-container {
@@ -570,7 +571,7 @@ header {
             .tag-row{
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-
+                border-bottom: .5px dotted white;
                 .name {
                     a {
                         text-decoration: none;
@@ -581,11 +582,11 @@ header {
                     justify-self:flex-end;
                 }
             }
-            hr{
-                border: none;
-                height: 1px;
-                background-color: #f2f2f2;
-            }
+            //hr{
+            //    border: none;
+            //    height: 1px;
+            //    background-color: #f2f2f2;
+            //}
             //.tag {
             //    border: 1px dashed white;
             //    padding: 5px;
@@ -1296,7 +1297,7 @@ footer {
     .about-us-column:nth-of-type(2) {
         #sponsors {
             margin-top: 20px;
-            text-align: center;
+            
 
             .sponsor {
                 height: 250px;
@@ -1445,7 +1446,6 @@ footer {
                 font-family: "Oswald";
                 border-bottom: 5px solid $blue;
             }
-
             #sponsors {
                 margin-top: 20px;
 

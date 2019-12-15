@@ -20,8 +20,8 @@
                 </a>
                 <h2><a href="{{ url('/'.$post->slug) }}">{{ $post->title }}</a></h2>
                 <p><i class="fas fa-tags"></i> $1000-$5000, Desktop Gear, Review<br><i class="fas fa-calendar"></i>
-                    {{ $post->created_at->diffForHumans() }}</p>
-                <p>{{ substr(strip_tags($post->body), 0, 175) }} {{ strlen($post->body) > 200 ? "..." : "" }}</p>
+                    {{ $post->created_at->format('F j, Y') }}</p>
+                <p>{{ substr(strip_tags($post->body), 0, 125) }} {{ strlen($post->body) > 125 ? "..." : "" }}</p>
                 <hr>
             </div>
 

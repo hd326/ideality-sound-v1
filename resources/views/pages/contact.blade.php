@@ -20,12 +20,6 @@
             <textarea></textarea><br>
             <button>Submit</button>
         </div>
-        <div class="contact-us-column">
-            <div id="sponsors">
-                <div class="sponsor">Sponsor here</div>
-                <div class="sponsor">Sponsor here</div>
-                <div class="sponsor">Sponsor here</div>
-            </div>
-        </div>
+        @include('layouts.frontLayout.front_sidebar')
     </div>
 @endsection

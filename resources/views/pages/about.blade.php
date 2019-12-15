@@ -25,12 +25,6 @@
             particular, and it's really a path of discovery for me.</p>
 
     </div>
-    <div class="about-us-column">
-        <div id="sponsors">
-            <div class="sponsor">Sponsor here</div>
-            <div class="sponsor">Sponsor here</div>
-            <div class="sponsor">Sponsor here</div>
-        </div>
-    </div>
+    @include('layouts.frontLayout.front_sidebar')
 </div>
 @endsection
