@@ -48,7 +48,7 @@
     Login / Register
 </div>
 <div id="logo">
-    <h1><i class="fas fa-microphone"></i>&nbsp;<span>ideality</span><span>-sound</span></h1>
+    <h1><i class="fas fa-microphone"></i>&nbsp;<span>Ideality</span><span>-sound</span></h1>
 </div>
 <header>
     <nav>
