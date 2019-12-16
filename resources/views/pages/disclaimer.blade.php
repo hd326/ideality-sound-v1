@@ -5,9 +5,9 @@
     <h1>Terms and Conditions</h1>
 </div>
 
-<div id="terms-split">
+<section id="terms-split">
 
-    <div class="terms-column">
+    <main class="terms-column">
         <h2>Introduction</h2>
         <p>These Website Standard Terms and Conditions written on this webpage shall manage your use of our website,
             ideality sound accessible at https://www.ideality-sound.com.</p>
@@ -95,8 +95,8 @@
         <p>These Terms will be governed by and interpreted in accordance with the laws of the State of us, and you
             submit to the non-exclusive jurisdiction of the state and federal courts located in us for the resolution of
             any disputes.</p>
-    </div>
+    </main>
 
     @include('layouts.frontLayout.front_sidebar')
-</div>
+</section>
 @endsection

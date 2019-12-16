@@ -12,6 +12,8 @@
     }
 }
 
+
+
 //blue: #004fbe;
 $blue: #4DB2EC;
 $yellow: #EB9812;
@@ -25,7 +27,7 @@ $offBlack: #2b2b2b;
 $afterHeadingStrip: 50px;
 $padContent: 37.5px;
 
-.sharethis-inline-share-buttons{
+.sharethis-inline-share-buttons {
     margin-top: 37.5px;
 }
 
@@ -139,44 +141,120 @@ $padContent: 37.5px;
 
 // Bootstrap Pagination
 
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    min-height: 100%;
+    position: relative;
+}
+
 body {
-    width: 1200px;
-    margin: auto;
     font-family: "Lato";
     box-shadow: -1px 2px 50px 25px #dddddd;
+    overflow-x: hidden;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
 }
 
-@include mQ(1280px) {
-    body {
-        width: 980px;
+#mobile-nav {
+    left: 0;
+    height: 100%;
+    width: 315px;
+    transform:translateX(-315px);
+    background-color: #2f2f2f;
+    z-index: 3;
+    color: rgb(160, 160, 160);
+    box-shadow: inset -20px -20px 50px 5px rgba(0, 0, 0, 0.253);
+    font-size: 14px;
+    position: absolute;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+
+    nav ul {
+        list-style: none;
+
+        li.side-categories {
+
+            padding: 15px 15px;
+            border-bottom: 1px solid rgb(66, 66, 66);
+
+            &:nth-of-type(1) {
+                text-align: center;
+                font-weight: bold;
+                display: grid;
+                justify-content: flex-center;
+                font-size: 22px;
+
+                span {
+                    border: 1px solid grey;
+                    background-color: rgb(134, 134, 134);
+                    color: #2f2f2f;
+                    padding: 5px;
+                    width: 25px;
+                    height: 25px;
+                    display: inline-block;
+                    border-radius: 50px;
+                    display: grid;
+                    justify-content: center;
+                    align-content: center;
+                }
+            }
+
+        }
+
+        ul {
+            li.side-child-categories {
+                padding: 15px 30px;
+                border-bottom: 1px solid rgb(66, 66, 66);
+            }
+        }
     }
 }
 
-@include mQ(1060px) {
-    body {
-        width: 760px;
-    }
+// for the links
+
+.active {
+    background-color: $blue;
+}
+
+// for the side nav
+
+.active-body {
+    margin-left: 315px;
+}
+
+.active-nav{
+    margin-left: 315px;
+}
+
+#top-level-content{
+    width: 1200px;
+    margin: auto;
+    box-shadow: -1px 2px 50px 25px #dddddd;
 }
 
 #logo {
     padding-top: 27.5px;
     padding-bottom: 27.5px;
+    padding-left: 50px;
+    //text-indent: 25px;
+    padding-right: 25px;
     color: #2b2b2b;
     font-family: "Limelight";
-    text-indent: 25px;
     font-size: 30px;
     //text-align: center;
     letter-spacing: 1px;
-    position:relative;
-    h1{
-    }
+    position: relative;
+
+
+    h1 {}
+
     //span:nth-of-type(1){
     //    background-color: $blue;
     //    color: #f2f2f2;
@@ -185,9 +263,7 @@ body {
     //span:nth-of-type(2){
     //    margin-left: 5px;
     //}
-    i {
-        
-    }
+    i {}
 }
 
 #strip {
@@ -195,17 +271,18 @@ body {
     grid-template-columns: 1fr 1fr;
     background-color: #2b2b2b;
     color: $offGrey;
-    
-    #date-join{
+
+    #date-join {
         margin-left: 37.5px;
-        display:grid;
-        grid-template-columns: .675fr 1fr;
-        align-content:center;
+        display: grid;
+        align-content: center;
         font-size: 12px;
     }
-    nav{
+
+    nav {
         justify-self: flex-end;
     }
+
     nav ul li {
         display: inline-block;
         padding: 0px 10px;
@@ -244,6 +321,8 @@ body {
     }
 }
 
+
+
 #login-strip {
     display: grid;
     justify-content: flex-end;
@@ -253,7 +332,7 @@ body {
     font-family: "Lato";
     padding: 5px 20px;
     font-size: 13px;
-    
+
 }
 
 header {
@@ -274,7 +353,7 @@ header {
         position: relative;
         transition: .25s ease;
         z-index: 2;
-        
+
 
         i {
             bottom: 25%;
@@ -342,11 +421,11 @@ header {
             opacity: 0;
             transition: .25 ease;
             transition: visibility 0s, opacity 0.25s linear;
-            
-    
+
+
             li {
                 border-top: 1px dotted white;
-                
+
                 width: 100%;
 
                 &:hover {
@@ -361,9 +440,6 @@ header {
     }
 }
 
-.active {
-    background-color: $blue;
-}
 
 #about-us-strip {
     display: grid;
@@ -419,14 +495,14 @@ header {
     padding-top: 0px;
 }
 
-
 .post-card {
     font-family: "Oswald";
     font-size: 14px;
     letter-spacing: 1px;
     color: grey;
     text-align: center;
-    
+
+
     a {
         text-decoration: none;
         color: grey;
@@ -441,17 +517,25 @@ header {
         width: 100%;
     }
 
+    .image-image-container {
+        overflow: hidden;
+        height: 250px;
+    }
+
     .image-container {
         -ms-grid-column-align: center;
         justify-self: center;
         overflow: hidden;
         position: relative;
-        z-index: 0;
+        border: 1px solid transparent;
         display: inline-block;
-        height: 250px;
+
         img {
             height: 100%;
             width: 100%;
+            position: relative;
+            transition: 1s ease;
+            z-index: 0;
         }
 
         .image-container-helper {
@@ -460,15 +544,14 @@ header {
             width: 100%;
             height: 100%;
             background-color: rgba(0, 162, 255, 0.22);
-            z-index: 1;
             opacity: 0;
             transition: 1s ease;
+            z-index: 1;
         }
 
         &:hover .image-container-helper {
             opacity: 1;
         }
-
 
         &:hover img {
             -webkit-transform: scale(1.05);
@@ -477,7 +560,6 @@ header {
             -webkit-transition: 1s;
             -o-transition: 1s;
             transition: .5s ease-in-out;
-
         }
 
         &:focus img {
@@ -496,6 +578,10 @@ header {
         margin-top: 10px;
         font-weight: 100;
         background-color: rgb(245, 245, 245);
+
+        a {
+            color: #2b2b2b;
+        }
     }
 
     p:nth-of-type(1) {
@@ -517,13 +603,6 @@ header {
         margin-top: 10px;
         line-height: 25px;
         color: $offBlack;
-
-    }
-
-    img {
-        width: 100%;
-        height: 100%;
-        transition: 1s ease;
     }
 }
 
@@ -568,20 +647,24 @@ header {
             margin-top: 35px;
             line-height: 40px;
             font-family: "Lato";
-            .tag-row{
+
+            .tag-row {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 border-bottom: .5px dotted white;
+
                 .name {
                     a {
                         text-decoration: none;
                         color: #f2f2f2;
                     }
                 }
-                .count{
-                    justify-self:flex-end;
+
+                .count {
+                    justify-self: flex-end;
                 }
             }
+
             //hr{
             //    border: none;
             //    height: 1px;
@@ -600,6 +683,7 @@ header {
         .pre-footer-col:nth-of-type(1) {
             padding: 35px;
         }
+
         .pre-footer-col:nth-of-type(2) {
             padding: 35px;
         }
@@ -672,6 +756,152 @@ header {
                 }
             }
         }
+    }
+}
+
+@include mQ(1280px) {
+    #top-level-content {
+        width: 980px;
+    }
+}
+
+@include mQ(1060px) {
+    #top-level-content {
+        width: 760px;
+    }
+}
+
+
+@include mQ(1280px) {
+    header {
+        font-size: 18px;
+    }
+
+    .post-card {
+        .image-image-container {
+            height: 200px;
+        }
+    }
+}
+
+@include mQ(1060px) {
+    header {
+        font-size: 14px;
+    }
+
+    .post-card {
+        .image-image-container {
+            height: 150px;
+        }
+    }
+}
+
+
+
+#icon {
+    width: 35px;
+    height: 40px;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    display: none;
+    margin-left: 37.5px;
+    padding-top: 19.725px;
+}
+
+
+#hamburger {
+    width: 100%;
+    height: 3px;
+    background: #f2f2f2;
+    position: absolute;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+
+#hamburger:before,
+#hamburger:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 3px;
+    background: #f2f2f2;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+}
+
+#hamburger:before {
+    top: -10px;
+}
+
+#hamburger:after {
+    top: 10px;
+}
+
+@include mQ(800px) {
+    #icon {
+        display: block;
+    }
+
+    #top-level-content {
+        width: 100%;
+    }
+
+    header nav ul li.categories {
+        display: none;
+    }
+
+    #about-us-strip {
+        display: none;
+    }
+
+    #strip {
+        grid-template-columns: 1fr;
+
+        #date-join {
+            display: none;
+        }
+    }
+
+    #pre-footer {
+        #pre-footer-container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    #main-page-content {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .post-card {
+        .image-image-container {
+            width: 100%;
+            height: 100%;
+
+            .image-container {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@include mQ(660px){
+    #logo{
+        font-size: 22px;
+        text-align:center;
+    }
+}
+
+@include mQ(500px){
+    #logo{
+        font-size: 16px;
+        text-indent: 0px;
+        text-align:center;
+        padding-left: 10px;
     }
 }
 
@@ -763,9 +993,11 @@ footer {
 
         h2 {
             margin-top: 25px;
-            &:nth-of-type(1){
+
+            &:nth-of-type(1) {
                 margin-top: 50px;
             }
+
             text-transform: uppercase;
             font-family: "Oswald";
         }
@@ -796,18 +1028,20 @@ footer {
     margin-top: 20px;
     padding: 20px;
     padding-top: 20px;
-    .self-rating-show{
+
+    .self-rating-show {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
+
     span {
         letter-spacing: 2px;
         font-weight: 1000;
         font-size: 13px;
     }
 
-    span:nth-of-type(2){
-        justify-self:flex-end;
+    span:nth-of-type(2) {
+        justify-self: flex-end;
     }
 
     .self-rating-grey {
@@ -821,7 +1055,7 @@ footer {
             background-color: $blue;
             height: 8px;
             border-radius: 1px;
-            
+
         }
     }
 }
@@ -837,19 +1071,21 @@ footer {
 
 
 
-    .specific-rating-show{
-        display:grid;
+    .specific-rating-show {
+        display: grid;
         grid-template-columns: 1.25fr .75fr;
+
         span {
             letter-spacing: 2px;
             font-weight: 1000;
             font-size: 13px;
         }
-        span:nth-of-type(2){
-            justify-self:flex-end;
+
+        span:nth-of-type(2) {
+            justify-self: flex-end;
         }
     }
-    
+
 
     .specific-rating-grey {
         width: 100%;
@@ -1077,13 +1313,14 @@ footer {
     }
 }
 
-#sponsors {
+#sidebar {
     margin-top: 20px;
-    
+
     padding-right: 37.5px;
+
     .sponsor {
         height: 250px;
-        text-align:center;
+        text-align: center;
     }
 
     h2 {
@@ -1094,6 +1331,7 @@ footer {
         border-bottom: 5px solid $blue;
         text-align: center;
     }
+
     .comment {
         padding: 25px 0px;
         font-size: 25px;
@@ -1109,7 +1347,7 @@ footer {
         margin-left: 45px;
         margin-top: -32.5px;
         font-size: 14px;
-        text-transform:uppercase;
+        text-transform: uppercase;
     }
 
     .comment-thread {
@@ -1218,7 +1456,7 @@ footer {
     }
 
     .contact-us-column:nth-of-type(2) {
-        #sponsors {
+        #sidebar {
             margin-top: 20px;
             text-align: center;
 
@@ -1295,9 +1533,9 @@ footer {
     }
 
     .about-us-column:nth-of-type(2) {
-        #sponsors {
+        #sidebar {
             margin-top: 20px;
-            
+
 
             .sponsor {
                 height: 250px;
@@ -1347,7 +1585,7 @@ footer {
     }
 
     .privacy-column:nth-of-type(2) {
-        #sponsors {
+        #sidebar {
             margin-top: 20px;
             text-align: center;
 
@@ -1400,7 +1638,7 @@ footer {
     }
 
     .terms-column:nth-of-type(2) {
-        #sponsors {
+        #sidebar {
             margin-top: 20px;
             text-align: center;
 
@@ -1425,7 +1663,7 @@ footer {
 #main {
     margin-top: 37.5px;
     padding-left: 37.5px;
-    overflow:hidden;
+
     #main-content-holder {
         display: grid;
         grid-template-columns: .7fr .3fr;
@@ -1446,42 +1684,44 @@ footer {
                 font-family: "Oswald";
                 border-bottom: 5px solid $blue;
             }
-            #sponsors {
+
+            #sidebar {
                 margin-top: 20px;
 
                 .sponsor {
                     height: 250px;
-                    text-align:center;
+                    text-align: center;
                 }
+
                 .comment {
                     padding: 25px 0px;
                     font-size: 25px;
                 }
-            
+
                 .comment-details {}
-            
+
                 .comment-number {
                     font-style: italic;
                 }
-            
+
                 .comment-name {
                     margin-left: 45px;
                     margin-top: -32.5px;
                     font-size: 14px;
-                    text-transform:uppercase;
+                    text-transform: uppercase;
                 }
-            
+
                 .comment-thread {
                     margin-left: 45px;
                     font-family: "Lato";
                     font-size: 14px;
-            
+
                     a {
-            
+
                         color: #2b2b2b;
                     }
                 }
-            
+
                 .comment-text {
                     font-family: "Lato";
                     font-style: italic;
@@ -1490,7 +1730,7 @@ footer {
                     padding: 15px;
                     margin-top: 20px;
                     position: relative;
-            
+
                     &:before {
                         content: '';
                         display: block;
@@ -1502,7 +1742,7 @@ footer {
                         border: 11px solid transparent;
                         border-bottom-color: $headerGrey;
                     }
-            
+
                     &:after {
                         content: '';
                         display: block;

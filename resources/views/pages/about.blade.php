@@ -5,9 +5,9 @@
     <h1>About Us</h1>
 </div>
 
-<div id="about-us-split">
+<section id="about-us-split">
 
-    <div class="about-us-column">
+    <main class="about-us-column">
         <h2>Why did this site come into being?</h2>
         <p>I wanted someday to provide my experiences as an audio / audio gear lover. I discovered my passion for audio
             equipment in 2014. I decided that there is a lot to talk about in this field, and so I would have my take as
@@ -24,7 +24,7 @@
         <p>I'm a big fan of soundstage, bass, and dynamics in sound. In all though, I'm in search, of nothing in
             particular, and it's really a path of discovery for me.</p>
 
-    </div>
+    </main>
     @include('layouts.frontLayout.front_sidebar')
-</div>
+</section>
 @endsection

@@ -1,4 +1,4 @@
-<div id="sponsors">
+<aside id="sidebar">
     <div class="sponsor">
         Sponsor Here
     </div>
@@ -29,4 +29,4 @@
         </div>
     </div>
     @endforeach
-</div>
+</aside>

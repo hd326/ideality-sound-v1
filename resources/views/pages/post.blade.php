@@ -8,7 +8,7 @@
 @section('twitter.image', $mainImage)
 @section('content')
 
-<div id="review-image">
+<section id="review-image">
 
     <img src="{{ asset('/images/original_photos/'.$mainImage) }}">
 
@@ -20,9 +20,9 @@
             $tag){{ $loop->first ? '' : ', ' }}<a title="View all posts in {{ $tag->name }}"
                 href="/tags/{{$tag->name}}">{{ $tag->name }}</a>@endforeach</span>
     </div>
-</div>
-<div id="review-columns">
-    <div id="review">
+</section>
+<section id="review-columns">
+    <main id="review">
 
         {!! $post->body !!}
 
@@ -208,10 +208,10 @@
             <p style="font-family: Oswald; letter-spacing: 1px;">Please <a href="/login">login</a> to reply.</p>
             @endif
         </div>
-    </div>
+    </main>
 
 
     @include('layouts.frontLayout.front_post_sidebar')
-</div>
+</section>
 
 @endsection

@@ -1,8 +1,8 @@
-<div id="sponsor-placement">
+<section id="sponsor-placement">
     Sponsor Here
-</div>
+</section>
 
-<div id="pre-footer">
+<section id="pre-footer">
     <div id="pre-footer-container">
         <div class="pre-footer-col">
             <h3>POPULAR TAGS</h3>
@@ -82,7 +82,7 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
 <footer>
     <div class="footer-actual-col">Copyright 2019 <span class="dot">.</span> ideality-sound <span class="dot">.</span>

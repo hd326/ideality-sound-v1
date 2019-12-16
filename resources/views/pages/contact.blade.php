@@ -5,9 +5,9 @@
         <h1>Contact Us</h1>
     </div>
 
-    <div id="contact-us-split">
+    <section id="contact-us-split">
 
-        <div class="contact-us-column">
+        <main class="contact-us-column">
             <p id="feel-free">Just want to say hello or have products you want us to cover? Feel free to drop us a line
                 with any questions you may have using the form below.</p>
             <p>YOUR NAME * (REQUIRED)</p>
@@ -19,7 +19,7 @@
             <p>YOUR MESSAGE</p>
             <textarea></textarea><br>
             <button>Submit</button>
-        </div>
+        </main>
         @include('layouts.frontLayout.front_sidebar')
-    </div>
+    </section>
 @endsection

@@ -4,15 +4,17 @@
 <div id="title">
     <h1>{{ $sub_category->name }}</h1>
 </div>
-<div id="main">
+<section id="main">
     <div id="main-content-holder">
-        <div id="main-content">
+        <main id="main-content">
             @foreach($sub_category->posts as $post)
             <div class="post-card">
                 <a href="{{ url('/'.$post->slug) }}">
-                    <div class="image-container">
-                        <div class="image-container-helper"></div><img src="{{ asset('images/yulongstack.JPG') }}">
-                    </div>
+                    <div class="image-image-container">
+                            <div class="image-container">
+                                <div class="image-container-helper"></div><img src="{{ asset('images/yulongstack.JPG') }}">
+                            </div>
+                        </div>
                 </a>
                 <h2><a href="{{ url('/'.$post->slug) }}">{{ $post->title }}</a></h2>
                 <p><i class="fas fa-tags"></i>
@@ -24,10 +26,10 @@
                 <hr>
             </div>
             @endforeach
-        </div>
-        <div id="side-content">
+        </main>
+        <aside id="side-content">
             @include('layouts.frontLayout.front_sidebar')
-        </div>
+        </aside>
     </div>
-</div>
+</section>
 @endsection

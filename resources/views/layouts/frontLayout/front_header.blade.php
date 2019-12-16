@@ -44,9 +44,9 @@
         </ul>
     </nav>
 </div>
-<div id="login-strip">
+<section id="login-strip">
     Login / Register
-</div>
+</section>
 <div id="logo">
     <h1><i class="fas fa-microphone"></i>&nbsp;<span>Ideality</span><span>-sound</span></h1>
 </div>
@@ -74,6 +74,68 @@
                     </div>
                 </div>
             </li>-->
+            <li id="icon">
+                <div id="hamburger"></div>
+            </li>
+            <script>
+                $(document).ready(function(){
+                    $('#icon').click(function(){
+                        $('#mobile-nav').toggleClass('active-nav');
+                        $('body').toggleClass('active-body');
+                    });
+                    $('.side-categories i').click(function(){
+                        $('#mobile-nav').toggleClass('active-nav');
+                        $('body').toggleClass('active-body');
+                    });
+                    
+                    $(window).resize(function() {
+                        var width = $(window).width();
+                        var active = "0";
+                        if(width > 1533) {
+                            var active1 = $('#mobile-nav').hasClass('active-nav');
+                            if(active1) {
+                                $('#mobile-nav').removeClass('active-nav');
+                                $('body').removeClass('active-body');
+                                
+                            }
+                            var active = "1";
+                        } 
+                        
+                        if(width < 800) {
+                            if (active == "1") {
+                                $('#mobile-nav').addClass('active-nav');
+                                $('body').addClass('active-body');
+                            }
+                        }
+
+                        //var active1 = $('body').hasClass('active-body');
+                        //if(width == 800) {
+                        //    if(active1) {
+                        //        $('#mobile-nav').toggleClass('active-nav');
+                        //        $('body').toggleClass('active-body');
+                        //    }
+                        //}
+                    });
+                    //$mobileNavBar = $('#mobile-nav');
+                    //$mainContent = $('body'); 
+                    //$('#icon').click(function(){
+                    //    $mobileNavBar.toggleClass('isOut');
+                    //    var isOut = $mobileNavBar.hasClass('isOut');
+                    //    $mobileNavBar.animate({marginLeft: isOut ? '315px' : 0}, 300);
+                    //    $mainContent.toggleClass('isOut1');
+                    //    var isOut1 = $mainContent.hasClass('isOut1');
+                    //    $mainContent.animate({marginLeft: isOut1 ? '315px' : 'none'}, 300);
+                    //});
+                    //$('.side-categories i').click(function(){
+                    //    $mobileNavBar.toggleClass('isOut');
+                    //    var isOut = $mobileNavBar.hasClass('isOut');
+                    //    $mobileNavBar.animate({marginLeft: isOut ? '315px' : 0}, 300);
+                    //    $mainContent.toggleClass('isOut1');
+                    //    var isOut1 = $mainContent.hasClass('isOut1');
+                    //    $mainContent.animate({marginLeft: isOut1 ? '315px' : 'none'}, 300);
+                    //});
+                });
+            </script>
             <li class="categories">
                 <a href="/" class="{{ (request()->is('/')) ? 'active' : '' }}">Home</a>
             </li>
@@ -125,7 +187,7 @@
         </ul>
     </nav>
 </header>
-<div id="about-us-strip">
+<section id="about-us-strip">
     <nav>
         <ul>
             <li><a href="{{ route('contact') }}">Contact</a></li>
@@ -134,7 +196,7 @@
             <li><a href="{{ route('disclaimer') }}">Disclaimer/Copyright</a></li>
         </ul>
     </nav>
-</div>
-<div id="sponsor-placement">
+</section>
+<section id="sponsor-placement">
     Sponsor Here
-</div>
+</section>
