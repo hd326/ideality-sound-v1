@@ -431,7 +431,6 @@ header ul li.categories nav ul li a {
 
 .post-card .image-image-container {
   overflow: hidden;
-  height: 250px;
 }
 
 .post-card .image-container {
@@ -661,19 +660,11 @@ header ul li.categories nav ul li a {
   header {
     font-size: 18px;
   }
-
-  .post-card .image-image-container {
-    height: 200px;
-  }
 }
 
 @media screen and (max-width: 1060px) {
   header {
     font-size: 14px;
-  }
-
-  .post-card .image-image-container {
-    height: 150px;
   }
 }
 
@@ -722,10 +713,6 @@ header ul li.categories nav ul li a {
     display: block;
   }
 
-  #top-level-content {
-    width: 100%;
-  }
-
   header nav ul li.categories {
     display: none;
   }
@@ -744,16 +731,6 @@ header ul li.categories nav ul li a {
 
   #pre-footer #pre-footer-container {
     grid-template-columns: 1fr;
-  }
-
-  #main-page-content {
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
-
-  .post-card .image-image-container {
-    width: 100%;
-    height: 100%;
   }
 
   .post-card .image-image-container .image-container {
@@ -854,11 +831,11 @@ footer span.dot {
   display: grid;
   grid-template-columns: 0.75fr 0.25fr;
   grid-gap: 37.5px;
+  padding: 37.5px;
 }
 
 #review-columns #review {
   width: 100%;
-  padding-left: 37.5px;
 }
 
 #review-columns #review h2 {
@@ -1149,85 +1126,6 @@ footer span.dot {
   justify-self: flex-end;
 }
 
-#sidebar {
-  margin-top: 20px;
-  padding-right: 37.5px;
-}
-
-#sidebar .sponsor {
-  height: 250px;
-  text-align: center;
-}
-
-#sidebar h2 {
-  background-color: #f7f7f7;
-  padding: 15px 20px;
-  text-align: center;
-  font-family: "Oswald";
-  border-bottom: 5px solid #4DB2EC;
-  text-align: center;
-}
-
-#sidebar .comment {
-  padding: 25px 0px;
-  font-size: 25px;
-}
-
-#sidebar .comment-number {
-  font-style: italic;
-}
-
-#sidebar .comment-name {
-  margin-left: 45px;
-  margin-top: -32.5px;
-  font-size: 14px;
-  text-transform: uppercase;
-}
-
-#sidebar .comment-thread {
-  margin-left: 45px;
-  font-family: "Lato";
-  font-size: 14px;
-}
-
-#sidebar .comment-thread a {
-  color: #2b2b2b;
-}
-
-#sidebar .comment-text {
-  font-family: "Lato";
-  font-style: italic;
-  font-size: 14px;
-  background-color: #f7f7f7;
-  padding: 15px;
-  margin-top: 20px;
-  position: relative;
-}
-
-#sidebar .comment-text:before {
-  content: "";
-  display: block;
-  position: absolute;
-  right: 50px;
-  bottom: 100%;
-  width: 0;
-  height: 0;
-  border: 11px solid transparent;
-  border-bottom-color: #f7f7f7;
-}
-
-#sidebar .comment-text:after {
-  content: "";
-  display: block;
-  position: absolute;
-  right: 50px;
-  bottom: 100%;
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-bottom-color: #f7f7f7;
-}
-
 #contact-us-header {
   font-family: "Oswald";
   text-transform: uppercase;
@@ -1243,18 +1141,12 @@ footer span.dot {
 #contact-us-split {
   display: grid;
   grid-template-columns: 0.75fr 0.25fr;
-  grid-gap: 30px;
+  grid-gap: 25px;
+  padding: 37.5px;
 }
 
 #contact-us-split .contact-us-column {
   margin-top: 50px;
-  padding-left: 37.5px;
-}
-
-#contact-us-split .contact-us-column input {
-  width: 300px;
-  height: 40px;
-  margin-top: 10px;
 }
 
 #contact-us-split .contact-us-column p {
@@ -1263,9 +1155,20 @@ footer span.dot {
   font-size: 16px;
 }
 
+#contact-us-split .contact-us-column p:nth-of-type(1) {
+  margin-top: 0px;
+}
+
 #contact-us-split .contact-us-column p#feel-free {
   font-family: "Lato";
+  margin-top: 0px;
   margin-bottom: 50px;
+}
+
+#contact-us-split .contact-us-column input {
+  width: 300px;
+  height: 40px;
+  margin-top: 10px;
 }
 
 #contact-us-split .contact-us-column textarea {
@@ -1284,6 +1187,10 @@ footer span.dot {
   color: #2b2b2b;
 }
 
+#contact-us-split .contact-us-column:nth-of-type(2) {
+  padding: 37.5px;
+}
+
 #contact-us-split .contact-us-column:nth-of-type(2) #sidebar {
   margin-top: 20px;
   text-align: center;
@@ -1291,6 +1198,16 @@ footer span.dot {
 
 #contact-us-split .contact-us-column:nth-of-type(2) #sidebar .sponsor {
   height: 250px;
+}
+
+@media screen and (max-width: 1060px) {
+  #contact-us-split .contact-us-column textarea {
+    width: 450px;
+  }
+
+  #contact-us-split .contact-us-column input {
+    width: 175px;
+  }
 }
 
 #about-us-header {
@@ -1308,12 +1225,9 @@ footer span.dot {
 #about-us-split {
   display: grid;
   grid-template-columns: 0.75fr 0.25fr;
-  grid-gap: 30px;
-}
-
-#about-us-split .about-us-column {
+  grid-gap: 25px;
+  padding: 37.5px;
   margin-top: 50px;
-  padding-left: 37.5px;
 }
 
 #about-us-split .about-us-column h2 {
@@ -1334,27 +1248,6 @@ footer span.dot {
   margin-top: 20px;
   font-family: "Lato";
   font-size: 16px;
-}
-
-#about-us-split .about-us-column p#feel-free {
-  font-family: "Lato";
-  margin-bottom: 50px;
-}
-
-#about-us-split .about-us-column textarea {
-  width: 600px;
-  margin-top: 10px;
-  height: 200px;
-}
-
-#about-us-split .about-us-column button {
-  border: 2px solid #afafaf;
-  padding: 12.5px 40px;
-  font-family: "Oswald";
-  text-transform: uppercase;
-  margin-top: 35px;
-  background-color: #f2f2f2;
-  color: #2b2b2b;
 }
 
 #about-us-split .about-us-column:nth-of-type(2) #sidebar {
@@ -1380,12 +1273,9 @@ footer span.dot {
 #privacy-split {
   display: grid;
   grid-template-columns: 0.75fr 0.25fr;
-  grid-gap: 30px;
-}
-
-#privacy-split .privacy-column {
+  grid-gap: 25px;
+  padding: 37.5px;
   margin-top: 50px;
-  padding-left: 37.5px;
 }
 
 #privacy-split .privacy-column h2 {
@@ -1426,12 +1316,9 @@ footer span.dot {
 #terms-split {
   display: grid;
   grid-template-columns: 0.75fr 0.25fr;
-  grid-gap: 30px;
-}
-
-#terms-split .terms-column {
+  grid-gap: 25px;
+  padding: 37.5px;
   margin-top: 50px;
-  padding-left: 37.5px;
 }
 
 #terms-split .terms-column h2 {
@@ -1469,13 +1356,12 @@ footer span.dot {
 }
 
 #main {
-  margin-top: 37.5px;
-  padding-left: 37.5px;
+  padding: 37.5px;
 }
 
 #main #main-content-holder {
   display: grid;
-  grid-template-columns: 0.7fr 0.3fr;
+  grid-template-columns: 0.75fr 0.25fr;
   grid-gap: 25px;
 }
 
@@ -1562,5 +1448,109 @@ footer span.dot {
   height: 0;
   border: 10px solid transparent;
   border-bottom-color: #f7f7f7;
+}
+
+#sidebar .sponsor {
+  height: 250px;
+  text-align: center;
+}
+
+#sidebar h2 {
+  background-color: #f7f7f7;
+  padding: 15px 20px;
+  text-align: center;
+  font-family: "Oswald";
+  border-bottom: 5px solid #4DB2EC;
+  text-align: center;
+}
+
+#sidebar .comment {
+  padding: 25px 0px;
+  font-size: 25px;
+}
+
+#sidebar .comment-number {
+  font-style: italic;
+}
+
+#sidebar .comment-name {
+  margin-left: 45px;
+  margin-top: -32.5px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+#sidebar .comment-thread {
+  margin-left: 45px;
+  font-family: "Lato";
+  font-size: 14px;
+}
+
+#sidebar .comment-thread a {
+  color: #2b2b2b;
+}
+
+#sidebar .comment-text {
+  font-family: "Lato";
+  font-style: italic;
+  font-size: 14px;
+  background-color: #f7f7f7;
+  padding: 15px;
+  margin-top: 20px;
+  position: relative;
+}
+
+#sidebar .comment-text:before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 50px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 11px solid transparent;
+  border-bottom-color: #f7f7f7;
+}
+
+#sidebar .comment-text:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 50px;
+  bottom: 100%;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: #f7f7f7;
+}
+
+@media screen and (max-width: 800px) {
+  #review-columns {
+    grid-template-columns: 1fr;
+  }
+
+  #secondary-split {
+    grid-template-columns: 1fr;
+  }
+
+  #about-us-split {
+    grid-template-columns: 1fr;
+  }
+
+  #privacy-split {
+    grid-template-columns: 1fr;
+  }
+
+  #terms-split {
+    grid-template-columns: 1fr;
+  }
+
+  #main #main-content-holder {
+    grid-template-columns: 1fr;
+  }
+
+  #main #main-content-holder #main-content {
+    grid-template-columns: 1fr;
+  }
 }
 

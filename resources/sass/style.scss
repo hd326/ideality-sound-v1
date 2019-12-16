@@ -19,7 +19,7 @@ $blue: #4DB2EC;
 $yellow: #EB9812;
 $teal: #00d8ff;
 $inputHeight: 40px;
-$columnGap: 30px;
+$columnGap: 25px;
 $offGrey: #ececec;
 $darkOffGrey: #bebebe;
 $headerGrey: rgb(247, 247, 247);
@@ -519,7 +519,7 @@ header {
 
     .image-image-container {
         overflow: hidden;
-        height: 250px;
+
     }
 
     .image-container {
@@ -766,6 +766,9 @@ header {
 }
 
 @include mQ(1060px) {
+    body{
+        
+    }
     #top-level-content {
         width: 760px;
     }
@@ -779,7 +782,7 @@ header {
 
     .post-card {
         .image-image-container {
-            height: 200px;
+
         }
     }
 }
@@ -791,7 +794,7 @@ header {
 
     .post-card {
         .image-image-container {
-            height: 150px;
+
         }
     }
 }
@@ -847,7 +850,7 @@ header {
     }
 
     #top-level-content {
-        width: 100%;
+
     }
 
     header nav ul li.categories {
@@ -873,14 +876,12 @@ header {
     }
 
     #main-page-content {
-        grid-template-columns: 1fr;
-        width: 100%;
+
     }
 
     .post-card {
         .image-image-container {
-            width: 100%;
-            height: 100%;
+
 
             .image-container {
                 width: 100%;
@@ -982,14 +983,16 @@ footer {
     }
 }
 
+
+
 #review-columns {
     display: grid;
     grid-template-columns: .75fr .25fr;
     grid-gap: 37.5px;
+    padding: 37.5px;
 
     #review {
         width: 100%;
-        padding-left: 37.5px;
 
         h2 {
             margin-top: 25px;
@@ -1313,90 +1316,9 @@ footer {
     }
 }
 
-#sidebar {
-    margin-top: 20px;
-
-    padding-right: 37.5px;
-
-    .sponsor {
-        height: 250px;
-        text-align: center;
-    }
-
-    h2 {
-        background-color: $headerGrey;
-        padding: 15px 20px;
-        text-align: center;
-        font-family: "Oswald";
-        border-bottom: 5px solid $blue;
-        text-align: center;
-    }
-
-    .comment {
-        padding: 25px 0px;
-        font-size: 25px;
-    }
-
-    .comment-details {}
-
-    .comment-number {
-        font-style: italic;
-    }
-
-    .comment-name {
-        margin-left: 45px;
-        margin-top: -32.5px;
-        font-size: 14px;
-        text-transform: uppercase;
-    }
-
-    .comment-thread {
-        margin-left: 45px;
-        font-family: "Lato";
-        font-size: 14px;
-
-        a {
-
-            color: #2b2b2b;
-        }
-    }
-
-    .comment-text {
-        font-family: "Lato";
-        font-style: italic;
-        font-size: 14px;
-        background-color: rgb(247, 247, 247);
-        padding: 15px;
-        margin-top: 20px;
-        position: relative;
+// this is for the categories / subcategories / tags pages
 
 
-        &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            right: 50px;
-            bottom: 100%;
-            width: 0;
-            height: 0;
-            border: 11px solid transparent;
-            border-bottom-color: $headerGrey;
-        }
-
-        &:after {
-            content: '';
-            display: block;
-            position: absolute;
-            right: 50px;
-            bottom: 100%;
-            width: 0;
-            height: 0;
-            border: 10px solid transparent;
-            border-bottom-color: $headerGrey;
-        }
-    }
-
-}
 
 // begin the contact page
 
@@ -1416,18 +1338,16 @@ footer {
     display: grid;
     grid-template-columns: .75fr .25fr;
     grid-gap: $columnGap;
+    padding: 37.5px;
 
     .contact-us-column {
         margin-top: $afterHeadingStrip;
-        padding-left: $padContent;
 
-        input {
-            width: 300px;
-            height: $inputHeight;
-            margin-top: 10px;
-        }
 
         p {
+            &:nth-of-type(1){
+                margin-top: 0px;
+            }
             margin-top: 20px;
             font-family: "Oswald";
             font-size: 16px;
@@ -1435,7 +1355,14 @@ footer {
 
         p#feel-free {
             font-family: "Lato";
+            margin-top: 0px;
             margin-bottom: 50px;
+        }
+
+        input {
+            width: 300px;
+            height: $inputHeight;
+            margin-top: 10px;
         }
 
         textarea {
@@ -1456,12 +1383,26 @@ footer {
     }
 
     .contact-us-column:nth-of-type(2) {
+        padding: 37.5px;
         #sidebar {
             margin-top: 20px;
             text-align: center;
 
             .sponsor {
                 height: 250px;
+            }
+        }
+    }
+}
+
+@include mQ(1060px){
+    #contact-us-split{
+        .contact-us-column{
+            textarea{
+                width: 450px;
+            }
+            input{
+                width: 175px;
             }
         }
     }
@@ -1485,6 +1426,8 @@ footer {
     display: grid;
     grid-template-columns: .75fr .25fr;
     grid-gap: $columnGap;
+    padding: 37.5px;
+    margin-top: 50px;
 
     .about-us-column {
         h2 {
@@ -1494,9 +1437,6 @@ footer {
         h2:nth-of-type(2) {
             margin-top: 20px;
         }
-
-        margin-top: 50px;
-        padding-left: $padContent;
 
         input {
             width: 300px;
@@ -1510,26 +1450,6 @@ footer {
             font-size: 16px;
         }
 
-        p#feel-free {
-            font-family: "Lato";
-            margin-bottom: 50px;
-        }
-
-        textarea {
-            width: 600px;
-            margin-top: 10px;
-            height: 200px;
-        }
-
-        button {
-            border: 2px solid #afafaf;
-            padding: 12.5px 40px;
-            font-family: "Oswald";
-            text-transform: uppercase;
-            margin-top: 35px;
-            background-color: #f2f2f2;
-            color: #2b2b2b;
-        }
     }
 
     .about-us-column:nth-of-type(2) {
@@ -1545,6 +1465,8 @@ footer {
 }
 
 // begin the privacy page
+
+
 
 #privacy-header {
     font-family: "Oswald";
@@ -1562,14 +1484,13 @@ footer {
     display: grid;
     grid-template-columns: .75fr .25fr;
     grid-gap: $columnGap;
+    padding: 37.5px;
+    margin-top: 50px;
 
     .privacy-column {
         h2 {
             font-family: "Oswald";
         }
-
-        margin-top: 50px;
-        padding-left: $padContent;
 
 
         p {
@@ -1614,6 +1535,8 @@ footer {
     display: grid;
     grid-template-columns: .75fr .25fr;
     grid-gap: $columnGap;
+    padding: 37.5px;
+    margin-top: 50px;
 
     .terms-column {
         h2 {
@@ -1621,8 +1544,6 @@ footer {
             margin-bottom: 7.5px;
         }
 
-        margin-top: 50px;
-        padding-left: $padContent;
 
 
         p {
@@ -1660,13 +1581,13 @@ footer {
     border-bottom: 5px solid $blue;
 }
 
-#main {
-    margin-top: 37.5px;
-    padding-left: 37.5px;
 
+
+#main {
+    padding: 37.5px;
     #main-content-holder {
         display: grid;
-        grid-template-columns: .7fr .3fr;
+        grid-template-columns: .75fr .25fr;
         grid-gap: 25px;
 
         #main-content {
@@ -1757,5 +1678,120 @@ footer {
                 }
             }
         }
+    }
+}
+
+#sidebar {
+    .sponsor {
+        height: 250px;
+        text-align: center;
+    }
+
+    h2 {
+        background-color: $headerGrey;
+        padding: 15px 20px;
+        text-align: center;
+        font-family: "Oswald";
+        border-bottom: 5px solid $blue;
+        text-align: center;
+    }
+
+    .comment {
+        padding: 25px 0px;
+        font-size: 25px;
+    }
+
+    .comment-details {}
+
+    .comment-number {
+        font-style: italic;
+    }
+
+    .comment-name {
+        margin-left: 45px;
+        margin-top: -32.5px;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .comment-thread {
+        margin-left: 45px;
+        font-family: "Lato";
+        font-size: 14px;
+
+        a {
+
+            color: #2b2b2b;
+        }
+    }
+
+    .comment-text {
+        font-family: "Lato";
+        font-style: italic;
+        font-size: 14px;
+        background-color: rgb(247, 247, 247);
+        padding: 15px;
+        margin-top: 20px;
+        position: relative;
+
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 50px;
+            bottom: 100%;
+            width: 0;
+            height: 0;
+            border: 11px solid transparent;
+            border-bottom-color: $headerGrey;
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 50px;
+            bottom: 100%;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-bottom-color: $headerGrey;
+        }
+    }
+
+}
+
+@include mQ(800px) {
+    #review-columns {
+        grid-template-columns: 1fr;
+    }
+    #secondary-split{
+        grid-template-columns: 1fr;
+    }
+
+    #about-us-split{
+        grid-template-columns: 1fr
+    }
+
+    #privacy-split{
+        grid-template-columns: 1fr;
+    }
+
+    #terms-split{
+        grid-template-columns: 1fr;
+    }
+
+    #main{
+        #main-content-holder{
+            grid-template-columns: 1fr;
+            #main-content{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    #sidebar{
+        
     }
 }
