@@ -183,6 +183,10 @@ body {
 
             padding: 15px 15px;
             border-bottom: 1px solid rgb(66, 66, 66);
+            a{
+                text-decoration: none;
+                color: #f2f2f2;
+            }
 
             &:nth-of-type(1) {
                 text-align: center;
@@ -212,6 +216,10 @@ body {
             li.side-child-categories {
                 padding: 15px 30px;
                 border-bottom: 1px solid rgb(66, 66, 66);
+                a{
+                    text-decoration: none;
+                    color: #f2f2f2;
+                }
             }
         }
     }
@@ -237,13 +245,16 @@ body {
     width: 1200px;
     margin: auto;
     box-shadow: -1px 2px 50px 25px #dddddd;
+    overflow-x:hidden;
 }
 
 #logo {
     padding-top: 27.5px;
-    padding-bottom: 27.5px;
-    padding-left: 50px;
+    padding-bottom: 15.5px;
+    padding-left: 27.5px;
+    
     //text-indent: 25px;
+    text-transform:uppercase;
     padding-right: 25px;
     color: #2b2b2b;
     font-family: "Limelight";
@@ -253,7 +264,9 @@ body {
     position: relative;
 
 
-    h1 {}
+    h1 {
+        text-decoration: underline;
+    }
 
     //span:nth-of-type(1){
     //    background-color: $blue;
@@ -286,7 +299,6 @@ body {
     nav ul li {
         display: inline-block;
         padding: 0px 10px;
-
 
         &:nth-of-type(5) {
             padding: 0px;
@@ -323,8 +335,9 @@ body {
 
 
 
-#login-strip {
+#date-login-strip {
     display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content: flex-end;
     background-color: #454545;
     color: #bebebe;
@@ -332,7 +345,14 @@ body {
     font-family: "Lato";
     padding: 5px 20px;
     font-size: 13px;
-
+    .date-login-strip-col{
+        justify-self:flex-end;
+    }
+    #date-login{
+        font-size: 10px;
+        padding-top: 2.5px;
+        visibility: hidden;
+    }
 }
 
 header {
@@ -343,7 +363,8 @@ header {
     letter-spacing: 1px;
     font-size: 20px;
     position: relative;
-    border-bottom: 5px solid $blue;
+    
+    border-bottom: 5.25px solid $blue;
 
     ul li.categories {
         font-weight: 500;
@@ -501,8 +522,7 @@ header {
     letter-spacing: 1px;
     color: grey;
     text-align: center;
-
-
+    width: 100%;
     a {
         text-decoration: none;
         color: grey;
@@ -519,7 +539,7 @@ header {
 
     .image-image-container {
         overflow: hidden;
-
+        width: 100%;
     }
 
     .image-container {
@@ -528,7 +548,7 @@ header {
         overflow: hidden;
         position: relative;
         border: 1px solid transparent;
-        display: inline-block;
+        width: 100%;
 
         img {
             height: 100%;
@@ -850,22 +870,57 @@ header {
     }
 
     #top-level-content {
-
+        width: 100%;
     }
 
     header nav ul li.categories {
         display: none;
+        nav ul {
+            display: none;
+        }
     }
 
     #about-us-strip {
         display: none;
     }
+    
 
     #strip {
         grid-template-columns: 1fr;
-
+        nav {
+            justify-self: flex-start;
+            width: 100%;
+            height: 37.5px;
+        }
+        nav ul{
+            position: relative;
+            width: 100%;
+            padding-left: 15px;
+        }
+        nav ul li {
+            
+            
+            &:nth-of-type(1),
+            &:nth-of-type(2),
+            &:nth-of-type(3),
+            &:nth-of-type(4){
+                padding-top: 10px;
+            }
+            &:nth-of-type(5){
+                
+                position:absolute;
+                right:0;
+            }
+        }
         #date-join {
-            display: none;
+            font-size: 10px;
+            display:none;
+        }
+    }
+
+    #date-login-strip{
+        #date-login{
+            visibility: visible;
         }
     }
 
@@ -876,7 +931,7 @@ header {
     }
 
     #main-page-content {
-
+        grid-template-columns: 1fr;
     }
 
     .post-card {
@@ -892,8 +947,10 @@ header {
 
 @include mQ(660px){
     #logo{
-        font-size: 22px;
-        text-align:center;
+        font-size: 16px;
+        img{
+            width: 400px;
+        }
     }
 }
 
@@ -902,7 +959,19 @@ header {
         font-size: 16px;
         text-indent: 0px;
         text-align:center;
+        margin-right: 17.5px;
         padding-left: 10px;
+        img{
+            width: 300px;
+        }
+    }
+}
+
+@include mQ(350px){
+    #logo{
+        img{
+            width: 250px;
+        }
     }
 }
 

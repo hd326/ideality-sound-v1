@@ -24,7 +24,7 @@
             }
 
             document.getElementById('date').innerHTML = formatDate(new Date());
-
+            
         </script>
     </div>
     <nav>
@@ -44,11 +44,13 @@
         </ul>
     </nav>
 </div>
-<section id="login-strip">
-    Login / Register
+<section id="date-login-strip">
+    <div id="date-login"></div>
+    <script>document.getElementById('date-login').innerHTML = formatDate(new Date());</script>
+    <div class="date-login-strip-col">Login / Register</div>
 </section>
 <div id="logo">
-    <h1><i class="fas fa-microphone"></i>&nbsp;<span>Ideality</span><span>-sound</span></h1>
+    <h1><img src="{{ asset('images/ideality-sound-v13.png') }}"></h1>
 </div>
 <header>
     <nav>
@@ -82,10 +84,12 @@
                     $('#icon').click(function(){
                         $('#mobile-nav').toggleClass('active-nav');
                         $('body').toggleClass('active-body');
+                        $('#strip nav ul li').toggle();
                     });
                     $('.side-categories i').click(function(){
                         $('#mobile-nav').toggleClass('active-nav');
                         $('body').toggleClass('active-body');
+                        $('#strip nav ul li').toggle();
                     });
                     
                     $(window).resize(function() {

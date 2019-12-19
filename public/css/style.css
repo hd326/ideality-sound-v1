@@ -144,6 +144,11 @@ body {
   border-bottom: 1px solid #424242;
 }
 
+#mobile-nav nav ul li.side-categories a {
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
 #mobile-nav nav ul li.side-categories:nth-of-type(1) {
   text-align: center;
   font-weight: bold;
@@ -173,6 +178,11 @@ body {
   border-bottom: 1px solid #424242;
 }
 
+#mobile-nav nav ul ul li.side-child-categories a {
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
 .active {
   background-color: #4DB2EC;
 }
@@ -189,18 +199,24 @@ body {
   width: 1200px;
   margin: auto;
   box-shadow: -1px 2px 50px 25px #dddddd;
+  overflow-x: hidden;
 }
 
 #logo {
   padding-top: 27.5px;
-  padding-bottom: 27.5px;
-  padding-left: 50px;
+  padding-bottom: 15.5px;
+  padding-left: 27.5px;
+  text-transform: uppercase;
   padding-right: 25px;
   color: #2b2b2b;
   font-family: "Limelight";
   font-size: 30px;
   letter-spacing: 1px;
   position: relative;
+}
+
+#logo h1 {
+  text-decoration: underline;
 }
 
 #strip {
@@ -257,8 +273,9 @@ body {
   color: #ececec;
 }
 
-#login-strip {
+#date-login-strip {
   display: grid;
+  grid-template-columns: 1fr 1fr;
   -webkit-box-pack: end;
           justify-content: flex-end;
   background-color: #454545;
@@ -269,6 +286,16 @@ body {
   font-size: 13px;
 }
 
+#date-login-strip .date-login-strip-col {
+  justify-self: flex-end;
+}
+
+#date-login-strip #date-login {
+  font-size: 10px;
+  padding-top: 2.5px;
+  visibility: hidden;
+}
+
 header {
   color: #fcfcfc;
   background-color: #1d1d1d;
@@ -277,7 +304,7 @@ header {
   letter-spacing: 1px;
   font-size: 20px;
   position: relative;
-  border-bottom: 5px solid #4DB2EC;
+  border-bottom: 5.25px solid #4DB2EC;
 }
 
 header ul li.categories {
@@ -413,6 +440,7 @@ header ul li.categories nav ul li a {
   letter-spacing: 1px;
   color: grey;
   text-align: center;
+  width: 100%;
 }
 
 .post-card a {
@@ -431,6 +459,7 @@ header ul li.categories nav ul li a {
 
 .post-card .image-image-container {
   overflow: hidden;
+  width: 100%;
 }
 
 .post-card .image-container {
@@ -439,7 +468,7 @@ header ul li.categories nav ul li a {
   overflow: hidden;
   position: relative;
   border: 1px solid transparent;
-  display: inline-block;
+  width: 100%;
 }
 
 .post-card .image-container img {
@@ -713,7 +742,15 @@ header ul li.categories nav ul li a {
     display: block;
   }
 
+  #top-level-content {
+    width: 100%;
+  }
+
   header nav ul li.categories {
+    display: none;
+  }
+
+  header nav ul li.categories nav ul {
     display: none;
   }
 
@@ -725,11 +762,44 @@ header ul li.categories nav ul li a {
     grid-template-columns: 1fr;
   }
 
+  #strip nav {
+    justify-self: flex-start;
+    width: 100%;
+    height: 37.5px;
+  }
+
+  #strip nav ul {
+    position: relative;
+    width: 100%;
+    padding-left: 15px;
+  }
+
+  #strip nav ul li:nth-of-type(1),
+  #strip nav ul li:nth-of-type(2),
+  #strip nav ul li:nth-of-type(3),
+  #strip nav ul li:nth-of-type(4) {
+    padding-top: 10px;
+  }
+
+  #strip nav ul li:nth-of-type(5) {
+    position: absolute;
+    right: 0;
+  }
+
   #strip #date-join {
+    font-size: 10px;
     display: none;
   }
 
+  #date-login-strip #date-login {
+    visibility: visible;
+  }
+
   #pre-footer #pre-footer-container {
+    grid-template-columns: 1fr;
+  }
+
+  #main-page-content {
     grid-template-columns: 1fr;
   }
 
@@ -740,8 +810,11 @@ header ul li.categories nav ul li a {
 
 @media screen and (max-width: 660px) {
   #logo {
-    font-size: 22px;
-    text-align: center;
+    font-size: 16px;
+  }
+
+  #logo img {
+    width: 400px;
   }
 }
 
@@ -750,7 +823,18 @@ header ul li.categories nav ul li a {
     font-size: 16px;
     text-indent: 0px;
     text-align: center;
+    margin-right: 17.5px;
     padding-left: 10px;
+  }
+
+  #logo img {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  #logo img {
+    width: 250px;
   }
 }
 
