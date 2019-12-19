@@ -18,8 +18,8 @@ Reviews')
         <h2><a href="{{ url('/'.$post->slug) }}">{{ $post->title }}</a></h2>
         <p><i class="fas fa-tags"></i>
             @foreach($post->tags as
-            $tag){{ $loop->first ? '' : ', ' }}<a title="View all posts in {{ $tag->name }}"
-                href="/tags/{{$tag->name}}">{{ $tag->name }}</a>@endforeach
+            $tag)<a title="View all posts in {{ $tag->name }}"
+                href="/tags/{{$tag->name}}">{{ $tag->name }}</a>, @endforeach <a href="/category/{{ $post->category->parent['slug'] }}/{{ $post->category->slug }}">{{ $post->category->name }}</a>
             <br><i class="fas fa-calendar"></i> {{ $post->created_at->format('F j, Y') }}</p>
         <p>{{ substr(strip_tags($post->body), 0, 125) }} {{ strlen($post->body) > 125 ? "..." : "" }}</p>
         <hr>

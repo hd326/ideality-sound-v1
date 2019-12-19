@@ -304,7 +304,7 @@ header {
   letter-spacing: 1px;
   font-size: 20px;
   position: relative;
-  border-bottom: 5.25px solid #4DB2EC;
+  border-bottom: 4px solid #4DB2EC;
 }
 
 header ul li.categories {
@@ -332,7 +332,7 @@ header ul li.categories a {
   color: #f2f2f2;
   display: inline-block;
   width: 100%;
-  padding: 10px 17.5px;
+  padding: 5px 17.5px;
 }
 
 header ul li.categories:nth-of-type(1) {
@@ -378,7 +378,7 @@ header ul li.categories nav ul li:hover {
 }
 
 header ul li.categories nav ul li a {
-  padding: 7.5px;
+  padding: 5px;
 }
 
 #about-us-strip {
@@ -1613,7 +1613,7 @@ footer span.dot {
     grid-template-columns: 1fr;
   }
 
-  #secondary-split {
+  #contact-us-split {
     grid-template-columns: 1fr;
   }
 

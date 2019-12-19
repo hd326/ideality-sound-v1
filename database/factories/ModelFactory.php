@@ -13,6 +13,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'meta_title' => $faker->word,
         'meta_description' => $faker->word,
         'meta_keywords' => $faker->word,
-        'category_id' => rand(1, 6)
+        'category_id' => rand(4, 12)
     ];
 });
