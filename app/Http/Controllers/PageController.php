@@ -13,6 +13,7 @@ class PageController extends Controller
     public function home()
     {
         $posts = Post::paginate(12);
+
         $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
         $latest = Comment::orderBy('id', 'desc')->take(3)->get();
         $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();

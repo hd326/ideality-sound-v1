@@ -50,7 +50,7 @@
     <div class="date-login-strip-col">Login / Register</div>
 </section>
 <div id="logo">
-    <h1><img src="{{ asset('images/ideality-sound-v13.png') }}"></h1>
+    <h1><img src="{{ asset('images/ideality-sound-v15.png') }}"></h1>
 </div>
 <header>
     <nav>
