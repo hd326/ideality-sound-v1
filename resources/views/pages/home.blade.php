@@ -20,8 +20,9 @@ Reviews')
             @foreach($post->tags as
             $tag)<a title="View all posts in {{ $tag->name }}"
                 href="/tags/{{$tag->name}}">{{ $tag->name }}</a>, @endforeach
+
                 @if($post->price)
-                    <a href="category/budget/{{ $post->price }}">{{ $post->price }}</a>
+                    <a href="/category/budget/{{ $post->price }}">{{ $post->price }}</a>
                 @endif
                 <a href="/category/{{ $post->category->parent['slug'] }}/{{ $post->category->slug }}">{{ $post->category->name }}</a>
             <br><i class="fas fa-calendar"></i> {{ $post->created_at->format('F j, Y') }}</p>

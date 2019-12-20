@@ -78,10 +78,6 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Meta Keywords</label>
-                                    <input name="meta_keywords" type="text" id="" class="form-control">
-                                </div>
-                                <div class="form-group">
                                     <label for="">Image</label>
                                     <input name="image" type="file" class="form-control-file">
                                 </div>
