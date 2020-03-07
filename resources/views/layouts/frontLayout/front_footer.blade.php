@@ -90,14 +90,15 @@
     <div class="footer-actual-col">
         <nav>
             <ul>
-                <li>Privacy Policy</li>
-                <li>Contact Us</li>
-                <li>Disclaimer/Copyright</li>
-                <li>About</li>
-                <li><i class="fab fa-youtube"></i></li>
+                <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+                <li><a href="{{ route('contact') }}">Contact</a></li>
+                <li><a href="{{ route('disclaimer') }}">Disclaimer/Copyright</a></li>
+                <li><a href="{{ route('about') }}">About Us</a></li>
+                <li><a href="{{ route('subscribe') }}">Subscribe</a></li>
+                {{-- <li><i class="fab fa-youtube"></i></li>
                 <li><i class="fab fa-instagram"></i></li>
                 <li><i class="fab fa-twitter"></i></li>
-                <li><i class="fab fa-facebook"></i></li>
+                <li><i class="fab fa-facebook"></i></li> --}}
             </ul>
         </nav>
     </div>

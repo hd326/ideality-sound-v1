@@ -33,29 +33,13 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Title</th>
-                                        <th>Body</th>
-                                        <th>Slug</th>
-                                        <th>Actions</th>
+                                        <th>Email</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($posts as $post)
+                                    @foreach($subscriptions as $subscription)
                                     <tr>
-                                        <td>{{ $post->id }}</td>
-                                        <td>{{ $post->title }}</td>
-                                        <td>{{ substr(strip_tags($post->body), 0, 50) }} {{ strlen($post->body) > 50 ? "..." : "" }}</td>
-                                        <td>{{ $post->slug }}</td>
-                                        <td><a href="{{ url('/admin/edit-post/' . $post->id) }}"
-                                                class="btn btn-primary btn-sm">Edit</a>
-                                            <a href="{{ url('/admin/delete-post/' . $post->id) }}"
-                                                class="btn btn-danger btn-sm">Delete</a>
-                                            <a href="{{ url('/admin/add-images/' . $post->id) }}"
-                                                class="btn btn-secondary btn-sm">Add Images</a>
-                                            <a href="{{ url('/admin/view-post/'. $post->id) }}"
-                                                class="btn btn-info btn-sm">View</a>
-                                        </td>
+                                        <td>{{ $subscription->email }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

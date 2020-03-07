@@ -290,6 +290,10 @@ body {
   justify-self: flex-end;
 }
 
+#date-login-strip .date-login-strip-col a {
+  color: #f2f2f2;
+}
+
 #date-login-strip #date-login {
   font-size: 10px;
   padding-top: 2.5px;
@@ -737,6 +741,38 @@ header ul li.categories nav ul li a {
   top: 10px;
 }
 
+footer {
+  width: 100%;
+  background-color: #1b1b1b;
+  color: #f2f2f2;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 35px;
+  font-family: "Oswald";
+}
+
+footer .footer-actual-col:nth-of-type(2) {
+  justify-self: flex-end;
+}
+
+footer nav ul li {
+  list-style: none;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+footer nav ul li a {
+  text-decoration: none;
+  color: #f2f2f2;
+}
+
+footer span.dot {
+  display: inline-block;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
 @media screen and (max-width: 800px) {
   #icon {
     display: block;
@@ -799,6 +835,19 @@ header ul li.categories nav ul li a {
     grid-template-columns: 1fr;
   }
 
+  footer {
+    grid-template-columns: 1fr;
+  }
+
+  footer .footer-actual-col:nth-of-type(1) {
+    justify-self: center;
+  }
+
+  footer .footer-actual-col:nth-of-type(2) {
+    justify-self: center;
+    margin-top: 25px;
+  }
+
   #main-page-content {
     grid-template-columns: 1fr;
   }
@@ -836,29 +885,6 @@ header ul li.categories nav ul li a {
   #logo img {
     width: 250px;
   }
-}
-
-footer {
-  width: 100%;
-  background-color: #1b1b1b;
-  color: #f2f2f2;
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 35px;
-  font-family: "Oswald";
-}
-
-footer nav ul li {
-  list-style: none;
-  display: inline-block;
-  margin-left: 20px;
-}
-
-footer span.dot {
-  display: inline-block;
-  -webkit-transform: translateY(-5px);
-          transform: translateY(-5px);
 }
 
 #review-image {
@@ -1237,6 +1263,7 @@ footer span.dot {
   margin-top: 20px;
   font-family: "Oswald";
   font-size: 16px;
+  text-transform: uppercase;
 }
 
 #contact-us-split .contact-us-column p:nth-of-type(1) {
@@ -1247,6 +1274,7 @@ footer span.dot {
   font-family: "Lato";
   margin-top: 0px;
   margin-bottom: 50px;
+  text-transform: none;
 }
 
 #contact-us-split .contact-us-column input {
@@ -1382,6 +1410,75 @@ footer span.dot {
 }
 
 #privacy-split .privacy-column:nth-of-type(2) #sidebar .sponsor {
+  height: 250px;
+}
+
+#subscribe-header {
+  font-family: "Oswald";
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 25px;
+  color: #2b2b2b;
+  background-color: #ececec;
+  padding: 15px;
+  border-bottom: 5px solid #4DB2EC;
+  letter-spacing: 2px;
+}
+
+#subscribe-split {
+  display: grid;
+  grid-template-columns: 0.75fr 0.25fr;
+  grid-gap: 25px;
+  padding: 37.5px;
+  margin-top: 50px;
+}
+
+#subscribe-split input {
+  width: 300px;
+  height: 40px;
+  margin-top: 10px;
+}
+
+#subscribe-split button {
+  border: 2px solid #afafaf;
+  padding: 7.5px 40px;
+  font-family: "Oswald";
+  text-transform: uppercase;
+  margin-top: 25px;
+  background-color: #f2f2f2;
+  color: #2b2b2b;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+#subscribe-split .subscribe-column h2 {
+  font-family: "Oswald";
+  margin-bottom: 7.5px;
+}
+
+#subscribe-split .subscribe-column p#enter-your {
+  font-family: "Lato";
+  margin-top: 0px;
+  margin-bottom: 50px;
+  text-transform: none;
+}
+
+#subscribe-split .subscribe-column p {
+  font-family: "Oswald";
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+#subscribe-split .subscribe-column ul li {
+  margin-top: 20px;
+}
+
+#subscribe-split .subscribe-column:nth-of-type(2) #sidebar {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#subscribe-split .subscribe-column:nth-of-type(2) #sidebar .sponsor {
   height: 250px;
 }
 

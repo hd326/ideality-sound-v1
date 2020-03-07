@@ -15,7 +15,7 @@
                     "Monday", "Tuesday", "Wednesday",
                     "Thursday", "Friday", "Saturday", "Sunday"
                 ];
-                var nameDay = dayNames[date.getDay()];
+                var nameDay = dayNames[date.getDay() - 1];
                 var day = date.getDate();
                 var monthIndex = date.getMonth();
                 var year = date.getFullYear();
@@ -47,10 +47,10 @@
 <section id="date-login-strip">
     <div id="date-login"></div>
     <script>document.getElementById('date-login').innerHTML = formatDate(new Date());</script>
-    <div class="date-login-strip-col">Login / Register</div>
+    <div class="date-login-strip-col"><a href="/login">Login</a>  / <a href="/register">Register</a></div>
 </section>
 <div id="logo">
-    <h1><img src="{{ asset('images/ideality-sound-v15.png') }}"></h1>
+    <h1><img alt="Ideality Sound Logo" src="{{ asset('images/ideality-sound-v15.png') }}"></h1>
 </div>
 <header>
     <nav>

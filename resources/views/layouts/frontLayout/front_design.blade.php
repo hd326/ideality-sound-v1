@@ -34,17 +34,27 @@
     <script src="https://kit.fontawesome.com/e032011ee4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 </head>
 
 <body>
+
     <div id="top-level-sidebar">
+
         @include('layouts.frontLayout.front_nav_sidebar')
     </div>
     <div id="top-level-content">
+        @if(Session::has('flash'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{!! session('flash') !!} </strong>
+            {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button> --}}
+        </div>
+        @endif
         @include('layouts.frontLayout.front_header')
         @yield('content')
         @include('layouts.frontLayout.front_footer')
     </div>
 </body>
+
 </html>

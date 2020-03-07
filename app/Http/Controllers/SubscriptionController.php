@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Comment;
-use App\Post;
+use App\Subscription;
 
-class CommentController extends Controller
+class SubscriptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $subscriptions = Subscription::all();
+        return view('admin.subscriptions.index', compact('subscriptions'));
     }
 
     /**
@@ -36,23 +36,15 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $comment = new Comment();
-        $comment->body = $request->body;
-        $comment->user()->associate($request->user());
-        $post = Post::find($request->post_id);
-        $post->comments()->save($comment);
-        return redirect(url()->previous() . '#'. $comment->id);
-    }
+        $request->validate([
+            'email' => 'required|email'
+        ]);
 
-    public function replyStore(Request $request)
-    {
-        $reply = new Comment();
-        $reply->body = $request->get('body');
-        $reply->user()->associate($request->user());
-        $reply->parent_id = $request->get('id');
-        $post = Post::find($request->get('post_id'));
-        $post->comments()->save($reply);
-        return redirect(url()->previous() . '#'. $reply->id);
+        $subscription = new Subscription();
+        $subscription->email = $request->email;
+        $subscription->confirmation_token = str_random(25);
+        $subscription->save();
+        return redirect()->back();
     }
 
     /**
@@ -95,8 +87,17 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        try {
+            $subscription = Subscription::where('confirmation_token', request('token'))->first();
+            $subscription->delete();
+        } catch (\Exception $e) {
+            return redirect('/')
+            ->with('flash', 'Unknown token.');
+        }
+
+        return redirect('/')->with('flash', 'You have successfully unsubscribed!');
+        
     }
 }

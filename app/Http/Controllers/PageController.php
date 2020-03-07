@@ -17,7 +17,7 @@ class PageController extends Controller
         $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
         $latest = Comment::orderBy('id', 'desc')->take(3)->get();
         $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
-        return view('pages.home', compact('posts', 'tags', 'latest', 'latestSideCol'));
+        return view('pages.index', compact('posts', 'tags', 'latest', 'latestSideCol'));
     }
 
     public function about()
@@ -50,6 +50,16 @@ class PageController extends Controller
         $latest = Comment::orderBy('id', 'desc')->take(3)->get();
         $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
         return view('pages.contact', compact('tags', 'latest', 'latestSideCol'));
+    }
+
+    // Only to display the page, the actual sign-up is in SubscriptionController
+
+    public function subscribe(Request $request)
+    {
+        $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $latest = Comment::orderBy('id', 'desc')->take(3)->get();
+        $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
+        return view('pages.subscribe', compact('tags', 'latest', 'latestSideCol'));
     }
 
     public function category($slug)

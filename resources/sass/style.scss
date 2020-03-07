@@ -347,6 +347,9 @@ body {
     font-size: 13px;
     .date-login-strip-col{
         justify-self:flex-end;
+        a{
+            color: #f2f2f2;
+        }
     }
     #date-login{
         font-size: 10px;
@@ -863,6 +866,39 @@ header {
     top: 10px;
 }
 
+
+
+footer {
+    width: 100%;
+    background-color: #1b1b1b;
+    color: #f2f2f2;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 35px;
+    font-family: "Oswald";
+
+    .footer-actual-col:nth-of-type(2){
+        justify-self:flex-end;
+    }
+
+    nav ul li {
+        list-style: none;
+        display: inline-block;
+        margin-left: 20px;
+        a{
+            text-decoration: none;
+            color: #f2f2f2;
+        }
+    }
+
+    span.dot {
+        display: inline-block;
+        transform: translateY(-5px);
+    }
+
+}
+
 @include mQ(800px) {
     #icon {
         display: block;
@@ -929,6 +965,20 @@ header {
         }
     }
 
+    footer {
+        grid-template-columns: 1fr;
+        .footer-actual-col{
+            &:nth-of-type(1) {
+                justify-self: center;
+            }
+
+            &:nth-of-type(2){
+                justify-self: center;
+                margin-top: 25px;
+            }
+        }
+    }
+
     #main-page-content {
         grid-template-columns: 1fr;
     }
@@ -974,29 +1024,7 @@ header {
     }
 }
 
-footer {
-    width: 100%;
-    background-color: #1b1b1b;
-    color: #f2f2f2;
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 35px;
-    font-family: "Oswald";
 
-    nav ul li {
-        list-style: none;
-        display: inline-block;
-        margin-left: 20px;
-
-    }
-
-    span.dot {
-        display: inline-block;
-        transform: translateY(-5px);
-    }
-
-}
 
 // begin the review page
 
@@ -1419,12 +1447,14 @@ footer {
             margin-top: 20px;
             font-family: "Oswald";
             font-size: 16px;
+            text-transform:uppercase;
         }
 
         p#feel-free {
             font-family: "Lato";
             margin-top: 0px;
             margin-bottom: 50px;
+            text-transform: none;
         }
 
         input {
@@ -1535,7 +1565,6 @@ footer {
 // begin the privacy page
 
 
-
 #privacy-header {
     font-family: "Oswald";
     text-transform: uppercase;
@@ -1585,6 +1614,79 @@ footer {
     }
 }
 
+#subscribe-header{
+    font-family: "Oswald";
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 25px;
+    color: #2b2b2b;
+    background-color: $offGrey;
+    padding: 15px;
+    border-bottom: 5px solid $blue;
+    letter-spacing: 2px;
+}
+
+#subscribe-split{
+    display: grid;
+    grid-template-columns: .75fr .25fr;
+    grid-gap: $columnGap;
+    padding: 37.5px;
+    margin-top: 50px;
+
+    input {
+        width: 300px;
+        height: $inputHeight;
+        margin-top: 10px;
+    }
+
+    button {
+        border: 2px solid #afafaf;
+        padding: 7.5px 40px;
+        font-family: "Oswald";
+        text-transform: uppercase;
+        margin-top: 25px;
+        background-color: #f2f2f2;
+        color: #2b2b2b;
+        transform: translateY(2px);
+    }
+
+    .subscribe-column {
+        h2 {
+            font-family: "Oswald";
+            margin-bottom: 7.5px;
+        }
+
+        p#enter-your{
+            font-family: "Lato";
+            margin-top: 0px;
+            margin-bottom: 50px;
+            text-transform: none;
+        }
+
+        p {
+            font-family: "Oswald";
+            font-size: 16px;
+            text-transform:uppercase;
+        }
+
+        ul li {
+            margin-top: 20px;
+        }
+
+    }
+
+    .subscribe-column:nth-of-type(2) {
+        #sidebar {
+            margin-top: 20px;
+            text-align: center;
+
+            .sponsor {
+                height: 250px;
+            }
+        }
+    }
+}
+
 // begin the terms and conditions page
 
 #terms-header {
@@ -1612,8 +1714,6 @@ footer {
             margin-bottom: 7.5px;
         }
 
-
-
         p {
             margin-bottom: 20px;
             font-family: "Lato";
@@ -1639,6 +1739,8 @@ footer {
 }
 
 // begin the categories / tags / blog display page
+
+
 #title {
     text-align: center;
     font-family: "Oswald";

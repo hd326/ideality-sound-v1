@@ -185,6 +185,10 @@
                                 <label for="">Score</label>
                                 <input name="score" type="number" id="" class="form-control">
                             </div>
+                            <div class="form-group">
+                                <label for="">Send to subscribers?</label>
+                                <input name="subscribers" type="checkbox" id="" class="form-control">
+                            </div>
                             <button class="btn btn-primary" type="submit">Add Post</button>
                         </div>
                         

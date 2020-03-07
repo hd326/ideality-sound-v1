@@ -49,7 +49,12 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/admin/edit-tag/{id}', 'TagController@edit');
     Route::post('/admin/edit-tag/{id}', 'TagController@update');
     Route::get('/admin/view-tag/{id}', 'TagController@show');
+
+    // Subscription routes
+    Route::get('/admin/view-subscriptions', 'SubscriptionController@index');
 });
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 // Comment routes
 Route::post('/comment/store', 'CommentController@store');
@@ -66,6 +71,14 @@ Route::get('/disclaimer-copyright', 'PageController@disclaimer')->name('disclaim
 
 Route::get('/contact-us', 'PageController@contact')->name('contact');
 
+// Subscribe page routes
+
+Route::post('/subscribe', 'SubscriptionController@store');
+
+Route::get('/subscribe', 'PageController@subscribe')->name('subscribe');
+
+Route::get('/unsubscribe', 'SubscriptionController@destroy');
+
 Route::get('/category/{slug}', 'PageController@category');
 
 Route::get('/category/{slug}/{subslug}', 'PageController@subcategory');
@@ -76,7 +89,7 @@ Route::get('/tags/{tag}/', 'PageController@tag');
 
 Route::post('/search', 'PageController@search');
 
-//Route::get('/home', 'HomeController@index')->name('home');
+
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
