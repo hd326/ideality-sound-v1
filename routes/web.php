@@ -89,8 +89,6 @@ Route::get('/tags/{tag}/', 'PageController@tag');
 
 Route::post('/search', 'PageController@search');
 
-
-
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });

@@ -139,21 +139,21 @@ class PostController extends Controller
             }
         }
 
-        $post->save();
-
-        $post->tags()->sync($request->tags, false);
-
         if (isset($request->subscribers)){
             $subscriptions = Subscription::select('email')->get();
-            $subscription = Subscription::select('confirmation_token')->get();
+            $subscription_tokens = Subscription::select('confirmation_token')->get();
             //$subscription_encoded = json_decode($subscription);
             //Mail::to($subscriptions)->send(new NewPostMail($subscription_encoded));
-            foreach($subscription as $subscription_token) {
-                Mail::to($subscriptions)->send(new NewPostMail($subscription_token->confirmation_token));
+            foreach($subscription_tokens as $subscription_token) {
+                Mail::to($subscriptions)->send(new NewPostMail($subscription_token->confirmation_token, $post));
                 //dd($subscription_token->confirmation_token);
                 sleep(5);
             }
         } 
+
+        $post->save();
+
+        $post->tags()->sync($request->tags, false);
 
         return redirect()->action('PostController@edit', ['id' => $post->id]);
     }

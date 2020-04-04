@@ -40,13 +40,16 @@ class SubscriptionController extends Controller
             'email' => 'required|email'
         ]);
 
-        $subscription = new Subscription();
-        $subscription->email = $request->email;
-        $subscription->confirmation_token = str_random(25);
-        $subscription->save();
-        return redirect()->back();
+        $user = Subscription::where('email', $request->email)->first();
+        if ($user === NULL) {
+            $subscription = new Subscription();
+            $subscription->email = $request->email;
+            $subscription->confirmation_token = str_random(25);
+            $subscription->save();
+            return redirect()->back()->with('flash', 'You have successfully subscribed!');
+        }
+        return redirect()->back()->with('flash', 'You are already registered with our subscription!');
     }
-
     /**
      * Display the specified resource.
      *
@@ -97,7 +100,7 @@ class SubscriptionController extends Controller
             ->with('flash', 'Unknown token.');
         }
 
-        return redirect('/')->with('flash', 'You have successfully unsubscribed!');
+        return redirect('/subscribe')->with('flash', 'You have successfully unsubscribed!');
         
     }
 }

@@ -11,16 +11,18 @@ class NewPostMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $subscription;
+    public $subscription_token;
+    public $post;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($subscription)
+    public function __construct($subscription_token, $post)
     {
-        $this->subscription = $subscription;
+        $this->subscription_token = $subscription_token;
+        $this->post = $post;
     }
 
     /**

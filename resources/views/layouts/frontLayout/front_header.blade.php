@@ -50,7 +50,7 @@
     <div class="date-login-strip-col"><a href="/login">Login</a>  / <a href="/register">Register</a></div>
 </section>
 <div id="logo">
-    <h1><img alt="Ideality Sound Logo" src="{{ asset('images/ideality-sound-v15.png') }}"></h1>
+    <h1><a href="/"><img alt="Ideality Sound Logo" src="{{ asset('images/ideality-sound-v15.png') }}"></a></h1>
 </div>
 <header>
     <nav>
@@ -81,16 +81,27 @@
             </li>
             <script>
                 $(document).ready(function(){
-                    $('#icon').click(function(){
-                        $('#mobile-nav').toggleClass('active-nav');
-                        $('body').toggleClass('active-body');
-                        $('#strip nav ul li').toggle();
-                    });
-                    $('.side-categories i').click(function(){
-                        $('#mobile-nav').toggleClass('active-nav');
-                        $('body').toggleClass('active-body');
-                        $('#strip nav ul li').toggle();
-                    });
+                    //$('#icon').click(function(){
+                    //    $('#mobile-nav').toggleClass('active-nav');
+                    //    $('body').toggleClass('active-body');
+                    //    $('#strip nav ul li').toggle();
+                    //});
+                    //$('.side-categories i').click(function(){
+                    //    $('#mobile-nav').toggleClass('active-nav');
+                    //    $('body').toggleClass('active-body');
+                    //    $('#strip nav ul li').toggle();
+                    //});
+
+                    //$('#icon').click(function(){
+                    //    $('#mobile-nav').toggleClass('active-nav');
+                    //    $('#top-level-content').toggleClass('active-body');
+                    //    $('#strip nav ul li').toggle();
+                    //});
+                    //$('.side-categories i').click(function(){
+                    //    $('#mobile-nav').toggleClass('active-nav');
+                    //    $('#top-level-content').toggleClass('active-body');
+                    //    $('#strip nav ul li').toggle();
+                    //});
                     
                     $(window).resize(function() {
                         var width = $(window).width();
@@ -100,7 +111,6 @@
                             if(active1) {
                                 $('#mobile-nav').removeClass('active-nav');
                                 $('body').removeClass('active-body');
-                                
                             }
                             var active = "1";
                         } 

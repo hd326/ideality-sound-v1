@@ -12,7 +12,7 @@
                 <a href="/tags/blog">Blog</a>
             </li>
             <li class="side-categories">
-                <a href="/categories/headphones">Headphones</a>
+                <a href="/category/headphones">Headphones</a>
             </li>
             <ul>
                 <li class="side-child-categories"><a href="/category/headphones/fullsize">Full Size</a></li>

@@ -10,13 +10,17 @@ Reviews')
 </div>
 
 <section id="subscribe-split">
-
     <main class="subscribe-column">
+
+            @if(Session::has('flash'))
+            <p style="font-family: Lato; text-transform: none"><strong>{!! session('flash') !!}</strong></p>
+            @endif
+
         <p id="enter-your">Enter your email address to subscribe and recieve emails when new content is posted!</p>
         <form action="/subscribe" method="POST">
             @csrf
             <p>Your email * (Required)</p>
-            <input type="text" name="email" value="{{ old('email')}}">
+            <input type="text" name="email" value="{{ old('email') }}">
             {{ $errors->first('email') }}
             <button type="submit">Subscribe</button>
         </form>

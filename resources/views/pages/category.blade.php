@@ -7,10 +7,10 @@
 <div id="main">
     <div id="main-content-holder">
         <main id="main-content">
-
+            <div id="posts">
             @foreach($category->categories as $subcategory)
             @foreach($subcategory->posts as $post)
-
+            
             <div class="post-card">
                 <a href="{{ url('/'.$post->slug) }}">
                     <div class="image-image-container">
@@ -31,6 +31,7 @@
 
             @endforeach
             @endforeach
+        </div>
         </main>
         <aside id="side-content">
             @include('layouts.frontLayout.front_sidebar')

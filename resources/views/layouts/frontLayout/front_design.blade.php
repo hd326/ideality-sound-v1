@@ -39,22 +39,48 @@
 <body>
 
     <div id="top-level-sidebar">
-
         @include('layouts.frontLayout.front_nav_sidebar')
     </div>
     <div id="top-level-content">
-        @if(Session::has('flash'))
+        {{-- @if(Session::has('flash'))
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>{!! session('flash') !!} </strong>
-            {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
-            </button> --}}
+            </button> 
         </div>
-        @endif
+        @endif --}}
         @include('layouts.frontLayout.front_header')
         @yield('content')
         @include('layouts.frontLayout.front_footer')
     </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#icon').click(function(){
+                $('#mobile-nav').toggleClass('active-nav');
+                $('body').toggleClass('active-body');
+                $('#strip nav ul li').toggle();
+            });
+            $('.side-categories i').click(function(){
+                $('#mobile-nav').toggleClass('active-nav');
+                $('body').toggleClass('active-body');
+                $('#strip nav ul li').toggle();
+            });
+
+            //$('#icon').click(function () {
+            //    $('#mobile-nav').toggleClass('active-nav');
+            //    $('#top-level-content').toggleClass('active-body');
+            //    $('#strip nav ul li').toggle();
+            //});
+            //$('.side-categories i').click(function () {
+            //    $('#mobile-nav').toggleClass('active-nav');
+            //    $('#top-level-content').toggleClass('active-body');
+            //    $('#strip nav ul li').toggle();
+            //});
+        });
+
+    </script>
 </body>
 
 </html>

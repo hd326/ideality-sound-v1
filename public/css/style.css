@@ -109,12 +109,12 @@
 html {
   min-height: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 
 body {
   font-family: "Lato";
   box-shadow: -1px 2px 50px 25px #dddddd;
-  overflow-x: hidden;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
@@ -122,9 +122,9 @@ body {
 #mobile-nav {
   left: 0;
   height: 100%;
-  width: 315px;
-  -webkit-transform: translateX(-315px);
-          transform: translateX(-315px);
+  width: 250px;
+  -webkit-transform: translateX(-250px);
+          transform: translateX(-250px);
   background-color: #2f2f2f;
   z-index: 3;
   color: #a0a0a0;
@@ -188,18 +188,19 @@ body {
 }
 
 .active-body {
-  margin-left: 315px;
+  -webkit-transform: translateX(250px);
+          transform: translateX(250px);
 }
 
 .active-nav {
-  margin-left: 315px;
+  -webkit-transform: translateX(250px);
+          transform: translateX(250px);
 }
 
 #top-level-content {
   width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   box-shadow: -1px 2px 50px 25px #dddddd;
-  overflow-x: hidden;
 }
 
 #logo {
@@ -309,6 +310,7 @@ header {
   font-size: 20px;
   position: relative;
   border-bottom: 4px solid #4DB2EC;
+  z-index: 2;
 }
 
 header ul li.categories {
@@ -773,7 +775,7 @@ footer span.dot {
           transform: translateY(-5px);
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1024px) {
   #icon {
     display: block;
   }
@@ -849,7 +851,7 @@ footer span.dot {
   }
 
   #main-page-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .post-card .image-image-container .image-container {
@@ -858,6 +860,10 @@ footer span.dot {
 }
 
 @media screen and (max-width: 660px) {
+  #main-page-content {
+    grid-template-columns: 1fr;
+  }
+
   #logo {
     font-size: 16px;
   }
@@ -1114,6 +1120,12 @@ footer span.dot {
 #related-articles #related-articles-container .related-articles-column h3 {
   text-align: center;
   font-weight: 100;
+}
+
+@media screen and (max-width: 500px) {
+  #related-articles #related-articles-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 #comments #number-comments {
@@ -1546,7 +1558,7 @@ footer span.dot {
   grid-gap: 25px;
 }
 
-#main #main-content-holder #main-content {
+#main #main-content-holder #main-content #posts {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 37.5px;
@@ -1730,7 +1742,7 @@ footer span.dot {
     grid-template-columns: 1fr;
   }
 
-  #main #main-content-holder #main-content {
+  #main #main-content-holder #main-content #posts {
     grid-template-columns: 1fr;
   }
 }

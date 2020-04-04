@@ -117,10 +117,11 @@ class PageController extends Controller
     public function tag($tag)
     {
         $tag = Tag::where('name', $tag)->first();
+        $posts = $tag->posts()->paginate(12);
         $tags = Tag::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
         $latest = Comment::orderBy('id', 'desc')->take(3)->get();
         $latestSideCol = Comment::orderBy('id', 'desc')->take(10)->get();
-        return view('pages.tag', compact('tag', 'tags', 'latest', 'latestSideCol'));
+        return view('pages.tag', compact('tag', 'tags', 'posts', 'latest', 'latestSideCol'));
     }
 
     public function search(Request $request)
