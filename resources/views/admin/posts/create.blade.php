@@ -36,7 +36,7 @@
                         <div class="card-body">
                             <form action="{{ url('/admin/add-post') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-
+                                <h2>Remember, post tags correlate to post price, both must be listed.</h2>
                                 <div class="form-group">
                                     <label for="">Post Title</label>
                                     <input name="title" type="text" id="inputName" class="form-control">
@@ -48,11 +48,23 @@
                                 <div class="form-group">
                                     <label for="">Post Tags</label>
                                     <select class="select2-multi form-control" name="tags[]" id="" multiple="multiple">
-                                        @foreach($tags as $tag)
-                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                        @if (is_array(old('tags')))
+                                        @foreach (old('tags') as $key => $value)
+                                            <option value="{{ $value }}" selected="selected">{{ $value }}</option>
                                         @endforeach
+                                        @endif
                                     </select>
                                 </div>
+                                {{-- <div class="form-group">
+                                    <label for="">Post Price</label>
+                                    <select class="form-control" name="price" name="price" id="">
+                                        @foreach($budgets as $budget)
+                                            @foreach($budget->children as $children)
+                                                <option value="{{ $children->name }}">{{ $children->name }}</option>
+                                            @endforeach
+                                        @endforeach
+                                    </select>
+                                </div> --}}
                                 <div class="form-group">
                                     <label for="">Post Slug</label>
                                     <input name="slug" type="text" id="inputName" class="form-control">
@@ -72,6 +84,7 @@
                                 <div class="form-group">
                                     <label for="">Post Category</label>
                                     <select class="form-control" name="category_id">
+                                        <option value="0">None</option>
                                         @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
@@ -207,47 +220,172 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css"></script> --}}
 
 <script>
-    $(document).ready(function () {
-        $('.select2-multi').select2();
-    });
-
+  $(document).ready(function () {
+      $('.select2-multi').select2({
+        tags: true,
+        multiple: true,
+        tokenSeparators: [','],
+        ajax: {
+          url: '/api/tags',
+          type: 'GET',
+          dataType: 'json',
+          delay: 250,
+          data: function (params) {
+              return {
+                  name: params.term
+              };
+          },
+          processResults: function (data) {
+            return {
+              results: data
+            };
+          },
+          cache: true
+            }
+      });
+  });
 </script>
-<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/a039yjts0dfxgjrvnsmulpou29lagm7phdbdw6l18ow72han/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 <script>
-        var editor_config = {
-          path_absolute : "/",
-          selector: "textarea",
-          plugins: [
-            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+    var editor_config = {
+        path_absolute: "/",
+height: 250,
+
+        selector: "textarea",
+        plugins: [
+            "advlist autolink lists link image charmap print preview hr anchor autosave pagebreak",
             "searchreplace wordcount visualblocks visualchars code fullscreen",
             "insertdatetime media nonbreaking save table contextmenu directionality",
-            "emoticons template paste textcolor colorpicker textpattern"
-          ],
-          toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media",
-          relative_urls: false,
-          file_browser_callback : function(field_name, url, type, win) {
-            var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-            var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
-      
-            var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
-            if (type == 'image') {
-              cmsURL = cmsURL + "&type=Images";
-            } else {
-              cmsURL = cmsURL + "&type=Files";
+            "emoticons template paste textcolor colorpicker textpattern",
+        ],
+        //bbcode_dialect: "punbb",
+        toolbar: "insertfile undo redo | styleselect | emoticons | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media restoredraft",
+autosave_retention: "60m",
+        relative_urls: false,
+        //file_browser_callback: function (field_name, url, type, win) {
+        //    var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName(
+        //        'body')[0].clientWidth;
+        //    var y = window.innerHeight || document.documentElement.clientHeight || document
+        //        .getElementsByTagName('body')[0].clientHeight;
+        //    var cmsURL = editor_config.path_absolute + 'laravel-filemanager?field_name=' + field_name;
+        //    if (type == 'image') {
+        //        cmsURL = cmsURL + "&type=Images";
+        //    } else {
+        //        cmsURL = cmsURL + "&type=Files";
+        //    }
+        //    tinyMCE.activeEditor.windowManager.open({
+        //        file: cmsURL,
+        //        title: 'Filemanager',
+        //        width: x * 0.8,
+        //        height: y * 0.8,
+        //        resizable: "yes",
+        //        close_previous: "no"
+        //    });
+        //},
+        images_upload_handler: function (blobInfo, success, failure, progress) {
+            var xhr, formData;
+            xhr = new XMLHttpRequest();
+            xhr.withCredentials = false;
+            xhr.open('POST', '/upload');
+            xhr.upload.onprogress = function (e) {
+                progress(e.loaded / e.total * 100);
+            };
+            xhr.setRequestHeader("X-CSRF-Token", "{{ csrf_token() }}");
+            xhr.onload = function() {
+                var json;
+                if (xhr.status != 200) {
+                    failure('HTTP Error: ' + xhr.status);
+                    //failure('File exceeds upload limit.');
+                    tinymce.activeEditor.undoManager.undo();
+                    return;
+                }
+                json = JSON.parse(xhr.responseText);
+                if (!json || typeof json.location != 'string') {
+                    failure('Invalid JSON: ' + xhr.responseText);
+                    return;
+                }
+                success(json.location);
+            };
+            formData = new FormData();
+            formData.append('file', blobInfo.blob(), blobInfo.filename());
+            xhr.send(formData);
+        },
+        image_title: true,
+        automatic_uploads: true,
+        images_upload_url: '/upload',
+        file_picker_types: 'image',
+        image_dimensions: false,
+         image_class_list: [
+            {title: 'Responsive', value: 'img-responsive'}
+        ],
+        file_picker_callback: function(cb, value, meta) {
+            var input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+            input.onchange = function() {
+                var file = this.files[0];
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function () {
+
+                    var id = 'blobid' + (new Date()).getTime();
+                    var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+                    var base64 = reader.result.split(',')[1];
+                    var blobInfo = blobCache.create(id, file, base64);
+                    blobCache.add(blobInfo);
+                    cb(blobInfo.blobUri(), { title: file.name });
+                };
+            };
+            input.click();
+        },
+        //setup: function(editor) {
+        //editor.on('keydown', function(e) {
+        //  if(e.keyCode == 13 && $(editor.contentDocument.activeElement).atwho('isSelecting'))
+        //    return false
+        //    })
+        //},
+        
+        init_instance_callback: function(editor) {
+        $(editor.contentDocument.activeElement).atwho({
+            at: "@",
+            callbacks: {
+                remoteFilter: function (query, callback) {
+                    $.getJSON('/api/users', {name: query}, function (usernames) {
+                        $.trim(callback(usernames));
+                    });
+                    //$.ajax({
+                    //    url: '/api/users',
+                    //    type: 'GET',
+                    //    dataType: 'json',
+                    //    data: {
+                    //        name: query,
+                    //    },
+                    //    success: function (usernames) {
+                    //        callback(usernames);
+                    //    },
+                    //    error: function () {
+                    //        console.log('called');
+                    //    }
+                    //});
+                }
             }
-      
-            tinyMCE.activeEditor.windowManager.open({
-              file : cmsURL,
-              title : 'Filemanager',
-              width : x * 0.8,
-              height : y * 0.8,
-              resizable : "yes",
-              close_previous : "no"
-            });
-          }
-        };
-      
-        tinymce.init(editor_config);
-      </script>
+        });
+      },
+    };
+    tinymce.init(editor_config);
+    tinymce.PluginManager.add('imageresizing', function(editor, url) {
+
+        editor.on('ObjectResizeStart', function(e) {
+        if (e.target.nodeName == 'IMG') {
+
+            var selectedImage = tinymce.activeEditor.selection.getNode();
+            tinymce.activeEditor.dom.setStyle(selectedImage,'width', e.width);
+            tinymce.activeEditor.dom.setStyle(selectedImage,'height', e.height);
+            selectedImage.removeAttribute('width');
+            selectedImage.removeAttribute('height');
+            }
+        });
+    });
+</script>
 @endsection

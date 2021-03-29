@@ -15,6 +15,11 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
+    // public function budget()
+    // {
+    //     return $this->hasOne(Category::class, 'parent_id', 'price');
+    // }
+
     public function user()
     {
         return $this->belongsTo(User::class);

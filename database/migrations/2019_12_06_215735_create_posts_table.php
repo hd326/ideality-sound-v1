@@ -17,12 +17,13 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->text('body');
-            $table->string('slug')->unique();
+            $table->string('slug')->unique()->nullable();
             $table->text('meta_title')->nullable();
             $table->text('meta_description')->nullable();
             $table->text('meta_keywords')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories');
+            //$table->string('price')->nullable();
+            $table->unsignedBigInteger('category_id')->default(0)->nullable();
+            //$table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();
         });
     }

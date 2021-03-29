@@ -39,42 +39,42 @@ class PostImageController extends Controller
      */
     public function store(Request $request, $id)
     {
-        if($request->hasFile('image')){
-                $files = $request->file('image');
+        // if($request->hasFile('image')){
+        //         $files = $request->file('image');
                 
-                foreach($files as $file){
-                    $image = new PostImage();
-                    $extension = $file->getClientOriginalExtension();
-                    $filename = date('mdYHis') . uniqid() . '.' . $extension;
-                    $original_photo_storage = 'images/original_photos/'.$filename;
-                    $large_photos_storage = 'images/large_photos/'.$filename;
-                    $medium_photos_storage = 'images/medium_photos/'.$filename;
-                    $mobile_photos_storage = 'images/mobile_photos/'.$filename;
-                    $tiny_photos_storage = 'images/tiny_photos/'.$filename;
+        //         foreach($files as $file){
+        //             $image = new PostImage();
+        //             $extension = $file->getClientOriginalExtension();
+        //             $filename = date('mdYHis') . uniqid() . '.' . $extension;
+        //             $original_photo_storage = 'images/original_photos/'.$filename;
+        //             $large_photos_storage = 'images/large_photos/'.$filename;
+        //             $medium_photos_storage = 'images/medium_photos/'.$filename;
+        //             $mobile_photos_storage = 'images/mobile_photos/'.$filename;
+        //             $tiny_photos_storage = 'images/tiny_photos/'.$filename;
     
-                    Image::make($file)
-                        ->save($original_photo_storage, 100)
-                        ->resize(860, null, function ($constraint) {
-                            $constraint->aspectRatio();
-                            })
-                        ->save($large_photos_storage, 85)
-                        ->resize(640, null, function ($constraint) {
-                            $constraint->aspectRatio();
-                            })
-                        ->save($medium_photos_storage, 85)
-                        ->resize(420, null, function ($constraint) {
-                            $constraint->aspectRatio();
-                            })
-                        ->save($mobile_photos_storage, 85)
-                        ->resize(10, null, function ($constraint) {
-                            $constraint->aspectRatio();
-                            })->blur(1)->save($tiny_photos_storage, 85);
+        //             Image::make($file)
+        //                 ->save($original_photo_storage, 100)
+        //                 ->resize(860, null, function ($constraint) {
+        //                     $constraint->aspectRatio();
+        //                     })
+        //                 ->save($large_photos_storage, 85)
+        //                 ->resize(640, null, function ($constraint) {
+        //                     $constraint->aspectRatio();
+        //                     })
+        //                 ->save($medium_photos_storage, 85)
+        //                 ->resize(420, null, function ($constraint) {
+        //                     $constraint->aspectRatio();
+        //                     })
+        //                 ->save($mobile_photos_storage, 85)
+        //                 ->resize(10, null, function ($constraint) {
+        //                     $constraint->aspectRatio();
+        //                     })->blur(1)->save($tiny_photos_storage, 85);
 
-                    $image->image = $filename;
-                    $image->post_id = $request->post_id;
-                    $image->save();
-                } 
-            }
+        //             $image->image = $filename;
+        //             $image->post_id = $request->post_id;
+        //             $image->save();
+        //         } 
+        //     }
         return redirect('/admin/add-images/'.$id);
     }
 

@@ -25,9 +25,6 @@
     <meta name="twitter:title" content="@yield('twitter.title')" />
     <meta name="twitter:description" content="@yield('twitter.description')" />
     <meta name="twitter:image" content="@yield('twitter.image')" />
-    <script type="text/javascript"
-        src="https://platform-api.sharethis.com/js/sharethis.js#property=5df52fa945cf480012906f96&product=inline-share-buttons"
-        async="async"></script>
     <link
         href="https://fonts.googleapis.com/css?family=Lato|Oswald|Bowlby+One|Kumar+One|Gravitas+One|Limelight|Lilita+One|Passion+One|Alfa+Slab+One|Bigshot+One|Merriweather|Montserrat|Josefin+Sans|Arvo|Raleway|Catamaran|PT+Sans|Open+Sans|Roboto+Slab|Ubuntu|Roboto:900&display=swap"
         rel="stylesheet">
@@ -58,14 +55,18 @@
     <script>
         $(document).ready(function () {
             $('#icon').click(function(){
-                $('#mobile-nav').toggleClass('active-nav');
-                $('body').toggleClass('active-body');
-                $('#strip nav ul li').toggle();
+                setTimeout(function(){
+                    $('#mobile-nav').toggleClass('active-nav');
+                    $('body').toggleClass('active-body');
+                    $('#strip nav ul li').toggle();
+                }, 1);
             });
             $('.side-categories i').click(function(){
-                $('#mobile-nav').toggleClass('active-nav');
-                $('body').toggleClass('active-body');
-                $('#strip nav ul li').toggle();
+                setTimeout(function(){
+                    $('#mobile-nav').toggleClass('active-nav');
+                    $('body').toggleClass('active-body');
+                    $('#strip nav ul li').toggle();
+                }, 1);
             });
 
             //$('#icon').click(function () {
@@ -78,6 +79,15 @@
             //    $('#top-level-content').toggleClass('active-body');
             //    $('#strip nav ul li').toggle();
             //});
+        });
+        $(document).on('click', function (e) {
+            if ($('#mobile-nav').hasClass('active-nav') && $('body').hasClass('active-body')) {
+                if ($(e.target).parents().is('#mobile-nav') === false) {
+                        $('#mobile-nav').removeClass('active-nav');
+                        $('body').removeClass('active-body');
+                        $('#strip nav ul li').toggle();
+                    }
+                }
         });
 
     </script>

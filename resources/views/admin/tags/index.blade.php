@@ -43,6 +43,7 @@
                                     <tr>
                                         <td>{{ $tag->id }}</td>
                                         <td>{{ $tag->name }}</td>
+                                        <td>{{ $tag->slug }}</td>
                                         <td>
                                             <a href="{{ url('/admin/edit-tag/' . $tag->id) }}"
                                                 class="btn btn-primary btn-sm">Edit</a>

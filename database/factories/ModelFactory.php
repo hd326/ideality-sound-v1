@@ -6,13 +6,14 @@ use App\Post;
 use Faker\Generator as Faker;
 
 $factory->define(Post::class, function (Faker $faker) {
+    $title = $faker->sentence;
     return [
-        'title' => $faker->word,
-        'body' => $faker->sentence,
-        'slug' => $faker->word,
+        'title' => $title,
+        'body' => $faker->paragraph,
+        'slug' => str_slug($title),
         'meta_title' => $faker->word,
         'meta_description' => $faker->word,
         'meta_keywords' => $faker->word,
-        'category_id' => rand(4, 12)
+        'image' => '/posts/' . rand(1,22) . '.jpg',
     ];
 });

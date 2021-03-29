@@ -18,9 +18,9 @@
             <p class="comment-name">{{ $latest->user->name }}</p>
             <p class="comment-thread">
                 <a href="/{{ $latest->post->slug }}#{{ $latest->id }}">
-                @foreach($latest->post->tags as $tags)
+                {{-- @foreach($latest->post->tags as $tags)
                  {{ $tags->name }}
-                @endforeach: 
+                @endforeach:  --}}
                 {{ $latest->post->title }}</p>
             </a>
         </div>

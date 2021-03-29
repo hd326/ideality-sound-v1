@@ -1,24 +1,29 @@
 @extends('layouts.frontLayout.front_design')
 @section('facebook.title', $post->meta_title)
 @section('facebook.description', $post->meta_description)
-@section('facebook.image', asset('/images/original_photos/'.$mainImage))
+@section('facebook.image', $post->image)
 {{-- @section('facebook.url', request()->fullUrl()) --}}
 @section('twitter.title', $post->meta_title)
 @section('twitter.description', $post->meta_description)
-@section('twitter.image', $mainImage)
+@section('twitter.image', $post->image)
 @section('content')
 
 <section id="review-image">
 
-    <img src="{{ asset('/images/original_photos/'.$mainImage) }}">
-
+    {{-- <img src="{{ asset('/images/original_photos/'.$mainImage) }}"> --}}
+    <img src="/storage/{{ $post->image }}" alt="{{ $post->title }}'s image">
     <div id="review-info">
         <h1>{{ $post->title }} Review</h1>
         <i class="fas fa-user"></i> <span>Richard</span>
         <i class="fas fa-clock"></i> <span>{{ $post->created_at->format('F j, Y') }}</span>
-        <i class="fas fa-folder"></i> <span>@foreach($post->tags as
-            $tag){{ $loop->first ? '' : ', ' }}<a title="View all posts in {{ $tag->name }}"
-                href="/tags/{{$tag->name}}">{{ $tag->name }}</a>@endforeach</span>
+        <i class="fas fa-folder"></i> <span>            @foreach($post->tags as $tag){{ $loop->first ? '' : ', ' }}@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@endif{{''}}@endforeach
+            @if ($post->category)
+            @if($post->category->parent['slug'])
+            <a href="/category/{{ $post->category->parent['slug'] }}/{{ $post->category->slug }}">{{ $post->category->name }}</a>
+            @else
+            <a href="/category/{{ $post->category->slug }}">{{ $post->category->name }}</a>
+            @endif
+            @endif</span>
     </div>
 </section>
 <section id="review-columns">
@@ -170,7 +175,7 @@
                 @foreach($related as $relate)
                 <a href="/{{ $relate->slug }}">
                     <div class="related-articles-column">
-                        <img src="/images/yulongmain.jpg">
+                        <img src="/storage/{{ $relate->image }}" alt="{{ $relate->title }} image">
                         <p class="related-date">{{ $relate->created_at->format('F j, Y')}}</p>
                         <h3>Review: {{ $relate->title }}</h3>
                     </div>

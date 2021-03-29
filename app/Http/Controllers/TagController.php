@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Tag;
+
 class TagController extends Controller
 {
     /**
@@ -42,12 +43,14 @@ class TagController extends Controller
             'meta_keywords' => 'required',
         ]);
 
-        $tag = new Tag();
-        $tag->name = $request->name;
-        $tag->meta_title = $request->meta_title;
-        $tag->meta_description = $request->meta_description;
-        $tag->meta_keywords = $request->meta_keywords;
-        $tag->save();
+        $tag = Tag::firstOrCreate([
+            'name' => request('name'),
+            'slug' => request('name'),
+            'meta_title' => request('meta_title'),
+            'meta_description' => request('meta_description'),
+            'meta_keywords' => request('meta_keywords')
+            //'slug' => str_slug(request('title'))
+        ]);
 
         return redirect()->action('TagController@index');
     }

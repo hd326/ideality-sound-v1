@@ -10,9 +10,9 @@
             <p id="feel-free">Just want to say hello or have products you want us to cover? Feel free to drop us a line
                 with any questions you may have using the form below.</p>
             <p>Your name * (required)</p>
-            <input type="text" name="name">
+            <input type="text" name="name" required>
             <p>Your email * (required)</p>
-            <input type="text" name="email">
+            <input type="text" name="email" id="email" type="email" class="text @error('email') is-invalid @enderror" autocomplete="email">
             <p>Subject</p>
             <input type="text" name="subject">
             <p>Your message</p>

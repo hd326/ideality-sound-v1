@@ -79,16 +79,28 @@ Route::get('/subscribe', 'PageController@subscribe')->name('subscribe');
 
 Route::get('/unsubscribe', 'SubscriptionController@destroy');
 
+Route::get('/category/', 'PageController@all');
+
+Route::get('/category/canjam-reports', 'PageController@canjam');
+
+Route::get('/category/canjam-reports/{tag}', 'PageController@canjam');
+
+Route::get('/category/budget/{tag}', 'PageController@budget');
+
 Route::get('/category/{slug}', 'PageController@category');
+
+Route::get('/category/tags/{tag}/', 'PageController@tag');
 
 Route::get('/category/{slug}/{subslug}', 'PageController@subcategory');
 
 Route::get('/{slug}', 'PageController@post');
 
-Route::get('/tags/{tag}/', 'PageController@tag');
+
 
 Route::post('/search', 'PageController@search');
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
+Route::get('/api/tags', 'Api\TagController@index');

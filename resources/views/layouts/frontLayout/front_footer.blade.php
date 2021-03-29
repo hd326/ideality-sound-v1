@@ -8,14 +8,14 @@
             <h3>POPULAR TAGS</h3>
             <div id="tags">
                 @foreach($tags as $tag)
-                <div class="tag-row">
+                {{-- <div class="tag-row">
                     <div class="name">
                         <a href="{{ url('tags/'.$tag->name) }}">{{ $tag->name }}</a>
                     </div>
                     <div class="count">
                         {{ $tag->posts->count()}}
                     </div>
-                </div>
+                </div> --}}
                 {{-- <hr> --}}
                 @endforeach
                 {{-- <span class="tag">64 audio</span>
@@ -48,9 +48,9 @@
                         <p class="comment-name">{{ $latest->user->name }}</p>
                         <p class="comment-thread">
                             <a href="/{{ $latest->post->slug }}#{{ $latest->id}}">
-                                @foreach($latest->post->tags as $tags)
+                                {{-- @foreach($latest->post->tags as $tags)
                                 {{ $tags->name }}
-                                @endforeach:
+                                @endforeach: --}}
                                 {{ $latest->post->title }}</p>
                         </a>
                     </div>

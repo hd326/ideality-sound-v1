@@ -13,7 +13,7 @@
                     <a href="{{ url('/'.$post->slug) }}">
                         <div class="image-image-container">
                                 <div class="image-container">
-                                    <div class="image-container-helper"></div><img src="{{ asset('images/yulongstack.JPG') }}">
+                                    <div class="image-container-helper"></div><img src="/storage/{{ $post->image }}" alt="{{ $post->title }} image">
                                 </div>
                             </div>
                     </a>
@@ -21,9 +21,14 @@
                     <p><i class="fas fa-tags"></i> 
     
                     <span>
-                        @foreach($post->tags as $tag){{ $loop->first ? '' : ', ' }}
-                        <a title="View all posts in {{ $tag->name }}" href="/tags/{{$tag->name}}">{{ $tag->name }}</a>
-                        @endforeach
+                        @foreach($post->tags as $tag){{ $loop->first ? '' : ', ' }}@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@endif{{''}}@endforeach
+                        @if ($post->category)
+                        @if($post->category->parent['slug'])
+                        <a href="/category/{{ $post->category->parent['slug'] }}/{{ $post->category->slug }}">{{ $post->category->name }}</a>
+                        @else
+                        <a href="/category/{{ $post->category->slug }}">{{ $post->category->name }}</a>
+                        @endif
+                        @endif
                     </span>
     
                         <br><i class="fas fa-calendar"></i>

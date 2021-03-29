@@ -9,6 +9,7 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use App\Subscription;
+use App\PostTag;
 use Image;
 
 class PostController extends Controller
@@ -33,7 +34,8 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        return view('admin.posts.create', compact('categories', 'tags'));
+        $budgets = Category::with('children')->where('name', 'Budget')->get();
+        return view('admin.posts.create', compact('budgets','categories', 'tags'));
     }
 
     /**
@@ -52,6 +54,7 @@ class PostController extends Controller
             'meta_description' => 'required',
             'meta_keywords' => 'required',
             'category_id' => 'required',
+            'image' => 'required|file|image|mimes:jpeg,jpg,png,gif,webp|max:25000',
             //'tonal_balance_neutrality' => 'required',
             //'price_performance' => 'required',
             //'sound_fidelity' => 'required',
@@ -75,7 +78,12 @@ class PostController extends Controller
             //'score' => 'required'
         ]);
 
+
+
+        $imgpath = request()->file('image')->store('posts', 'public');
+
         $post = new Post();
+
         $post->title = $request->title;
         $post->body = $request->body;
         $post->slug = $request->slug;
@@ -104,40 +112,41 @@ class PostController extends Controller
         $post->resolution = $request->resolution;
         $post->clarity = $request->clarity;
         $post->score = $request->score;
+        $post->image = $imgpath;
 
-        if($request->hasFile('image')){
-            if($request->file('image')->isValid()){
-                // Resize Image code
-                $extension = $request->file('image')->getClientOriginalExtension();
-                $filename = date('mdYHis') . uniqid() . '.' . $extension;
+        // if($request->hasFile('image')){
+        //     if($request->file('image')->isValid()){
+        //         // Resize Image code
+        //         $extension = $request->file('image')->getClientOriginalExtension();
+        //         $filename = date('mdYHis') . uniqid() . '.' . $extension;
                 
-                $original_photo_storage = 'images/original_photos/'.$filename;
-                $large_photos_storage = 'images/large_photos/'.$filename;
-                $medium_photos_storage = 'images/medium_photos/'.$filename;
-                $mobile_photos_storage = 'images/mobile_photos/'.$filename;
-                $tiny_photos_storage = 'images/tiny_photos/'.$filename;
+        //         $original_photo_storage = 'images/original_photos/'.$filename;
+        //         $large_photos_storage = 'images/large_photos/'.$filename;
+        //         $medium_photos_storage = 'images/medium_photos/'.$filename;
+        //         $mobile_photos_storage = 'images/mobile_photos/'.$filename;
+        //         $tiny_photos_storage = 'images/tiny_photos/'.$filename;
 
-                Image::make($request->file('image'))
-                    ->save($original_photo_storage, 100)
-                    ->resize(860, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                        })
-                    ->save($large_photos_storage, 85)
-                    ->resize(640, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                        })
-                    ->save($medium_photos_storage, 85)
-                    ->resize(420, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                        })
-                    ->save($mobile_photos_storage, 85)
-                    ->resize(10, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                        })->blur(1)->save($tiny_photos_storage, 85);
+        //         Image::make($request->file('image'))
+        //             ->save($original_photo_storage, 100)
+        //             ->resize(860, null, function ($constraint) {
+        //                 $constraint->aspectRatio();
+        //                 })
+        //             ->save($large_photos_storage, 85)
+        //             ->resize(640, null, function ($constraint) {
+        //                 $constraint->aspectRatio();
+        //                 })
+        //             ->save($medium_photos_storage, 85)
+        //             ->resize(420, null, function ($constraint) {
+        //                 $constraint->aspectRatio();
+        //                 })
+        //             ->save($mobile_photos_storage, 85)
+        //             ->resize(10, null, function ($constraint) {
+        //                 $constraint->aspectRatio();
+        //                 })->blur(1)->save($tiny_photos_storage, 85);
 
-                $post->image = $filename;
-            }
-        }
+        //         $post->image = $filename;
+        //     }
+        // }
 
         if (isset($request->subscribers)){
             $subscriptions = Subscription::select('email')->get();
@@ -153,7 +162,14 @@ class PostController extends Controller
 
         $post->save();
 
-        $post->tags()->sync($request->tags, false);
+        if ($tagsNames = $request->tags) {
+            foreach($tagsNames as $tagName){
+                Tag::firstOrCreate(['name' => $tagName])->save();
+            }
+            $tags = Tag::whereIn('name', $tagsNames)->get()->pluck('id');
+            $post->tags()->sync($tags);
+        }
+        //$post->tags()->sync($request->tags, false);
 
         return redirect()->action('PostController@edit', ['id' => $post->id]);
     }
@@ -179,9 +195,10 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        $tags = Tag::all();
+        $budgets = Category::with('children')->where('name', 'Budget')->get();
+        $tags = PostTag::where('post_id', $post->id)->get();
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
+        return view('admin.posts.edit', compact('budgets', 'post', 'categories', 'tags'));
     }
 
     /**
@@ -204,13 +221,15 @@ class PostController extends Controller
             'category_id' => 'required'
         ]);
 
+
+
         $post->title = $request->title;
         $post->body = $request->body;
         $post->slug = $request->slug;
         $post->meta_title = $request->meta_title;
         $post->meta_description = $request->meta_description;
         $post->meta_keywords = $request->meta_keywords;
-        $post->category_id = $request->category_id;
+        $post->category_id = !empty($request->category_id) ? $request->category_id : NULL;
         $post->tonal_balance_neutrality = $request->tonal_balance_neutrality;
         $post->price_performance = $request->price_performance;
         $post->sound_fidelity = $request->sound_fidelity;
@@ -234,7 +253,18 @@ class PostController extends Controller
         $post->score = $request->score;
         $post->save();
 
-        $post->tags()->sync($request->tags, true);
+        if ($tagsNames = $request->tags) {
+            foreach($tagsNames as $tagName){
+                if (!\Str::contains($tagName, ['$'])) {
+                    if (!Tag::where('name', $tagName)->exists()) {
+                        Tag::firstOrCreate(['name' => $tagName, 'slug' => $tagName])->save();
+                    }
+                }
+            }
+            $tags = Tag::whereIn('name', $tagsNames)->get()->pluck('id');
+            $post->tags()->sync($tags);
+        }
+        //$post->tags()->sync($request->tags, true);
 
         return back();
     }
