@@ -48,4 +48,27 @@ class Post extends Model
     {
         return $this->hasMany(PostImage::class);
     }
+
+    
+    public function rate($rating, $user = null)
+    {
+        if ($rating < 1 || $rating > 5)
+        {
+            throw new InvalidArgumentException('Ratings must be between 1-5.');
+        }
+
+        $userId = $user ? $user->id : auth()->id();
+
+        $this->ratings()->updateOrCreate(['user_id' => $userId, 'rating' => $rating]);
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+    public function rating()
+    {
+        return $this->ratings()->avg('rating');
+    }
 }

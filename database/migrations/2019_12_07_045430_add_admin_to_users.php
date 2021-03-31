@@ -15,6 +15,7 @@ class AddAdminToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('admin')->nullable()->after('password');
+            $table->boolean('super_admin')->nullable()->after('admin');
         });
     }
 

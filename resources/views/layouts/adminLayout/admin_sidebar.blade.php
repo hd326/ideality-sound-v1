@@ -20,11 +20,33 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-user-circle"></i>
+                        <p>
+                            Profiles
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+
+                                
+                                <a href="{{ url('/admin/view-profile/'.auth()->id()) }}" class="nav-link">
+                                    <i class="fas fa-circle nav-icon"></i>
+                                    <p>Edit Your Profile</p>
+                                </a>
+
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
        with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-sitemap"></i>
                         <p>
                             Categories
                             <i class="right fas fa-angle-left"></i>
@@ -49,7 +71,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-synagogue"></i>
                         <p>
                             Posts
                             <i class="right fas fa-angle-left"></i>
@@ -74,7 +96,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-tags"></i>
                         <p>
                             Tags
                             <i class="right fas fa-angle-left"></i>
@@ -99,7 +121,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-folder-plus"></i>
                         <p>
                             Subscriptions
                             <i class="right fas fa-angle-left"></i>

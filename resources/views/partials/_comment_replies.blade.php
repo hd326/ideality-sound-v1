@@ -3,6 +3,11 @@
     <div class="comment" id="{{ $comment->id }}">
         <div class="comment-info">
             <div class="comment-column">
+                    @if ($comment->user->avatar() == '')
+                    <a class="avatar"><p class="avatar" style="background-color: {{ $comment->user->color }}">{{ substr($comment->user->name, 0, 1) }}</p></a>
+                    @else
+                    <a class="avatar"><p class="personal-avatar"><img style="" src="/storage/{{ $comment->user->avatar() }}" alt="User avatar"></p></a>
+                    @endif
             </div>
             <div class="comment-column">
                 <span class="date">{{ $comment->created_at->format('F j, Y') }}</span><br><span

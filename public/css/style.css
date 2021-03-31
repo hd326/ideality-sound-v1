@@ -1,5 +1,127 @@
-.sharethis-inline-share-buttons {
-  margin-top: 37.5px;
+p {
+  line-height: 27.5px !important;
+  font-size: 18px !important;
+}
+
+img {
+  max-width: 100% !important;
+}
+
+p.avatar {
+  text-align: left !important;
+  width: 75px !important;
+  height: 75px !important;
+  border-radius: 50px !important;
+  color: white !important;
+  display: grid !important;
+  -webkit-box-pack: center !important;
+          justify-content: center !important;
+  align-content: center !important;
+  font-size: 32px !important;
+  font-weight: 600 !important;
+  margin-top: 0px !important;
+}
+
+p.personal-avatar img {
+  min-width: 75px !important;
+  height: 75px !important;
+  border-radius: 50px !important;
+  -o-object-fit: center;
+     object-fit: center;
+  -o-object-position: center;
+     object-position: center;
+  margin-top: 0px !important;
+}
+
+p.personal-avatar {
+  margin-top: 0px !important;
+}
+
+.share {
+  margin-top: 25px !important;
+}
+
+.share a {
+  text-decoration: none !important;
+}
+
+.share a:hover {
+  text-decoration: none !important;
+}
+
+.share i {
+  font-size: 15px !important;
+  color: gray !important;
+  width: 37.5px !important;
+  height: 37.5px !important;
+  display: -webkit-inline-box !important;
+  display: inline-flex !important;
+  -webkit-box-pack: center !important;
+          justify-content: center !important;
+  -webkit-box-align: center !important;
+          align-items: center !important;
+  border-radius: 2.5px !important;
+  margin: 0px !important;
+  margin-right: 0px !important;
+}
+
+.share i:nth-of-type(1) {
+  margin-left: 0px !important;
+}
+
+.share i:hover {
+  -webkit-transition: 0.3s ease-in-out !important;
+  transition: 0.3s ease-in-out !important;
+}
+
+.share .facebook:hover {
+  background-color: #3B5998 !important;
+  color: white !important;
+}
+
+.share .twitter:hover {
+  background-color: #1DA1F3 !important;
+  color: white !important;
+}
+
+.share .reddit:hover {
+  background-color: #FF4500 !important;
+  color: white !important;
+}
+
+.share .pinterest:hover {
+  background-color: #BD081C !important;
+  color: white !important;
+}
+
+.share .tumblr:hover {
+  background-color: #35465C !important;
+  color: white !important;
+}
+
+.share .whatsapp:hover {
+  background-color: #25d366 !important;
+  color: white !important;
+}
+
+.share .envelope:hover {
+  background-color: #1289FF !important;
+  color: white !important;
+}
+
+h2.conclude-product {
+  text-transform: uppercase !important;
+  font-family: "Oswald" !important;
+  color: #2b2b2b !important;
+  font-size: 24px !important;
+  letter-spacing: 2px !important;
+  margin-top: 75px !important;
+  font-weight: 400 !important;
+}
+
+hr.conclude-product-divider {
+  border-top: 5px solid #2b2b2b;
+  margin-top: 5px;
 }
 
 .pagination {
@@ -597,7 +719,7 @@ header ul li.sub-categories nav ul li a {
 
 .post-card p:nth-of-type(1) {
   margin-top: 10px;
-  font-size: 12px;
+  font-size: 14px !important;
   line-height: 25px;
   text-transform: uppercase;
 }
@@ -1018,6 +1140,7 @@ footer span.dot {
 
 #review-columns #review {
   width: 100%;
+  line-height: 27.5px;
 }
 
 #review-columns #review h2 {
@@ -1379,7 +1502,12 @@ footer span.dot {
 #comments .comment .comment-info {
   display: grid;
   grid-template-columns: 0.075fr 1fr;
+  grid-gap: 25px;
   margin-top: 25px;
+}
+
+#comments .comment .comment-info .comment-column:nth-of-type(1) {
+  vertical-align: top;
 }
 
 #comments .comment .comment-info .comment-column:nth-of-type(2) {
@@ -1403,13 +1531,14 @@ footer span.dot {
   margin-top: 20px;
 }
 
-#leave-a-reply {
+#leave-a-reply h2 {
   text-transform: uppercase;
   font-family: "Oswald";
   color: #2b2b2b;
   font-size: 24px;
   letter-spacing: 2px;
   margin-top: 75px;
+  font-weight: 400;
 }
 
 #leave-a-reply hr#leave-a-reply-divider {
@@ -1460,10 +1589,15 @@ footer span.dot {
   padding: 7.5px;
   font-family: "Arial";
   font-size: 16px;
+  border-top: 1px solid #c5c5c5;
+  border-left: 1px solid #c5c5c5;
+  border-bottom: 1px solid #d4d4d4;
+  border-right: 1px solid #d4d4d4;
+  border-radius: 2.5px;
 }
 
 #comment-reply #comment-reply-box {
-  width: 75%;
+  width: 100%;
   display: grid;
 }
 
@@ -1474,7 +1608,7 @@ footer span.dot {
   font-family: "Oswald";
   color: #f2f2f2;
   display: grid;
-  justify-self: flex-end;
+  justify-self: flex-start;
 }
 
 #contact-us-header {

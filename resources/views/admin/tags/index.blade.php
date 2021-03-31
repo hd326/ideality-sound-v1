@@ -47,8 +47,12 @@
                                         <td>
                                             <a href="{{ url('/admin/edit-tag/' . $tag->id) }}"
                                                 class="btn btn-primary btn-sm">Edit</a>
-                                            <a id="" href="{{ url('/admin/delete-tag/' . $tag->id) }}"
-                                                class="btn btn-danger btn-sm">Delete</a>
+                                            <form action="{{ url('/admin/delete-tag/' . $tag->id) }}" method="POST">
+                                                @csrf
+                                                {{ method_field('DELETE') }}
+                                                <button type="submit" id=""
+                                                    class="btn btn-danger btn-sm">Delete</button>
+                                            </form>
                                             <a href="{{ url('/admin/view-tag/' . $tag->id) }}"
                                                 class="btn btn-secondary btn-sm">View</a>
                                         </td>

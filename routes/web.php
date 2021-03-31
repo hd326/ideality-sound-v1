@@ -49,10 +49,17 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/admin/edit-tag/{id}', 'TagController@edit');
     Route::post('/admin/edit-tag/{id}', 'TagController@update');
     Route::get('/admin/view-tag/{id}', 'TagController@show');
+    Route::delete('/admin/delete-tag/{id}', 'TagController@destroy');
+    
+    // Profile routes
+    Route::get('/admin/view-profile/{id}', 'ProfileController@show');
+    Route::post('/admin/edit-profile/{id}', 'ProfileController@update');
 
     // Subscription routes
     Route::get('/admin/view-subscriptions', 'SubscriptionController@index');
 });
+
+Route::post('/posts/{post}/rate', 'ArticleRatingController@store')->middleware('auth');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -94,8 +101,6 @@ Route::get('/category/tags/{tag}/', 'PageController@tag');
 Route::get('/category/{slug}/{subslug}', 'PageController@subcategory');
 
 Route::get('/{slug}', 'PageController@post');
-
-
 
 Route::post('/search', 'PageController@search');
 

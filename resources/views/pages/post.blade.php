@@ -156,7 +156,16 @@
                 <li><i class="fas fa-envelope fa-2x" style="color: #adadad"></i></li>
             </ul>
         </nav> --}}
-        <div class="sharethis-inline-share-buttons"></div>
+        <div class="share">
+            Share:
+            <a target="_blank" href="http://www.facebook.com/sharer.php?u={{ request()->url() }}&t={{ $post->title }}"><i class="fab fa-facebook-f facebook"></i></a>
+            <a target="_blank" href="https://twitter.com/intent/tweet?url={{ request()->url() }}"><i class="fab fa-twitter twitter"></i></a>
+            <a target="_blank" href="http://reddit.com/submit?url={{ request()->url() }}&title={{ $post->title }}"><i class="fab fa-reddit-alien reddit"></i></a>
+            <a target="_blank" href="http://www.pinterest.com/pin/create/button/?url={{ request()->url() }}&media=@if(isset($post->image)){{ $post->image }} @endif &description={{ $post->title }}"><i class="fab fa-pinterest-p pinterest"></i></a>
+            <a target="_blank" href="http://www.tumblr.com/share/link?url={{ request()->url() }}&name={{ $post->title }}&description={{ $post->body }}"><i class="fab fa-tumblr tumblr"></i></a>
+            <a target="_blank" href="https://wa.me/?text={{ request()->url() }}"><i class="fab fa-whatsapp whatsapp"></i></a>
+            <a target="_blank" href="mailto:?subject={{ strip_tags($post->title) }}&body={{ request()->url() }}"><i class="far fa-envelope envelope"></i></a>
+        </div>
         <div id="previous-next">
             @if(!empty($previous->title))
             <a href="/{{ $previous->slug }}">
@@ -169,6 +178,7 @@
             </a>
             @endif
         </div>
+        @if(!$related->isEmpty())
         <div id="related-articles">
             <h2>Related Articles</h2>
             <div id="related-articles-container">
@@ -186,9 +196,14 @@
                     <p class="related-date">December 2, 2019</p>
                     <h3>Review: NFB 15.32</h3>
                 </div> --}}
-
             </div>
+        </div>
+        @endif
 
+        <div id="about-the-author">
+            <h2 class="conclude-product">About the Author</h2>
+            <hr class="conclude-product-divider">
+            {!! $post->user->signature !!}
         </div>
         <div id="comments">
             <div id="number-comments">{{ $post->commentCount }} Comments</div>
@@ -197,7 +212,7 @@
         </div>
 
         <div id="leave-a-reply">
-            Leave A Reply
+            <h2>Leave A Reply</h2>
 
             <hr id="leave-a-reply-divider">
 
