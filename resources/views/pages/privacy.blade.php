@@ -1,16 +1,16 @@
 @extends('layouts.frontLayout.front_design')
 
 @section('content')
-<div id="privacy-header">
+<div class="secondary-page-header">
     <h1>Privacy Policy</h1>
 </div>
 
-<section id="privacy-split">
+<section class="secondary-page-split">
 
-    <main class="privacy-column">
+    <main class="secondary-page-column">
         <p>Your privary is of utmost importance to us. This being the case, we have developed this Policy for you to
             understand how we collect, use, communicate, and disclose, and make use of personal information.</p>
-        <ul>
+        <ul class="privacy">
             <li>Before or at time of collecting personal information, we identify the purposes for which information is
                 being collected.</li>
             <li>We collect and use personal information with the sole objective of fulfilling the purposes specificed by

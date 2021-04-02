@@ -51,7 +51,10 @@
         @yield('content')
         @include('layouts.frontLayout.front_footer')
     </div>
-
+    @if(Session::has('flash'))
+    <div class="alert alert-success alert-flash">{{ session('flash') }}</div>
+    @endif
+    <div class="flash-message"></div>
     <script>
         $(document).ready(function () {
             $('#icon').click(function(){

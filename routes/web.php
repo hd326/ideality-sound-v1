@@ -17,10 +17,27 @@ Auth::routes();
 Route::get('/admin', 'AdminController@loginPage');
 Route::post('/admin', 'AdminController@loginAction');
 
+//Route::get('/view-profile/{id}', 'ProfileController@show')->middleware('auth');
+//Route::post('/edit-profile/{id}', 'ProfileController@update')->middleware('auth');
+
+// Upload Image
+Route::post('/upload', 'ImageUploadController@store');
+
+// Contact Controller
+Route::post('/contact', 'ContactController@store')->middleware('honeypot');
+
 // Admin routes
 Route::group(['middleware' => ['admin']], function(){
 
     Route::get('/admin/dashboard', 'AdminController@loginDashboard');
+
+    // Contact Routes
+    Route::get('/admin/view-contacts', 'ContactController@index');
+    Route::delete('/admin/delete-contact/{contact}', 'ContactController@destroy');
+
+    // Profile routes
+    Route::get('/admin/view-profile/{id}', 'AdminProfileController@show');
+    Route::post('/admin/edit-profile/{id}', 'AdminProfileController@update');
 
     // Category routes
     Route::get('/admin/view-categories', 'CategoryController@index');
@@ -51,10 +68,6 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/admin/view-tag/{id}', 'TagController@show');
     Route::delete('/admin/delete-tag/{id}', 'TagController@destroy');
     
-    // Profile routes
-    Route::get('/admin/view-profile/{id}', 'ProfileController@show');
-    Route::post('/admin/edit-profile/{id}', 'ProfileController@update');
-
     // Subscription routes
     Route::get('/admin/view-subscriptions', 'SubscriptionController@index');
 });

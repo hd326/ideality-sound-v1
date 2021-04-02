@@ -94,8 +94,15 @@
                                     <label for="">Image</label>
                                     <input name="image" type="file" class="form-control-file">
                                 </div>
-                                
+                                @if (isset($errors) && count($errors))
 
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }} </li>
+                                    @endforeach
+                                </ul>
+                
+                                @endif
                         </div>
                         <!-- /.card-body -->
                     </div>

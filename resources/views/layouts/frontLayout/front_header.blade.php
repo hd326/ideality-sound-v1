@@ -284,6 +284,6 @@
         </ul>
     </nav>
 </section>
-<section id="sponsor-placement">
+{{-- <section id="sponsor-placement">
     Sponsor Here
-</section>
+</section> --}}

@@ -1,22 +1,20 @@
-<section id="sponsor-placement">
+{{-- <section id="sponsor-placement">
     Sponsor Here
-</section>
+</section> --}}
 
 <section id="pre-footer">
     <div id="pre-footer-container">
         <div class="pre-footer-col">
-            <h3>POPULAR TAGS</h3>
+            <div class="pre-footer-col-header">
+                <h3>POPULAR TAGS</h3>
+            </div>
             <div id="tags">
-                @foreach($tags as $tag)
-                {{-- <div class="tag-row">
-                    <div class="name">
-                        <a href="{{ url('tags/'.$tag->name) }}">{{ $tag->name }}</a>
-                    </div>
-                    <div class="count">
-                        {{ $tag->posts->count()}}
-                    </div>
-                </div> --}}
-                {{-- <hr> --}}
+                @foreach(\App\Tag::get() as $tag)
+                @if(\Str::contains($tag->name, ['$'])) 
+
+                @else 
+                <span class="tag"><a href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a></span>
+                @endif
                 @endforeach
                 {{-- <span class="tag">64 audio</span>
                     <span class="tag">Feliks Audio</span>
@@ -33,26 +31,37 @@
 
             </div>
         </div>
-        <div class="pre-footer-col">
+        {{-- <div class="pre-footer-col">
             <h3>INSTAGRAM</h3>
-        </div>
+        </div> --}}
         <div class="pre-footer-col">
-            <h3>LATEST COMMENTS</h3>
+            <div class="pre-footer-col-header">
+                <h3>LATEST COMMENTS</h3>
+            </div>
             <div id="footer-comments">
                 @php($i = 0)
-                @foreach($latest as $latest)
+                @foreach(App\Comment::orderBy('id', 'desc')->take(3)->get() as $latest)
                 @php($i++)
                 <div class="comment">
                     <div class="comment-details">
-                        <span class="comment-number">{{ $i }} </span>
-                        <p class="comment-name">{{ $latest->user->name }}</p>
-                        <p class="comment-thread">
+                        <div class="details">
+                            <span class="comment-number">{{ $i }} </span>
+                            <p class="comment-name">{{ $latest->user->name }}</p>
+                            <p class="comment-thread">
                             <a href="/{{ $latest->post->slug }}#{{ $latest->id}}">
-                                {{-- @foreach($latest->post->tags as $tags)
-                                {{ $tags->name }}
-                                @endforeach: --}}
-                                {{ $latest->post->title }}</p>
-                        </a>
+                                    {{-- @foreach($latest->post->tags as $tags)
+                                    {{ $tags->name }}
+                                    @endforeach: --}}
+                                    {{ $latest->post->title }}</p>
+                            </a>
+                        </div>
+                        <div class="photo">
+                            @if ($latest->user->avatar() == '')
+                            <a class="avatar"><p class="avatar" style="background-color: {{ $latest->user->color }}">{{ substr($latest->user->name, 0, 1) }}</p></a>
+                            @else
+                            <a class="avatar"><p class="personal-avatar"><img style="" src="/storage/{{ $latest->user->avatar() }}" alt="User avatar"></p></a>
+                            @endif
+                        </div>
                     </div>
                     <div class="comment-text">
                         {{ substr(strip_tags($latest->body), 0, 25) }} {{ strlen($latest->body) > 25 ? "..." : "" }}

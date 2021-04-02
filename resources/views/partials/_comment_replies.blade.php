@@ -1,6 +1,6 @@
 @foreach($comments as $comment)
-<div id="comment-spacing" @if($comment->parent_id !== null) style="margin-left: 37.5px" @endif>
-    <div class="comment" id="{{ $comment->id }}">
+<div id="{{ $comment->id }}" class="comment-spacing" @if($comment->parent_id !== null) style="margin-left: 37.5px" @endif>
+    <div class="comment" >
         <div class="comment-info">
             <div class="comment-column">
                     @if ($comment->user->avatar() == '')

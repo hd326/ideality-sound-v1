@@ -5,7 +5,7 @@
     <p>Search Results For:</p>
     <h1>" {{ $q }} "</h1>
 </div>
-<div id="main">
+<section id="main">
     <div id="main-content-holder">
         <main id="main-content">
             <div id="search">
@@ -49,4 +49,7 @@
 
 </div>
 </section>
+@if(!empty($posts))
+<div class="d-flex justify-content-center">{{ $posts->links() }}</div>
+@endif
 @endsection

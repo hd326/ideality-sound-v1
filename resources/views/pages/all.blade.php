@@ -22,7 +22,7 @@
                 <h2><a href="{{ url('/'.$post->slug) }}">{{ $post->title }}</a></h2>
                 <p><i class="fas fa-tags"></i>
                 <span>
-                    @foreach($post->tags as $tag){{ $loop->first ? '' : ', ' }}@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@endif{{''}}@endforeach
+                    @foreach($post->tags as $tag)@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{', '}}@endif{{''}}@endforeach
                     @if ($post->category)
                     @if($post->category->parent['slug'])
                     <a href="/category/{{ $post->category->parent['slug'] }}/{{ $post->category->slug }}">{{ $post->category->name }}</a>
@@ -46,4 +46,5 @@
         </aside>
     </div>
 </div>
+<div class="d-flex justify-content-center">{{ $posts->links() }}</div>
 @endsection

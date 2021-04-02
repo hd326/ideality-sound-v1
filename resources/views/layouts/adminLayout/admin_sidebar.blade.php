@@ -19,6 +19,7 @@
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
+            
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link active">
@@ -30,13 +31,31 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="{{ url('/admin/view-profile/'.auth()->id()) }}" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>Edit Your Profile</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            @if (auth()->user()->super_admin == 1)
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                                
-                                <a href="{{ url('/admin/view-profile/'.auth()->id()) }}" class="nav-link">
-                                    <i class="fas fa-circle nav-icon"></i>
-                                    <p>Edit Your Profile</p>
-                                </a>
-
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-comments"></i>
+                        <p>
+                            Contacts
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ url('/admin/view-contacts') }}" class="nav-link">
+                                <i class="fas fa-circle nav-icon"></i>
+                                <p>View Contacts</p>
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -137,6 +156,7 @@
                     </ul>
                 </li>
             </ul>
+            @endif
         </nav>
         <!-- /.sidebar-menu -->
     </div>

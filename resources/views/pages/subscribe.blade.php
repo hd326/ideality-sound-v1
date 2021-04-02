@@ -5,12 +5,12 @@ Reviews')
 Reviews')
 @section('content')
 
-<div id="subscribe-header">
+<div class="secondary-page-header">
     <h1>Subscribe</h1>
 </div>
 
-<section id="subscribe-split">
-    <main class="subscribe-column">
+<section class="secondary-page-split">
+    <main class="secondary-page-column">
 
             @if(Session::has('flash'))
             <p style="font-family: Lato; text-transform: none"><strong>{!! session('flash') !!}</strong></p>
@@ -19,10 +19,10 @@ Reviews')
         <p id="enter-your">Enter your email address to subscribe and recieve emails when new content is posted!</p>
         <form action="/subscribe" method="POST">
             @csrf
-            <p>Your email * (Required)</p>
-            <input type="text" name="email" value="{{ old('email') }}">
+            <p class="subscribe" >Your email * (Required)</p>
+            <input class="subscribe" type="email" name="email" value="{{ old('email') }}">
             {{ $errors->first('email') }}
-            <button type="submit">Subscribe</button>
+            <button class="subscribe" type="submit">Subscribe</button>
         </form>
     </main>
     @include('layouts.frontLayout.front_sidebar')

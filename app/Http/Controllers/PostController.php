@@ -83,7 +83,7 @@ class PostController extends Controller
         $imgpath = request()->file('image')->store('posts', 'public');
 
         $post = new Post();
-
+        $post->user_id = auth()->id();
         $post->title = $request->title;
         $post->body = $request->body;
         $post->slug = $request->slug;
@@ -222,7 +222,7 @@ class PostController extends Controller
         ]);
 
 
-
+        $post->user_id = auth()->id();
         $post->title = $request->title;
         $post->body = $request->body;
         $post->slug = $request->slug;

@@ -21,7 +21,7 @@
                     <p><i class="fas fa-tags"></i> 
     
                     <span>
-                        @foreach($post->tags as $tag){{ $loop->first ? '' : ', ' }}@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@endif{{''}}@endforeach
+                        @foreach($post->tags as $tag)@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{', '}}@endif{{''}}@endforeach
                         @if ($post->category)
                         @if($post->category->parent['slug'])
                         <a href="/category/{{ $post->category->parent['slug'] }}/{{ $post->category->slug }}">{{ $post->category->name }}</a>
@@ -40,11 +40,12 @@
             </div>
             <br>
             <br>
-            <div class="d-flex justify-content-center">{{ $posts->links() }}</div>
+            
         </div>
         <aside id="side-content">
             @include('layouts.frontLayout.front_sidebar')
         </aside>
     </div>
 </section>
+<div class="d-flex justify-content-center">{{ $posts->links() }}</div>
 @endsection

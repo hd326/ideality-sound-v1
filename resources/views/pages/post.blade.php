@@ -16,7 +16,7 @@
         <h1>{{ $post->title }} Review</h1>
         <i class="fas fa-user"></i> <span>Richard</span>
         <i class="fas fa-clock"></i> <span>{{ $post->created_at->format('F j, Y') }}</span>
-        <i class="fas fa-folder"></i> <span>            @foreach($post->tags as $tag){{ $loop->first ? '' : ', ' }}@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@endif{{''}}@endforeach
+        <i class="fas fa-folder"></i> <span>            @foreach($post->tags as $tag)@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{', '}}@endif{{''}}@endforeach
             @if ($post->category)
             @if($post->category->parent['slug'])
             <a href="/category/{{ $post->category->parent['slug'] }}/{{ $post->category->slug }}">{{ $post->category->name }}</a>
@@ -29,7 +29,7 @@
 <section id="review-columns">
     <main id="review">
 
-        {!! $post->body !!}
+        <div class="post-body">{!! $post->body !!}</div>
 
         {{-- <div id="self-rating">
             <div class="self-rating-show"><span>Tonal Balance / Neutrality</span><span>10</span></div>
@@ -201,20 +201,31 @@
         @endif
 
         <div id="about-the-author">
-            <h2 class="conclude-product">About the Author</h2>
+            <h2 class="conclude-product-header">About the Author</h2>
             <hr class="conclude-product-divider">
-            {!! $post->user->signature !!}
+            <div class="conclude-product-editor">
+                <div class="photo">
+                    @if ($post->user->avatar() == '')
+                    <a class="avatar"><p class="avatar" style="background-color: {{ $post->user->color }}">{{ substr($post->user->name, 0, 1) }}</p></a>
+                    @else
+                    <a class="avatar"><p class="personal-avatar"><img style="" src="/storage/{{ $post->user->avatar() }}" alt="User avatar"></p></a>
+                    @endif
+                </div>
+                <div class="editor-name-signature">
+                    <div class="name">{{ $post->user->name }}</div>
+                    <div class="signature">{!! $post->user->signature !!}</div>
+                </div>
+            </div>
         </div>
         <div id="comments">
-            <div id="number-comments">{{ $post->commentCount }} Comments</div>
-            <hr id="number-comments-divider">
+            <h2 class="conclude-product-header">{{ $post->commentCount }} comments</h2>
+            <hr class="conclude-product-divider">
             @include('partials._comment_replies', ['comments' => $post->comments, 'post_id' => $post->id])
         </div>
 
         <div id="leave-a-reply">
-            <h2>Leave A Reply</h2>
-
-            <hr id="leave-a-reply-divider">
+            <h2 class="conclude-product-header">Leave A Reply</h2>
+            <hr class="conclude-product-divider">
 
             @if(Auth::check())
             <form action="/comment/store" method="POST">

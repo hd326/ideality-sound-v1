@@ -1,13 +1,13 @@
 @extends('layouts.frontLayout.front_design')
 
 @section('content')
-<div id="terms-header">
+<div class="secondary-page-header">
     <h1>Terms and Conditions</h1>
 </div>
 
-<section id="terms-split">
+<section class="secondary-page-split">
 
-    <main class="terms-column">
+    <main class="secondary-page-column">
         <h2>Introduction</h2>
         <p>These Website Standard Terms and Conditions written on this webpage shall manage your use of our website,
             ideality sound accessible at https://www.ideality-sound.com.</p>

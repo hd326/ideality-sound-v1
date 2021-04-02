@@ -21,7 +21,5 @@ class Admin
         } else {
             return redirect('/admin');
         }
-        
-        
     }
 }

@@ -31,7 +31,7 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <form autocomplete="off" method="POST" action="/admin/edit-profile/{{ $user->id }}" enctype="multipart/form-data">
-                            @csrf
+                                {{ csrf_field() }}
                             <p>Avatar</p>
                             <p>
                                 @if ($user->avatar() == '')
@@ -40,14 +40,23 @@
                                 <a class="avatar"><p class="personal-avatar"><img style="width: 75px; height: 75px; border-radius: 50px;" src="/storage/{{ $user->avatar() }}" alt="User avatar"></p></a>
                                 @endif
                                 <input type="file" name="avatar">
-                                <button type="submit" class="add-avatar">Add Avatar</button>
                             </p>
                             <p>Signature</p>
                             <textarea name="signature" id="user-profile-textarea">
                                 {!! $user->signature !!}
-                            </textarea>
+                            </textarea><br>
+                            <button type="submit" class="add-avatar">Submit</button>
                             </form>
                         </div>
+                        @if (isset($errors) && count($errors))
+
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }} </li>
+                            @endforeach
+                        </ul>
+        
+                        @endif
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->

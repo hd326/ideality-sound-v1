@@ -1,5 +1,5 @@
 <aside id="sidebar">
-    <div class="sponsor">
+    {{-- <div class="sponsor">
         Sponsor Here
     </div>
     <div class="sponsor">
@@ -7,10 +7,10 @@
     </div>
     <div class="sponsor">
         Sponsor Here
-    </div>
+    </div> --}}
     <h2>Latest Comments</h2>
     @php($i = 0)
-    @foreach($latestSideCol as $latest)
+    @foreach(App\Comment::orderBy('id', 'desc')->take(10)->get() as $latest)
     @php($i++)
     <div class="comment">
         <div class="comment-details">
