@@ -32,6 +32,6 @@ class AdminProfileController extends Controller
 
         //dd($queries);
 
-        return redirect()->action('ProfileController@show', ['id' => $user->id]);
+        return redirect()->action('AdminProfileController@show', ['id' => $user->id]);
     }
 }

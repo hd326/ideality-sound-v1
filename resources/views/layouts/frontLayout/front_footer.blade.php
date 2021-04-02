@@ -94,7 +94,7 @@
 </section>
 
 <footer>
-    <div class="footer-actual-col">Copyright 2019 <span class="dot">.</span> ideality-sound <span class="dot">.</span>
+    <div class="footer-actual-col">Copyright 2019 <span class="dot">.</span> idealitysound <span class="dot">.</span>
         All Rights Reserved</div>
     <div class="footer-actual-col">
         <nav>

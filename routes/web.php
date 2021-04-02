@@ -53,6 +53,7 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/admin/edit-post/{id}', 'PostController@edit');
     Route::post('/admin/edit-post/{id}', 'PostController@update');
     Route::get('/admin/view-post/{id}', 'PostController@show');
+    Route::get('/admin/delete-post/{id}', 'PostController@destroy');
     
     // Post Images routes
     Route::get('/admin/add-images/{id}', 'PostImageController@create');

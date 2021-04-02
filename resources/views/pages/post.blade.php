@@ -1,4 +1,7 @@
 @extends('layouts.frontLayout.front_design')
+@section('title', $post->meta_title)
+@section('description', $post->meta_description)
+@section('keywords', $post->meta_keywords)
 @section('facebook.title', $post->meta_title)
 @section('facebook.description', $post->meta_description)
 @section('facebook.image', $post->image)

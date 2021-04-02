@@ -18,9 +18,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 0,
             'description' => 'headphones',
             'slug' => 'headphones',
-            'meta_title' => 'headphones',
-            'meta_description' => 'headphones',
-            'meta_keywords' => 'headphones'
+            'meta_title' => 'Headphone Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on headphones both full-sized and portable, that can be found here in idealitysound',
+            'meta_keywords' => 'headphones archives, idealitysound audio review'
         ]);
 
         // Begin Amplifiers
@@ -30,9 +30,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 0,
             'description' => 'amplifiers',
             'slug' => 'amplifiers',
-            'meta_title' => 'amplifiers',
-            'meta_description' => 'amplifiers',
-            'meta_keywords' => 'amplifiers'
+            'meta_title' => 'Amplifier Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on amplifiers both desktop and portable, that can be found here in idealitysound',
+            'meta_keywords' => 'amplifier archives, idealitysound audio review'
         ]);
 
         // Begin Source
@@ -42,9 +42,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 0,
             'description' => 'source',
             'slug' => 'source',
-            'meta_title' => 'source',
-            'meta_description' => 'source',
-            'meta_keywords' => 'source'
+            'meta_title' => 'Source Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on digital-to-analog converters both full-sized and portable, that can be found here in idealitysound',
+            'meta_keywords' => 'source archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -52,29 +52,19 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 0,
             'description' => 'in-ears',
             'slug' => 'in-ears',
-            'meta_title' => 'in-ears',
-            'meta_description' => 'in-ears',
-            'meta_keywords' => 'in-ears'
+            'meta_title' => 'In-Ears Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on in-ear iem, that can be found here in idealitysound',
+            'meta_keywords' => 'in ears archives, idealitysound audio review'
         ]);
 
-        DB::table('categories')->insert([
-            'name' => 'Budget',
-            'parent_id' => 0,
-            'description' => 'budget',
-            'slug' => 'budget',
-            'meta_title' => 'budget',
-            'meta_description' => 'budget',
-            'meta_keywords' => 'budget'
-        ]);
-    
         DB::table('categories')->insert([
             'name' => 'Full Size',
             'parent_id' => 1,
             'description' => 'full-size',
             'slug' => 'full-size',
-            'meta_title' => 'full-size',
-            'meta_description' => 'full-size',
-            'meta_keywords' => 'full-size'
+            'meta_title' => 'Full Size Headphone Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on full-sized headphones, that can be found here in idealitysound',
+            'meta_keywords' => 'full size headphone archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -82,9 +72,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 1,
             'description' => 'portables',
             'slug' => 'portables',
-            'meta_title' => 'portables',
-            'meta_description' => 'portables',
-            'meta_keywords' => 'portables'
+            'meta_title' => 'Portable Headphone Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on portable headphones, that can be found here in idealitysound',
+            'meta_keywords' => 'portable headphone archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -92,9 +82,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 1,
             'description' => 'planars',
             'slug' => 'planars',
-            'meta_title' => 'planars',
-            'meta_description' => 'planars',
-            'meta_keywords' => 'planars'
+            'meta_title' => 'Planar Headphones Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on planar magnetic headphones, that can be found here in idealitysound',
+            'meta_keywords' => 'planar headphones archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -102,9 +92,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 1,
             'description' => 'electrostatics',
             'slug' => 'electrostatics',
-            'meta_title' => 'electrostatics',
-            'meta_description' => 'electrostatics',
-            'meta_keywords' => 'electrostatics'
+            'meta_title' => 'Electrostatic Headphone Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on electro-static headphones, that can be found here in idealitysound',
+            'meta_keywords' => 'electrostatic archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -112,9 +102,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 2,
             'description' => 'portable-amplifiers',
             'slug' => 'portable-amplifiers',
-            'meta_title' => 'portable-amplifiers',
-            'meta_description' => 'portable-amplifiers',
-            'meta_keywords' => 'portable-amplifiers'
+            'meta_title' => 'Portable Amplifier Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on portable amplifiers, that can be found here in idealitysound',
+            'meta_keywords' => 'portable amplifier archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -122,9 +112,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 2,
             'description' => 'solid-state',
             'slug' => 'solid-state',
-            'meta_title' => 'solid-state',
-            'meta_description' => 'solid-state',
-            'meta_keywords' => 'solid-state'
+            'meta_title' => 'Solid State Amplifier Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on solid state amplifiers, that can be found here in idealitysound',
+            'meta_keywords' => 'solid state archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -132,9 +122,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 2,
             'description' => 'tube-amplifiers',
             'slug' => 'tube-amplifiers',
-            'meta_title' => 'tube-amplifiers',
-            'meta_description' => 'tube-amplifiers',
-            'meta_keywords' => 'tube-amplifiers'
+            'meta_title' => 'Tube Amplifier Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on tube amplifiers, that can be found here in idealitysound',
+            'meta_keywords' => 'tube amplifier archives, idealitysound audio review'
         ]);
 
 
@@ -143,9 +133,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 3,
             'description' => 'desktop-source',
             'slug' => 'desktop-source',
-            'meta_title' => 'desktop-source',
-            'meta_description' => 'desktop-source',
-            'meta_keywords' => 'desktop-source'
+            'meta_title' => 'Desktop Source Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on desktop sources, that can be found here in idealitysound',
+            'meta_keywords' => 'desktop source archives, idealitysound audio review'
         ]);
         
         DB::table('categories')->insert([
@@ -153,9 +143,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 3,
             'description' => 'portable-source',
             'slug' => 'portable-source',
-            'meta_title' => 'portable-source',
-            'meta_description' => 'portable-source',
-            'meta_keywords' => 'portable-source'
+            'meta_title' => 'Portable Source Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on portable sources, that can be found here in idealitysound',
+            'meta_keywords' => 'portable source archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -163,9 +153,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 4,
             'description' => 'custom-monitors',
             'slug' => 'custom-monitors',
-            'meta_title' => 'custom-monitors',
-            'meta_description' => 'custom-monitors',
-            'meta_keywords' => 'custom-monitors'
+            'meta_title' => 'Custom Monitor Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on custom monitors, that can be found here in idealitysound',
+            'meta_keywords' => 'custom monitors archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -173,9 +163,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 4,
             'description' => 'balanced-armature-iems',
             'slug' => 'balanced-armature-iems',
-            'meta_title' => 'balanced-armature-iems',
-            'meta_description' => 'balanced-armature-iems',
-            'meta_keywords' => 'balanced-armature-iems'
+            'meta_title' => 'Balanced Armature IEM Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on balanced armature iems, that can be found here in idealitysound',
+            'meta_keywords' => 'balanced armature iems archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -183,19 +173,19 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 4,
             'description' => 'dynamic-iems',
             'slug' => 'dynamic-iems',
-            'meta_title' => 'dynamic-iems',
-            'meta_description' => 'dynamic-iems',
-            'meta_keywords' => 'dynamic-iems'
+            'meta_title' => 'Dynamic IEMs Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on dynamic iems, that can be found here in idealitysound',
+            'meta_keywords' => 'dynamic iem archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
             'name' => 'Hybrid Universal',
             'parent_id' => 4,
-                'description' => 'hybrid-universal-iems',
+            'description' => 'hybrid-universal-iems',
             'slug' => 'hybrid-universal-iems',
-                'meta_title' => 'hybrid-universal-iems',
-                'meta_description' => 'hybrid-universal-iems',
-                'meta_keywords' => 'hybrid-universal-iems'
+            'meta_title' => 'Hybrid Universal IEM Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on hybrid universal iems, that can be found here in idealitysound',
+            'meta_keywords' => 'hybrid universal iem archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -203,9 +193,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 4,
             'description' => 'planar-magnetic-iems',
             'slug' => 'planar-magnetic-iems',
-            'meta_title' => 'planar-magnetic-iems',
-            'meta_description' => 'planar-magnetic-iems',
-            'meta_keywords' => 'planar-magnetic-iems'
+            'meta_title' => 'Planar Magnetic IEM Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on planar magnetic iems, that can be found here in idealitysound',
+            'meta_keywords' => 'planar magnetic iem archives, idealitysound audio review'
         ]);
 
         DB::table('categories')->insert([
@@ -213,9 +203,9 @@ class CategoriesSeeder extends Seeder
             'parent_id' => 4,
             'description' => 'wireless-iems',
             'slug' => 'wireless-iems',
-            'meta_title' => 'wireless-iems',
-            'meta_description' => 'wireless-iems',
-            'meta_keywords' => 'wireless-iems'
+            'meta_title' => 'Wireless IEM Archives | idealitysound Audio Reviews',
+            'meta_description' => 'We have a collection of reviews on wireless iems, that can be found here in idealitysound',
+            'meta_keywords' => 'wireless iem archives, idealitysound audio review'
         ]);
 
         //DB::table('categories')->insert([
@@ -288,8 +278,7 @@ class CategoriesSeeder extends Seeder
         //    'meta_keywords' => '100'
         //]);
 
-        $categories = Category::get();
-
-        $categories->each(function ($category){ factory('App\Post', 5)->create(['category_id' => $category->id]); });
+        //$categories = Category::get();
+        //$categories->each(function ($category){ factory('App\Post', 5)->create(['category_id' => $category->id]); });
     }
 }

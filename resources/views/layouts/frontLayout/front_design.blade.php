@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="@yield('title')">
     <meta name="description" content="@yield('description')">
     <meta name="keywords" content="@yield('keywords')">
     <meta name="copyright" content="{{ config('app.name') }}">
@@ -20,8 +21,8 @@
     <meta property="og:locale" content="en_us" />
     <!-- TWITTER TAGS -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="{{ '@' . 'ideality-sound' }}" />
-    <meta name="twitter:creator" content="{{ '@' . 'ideality-sound' }}" />
+    <meta name="twitter:site" content="{{ '@' . 'idealitysound' }}" />
+    <meta name="twitter:creator" content="{{ '@' . 'idealitysound' }}" />
     <meta name="twitter:title" content="@yield('twitter.title')" />
     <meta name="twitter:description" content="@yield('twitter.description')" />
     <meta name="twitter:image" content="@yield('twitter.image')" />

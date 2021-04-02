@@ -294,7 +294,6 @@ body {
 
 #mobile-nav {
   left: 0;
-  height: 100%;
   width: 250px;
   -webkit-transform: translateX(-250px);
           transform: translateX(-250px);
@@ -1836,16 +1835,6 @@ footer span.dot {
   height: 250px;
 }
 
-@media screen and (max-width: 1060px) {
-  .secondary-page-split .secondary-page-column textarea {
-    width: 450px;
-  }
-
-  .secondary-page-split .secondary-page-column input {
-    width: 175px;
-  }
-}
-
 #title {
   text-align: center;
   font-family: "Oswald";
@@ -2060,6 +2049,20 @@ footer span.dot {
   height: 0;
   border: 10px solid transparent;
   border-bottom-color: #f7f7f7;
+}
+
+@media screen and (max-width: 1060px) {
+  .secondary-page-split {
+    grid-template-columns: 1fr;
+  }
+
+  .secondary-page-split .secondary-page-column textarea {
+    width: 100%;
+  }
+
+  .secondary-page-split .secondary-page-column input {
+    width: 175px;
+  }
 }
 
 @media screen and (max-width: 800px) {

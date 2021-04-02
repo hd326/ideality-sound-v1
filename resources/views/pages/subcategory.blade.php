@@ -1,5 +1,14 @@
 @extends('layouts.frontLayout.front_design')
-
+@section('title', $sub_category->meta_title)
+@section('description', $sub_category->meta_description)
+@section('keywords', $sub_category->meta_keywords)
+@section('facebook.title', $sub_category->meta_title)
+@section('facebook.description', $sub_category->meta_description)
+@section('facebook.image', '/images/ideality-sound-v16.png')
+{{-- @section('facebook.url', request()->fullUrl()) --}}
+@section('twitter.title', $sub_category->meta_title)
+@section('twitter.description', $sub_category->meta_description)
+@section('twitter.image', $sub_category->image)
 @section('content')
 <div id="title">
     <h1>{{ $sub_category->name }}</h1>

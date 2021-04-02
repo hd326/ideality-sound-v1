@@ -74,9 +74,6 @@
                 <li class="side-child-categories"><a href="/category/amplifiers/tube-amplifiers">Tubes</a></li>
             </ul>
             <li class="side-categories">
-                <a href="/tags/best-gear">Best Gear</a>
-            </li>
-            <li class="side-categories">
                 <a href="{{ route('contact') }}">Contact</a>
             </li>
             <li class="side-categories">
