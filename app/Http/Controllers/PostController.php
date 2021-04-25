@@ -164,7 +164,11 @@ class PostController extends Controller
 
         if ($tagsNames = $request->tags) {
             foreach($tagsNames as $tagName){
-                Tag::firstOrCreate(['name' => $tagName])->save();
+                if (!\Str::contains($tagName, ['$'])) {
+                    if (!Tag::where('name', $tagName)->exists()) {
+                        Tag::firstOrCreate(['name' => $tagName, 'slug' => $tagName])->save();
+                    }
+                }
             }
             $tags = Tag::whereIn('name', $tagsNames)->get()->pluck('id');
             $post->tags()->sync($tags);
@@ -221,7 +225,10 @@ class PostController extends Controller
             'category_id' => 'required'
         ]);
 
-
+        if (!empty(request()->file('image'))) {
+            $imgpath = request()->file('image')->store('posts', 'public');
+        }
+    
         $post->user_id = auth()->id();
         $post->title = $request->title;
         $post->body = $request->body;
@@ -251,6 +258,10 @@ class PostController extends Controller
         $post->resolution = $request->resolution;
         $post->clarity = $request->clarity;
         $post->score = $request->score;
+        
+        if(!empty($imgpath)) {
+            $post->image = $imgpath;
+        }
         $post->save();
 
         if ($tagsNames = $request->tags) {

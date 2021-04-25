@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form action="{{ url('/admin/edit-post/'.$post->id) }}" method="POST">
+                            <form action="{{ url('/admin/edit-post/'.$post->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <h2>Remember, post tags correlate to post price, both must be listed.</h2>
                                 <div class="form-group">

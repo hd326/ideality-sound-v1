@@ -26,6 +26,10 @@ p {
 
 img {
   max-width: 100% !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
+  -o-object-position: center !important;
+     object-position: center !important;
 }
 
 p.avatar {
@@ -1238,6 +1242,10 @@ footer span.dot {
   grid-template-columns: 0.75fr 0.25fr;
   grid-gap: 37.5px;
   padding: 37.5px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 #review-columns #review {

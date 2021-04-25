@@ -20,7 +20,7 @@
                 <a href="/{{ $latest->post->slug }}#{{ $latest->id }}">
                     {{-- @foreach($post->tags as $tag){{ $loop->first ? '' : ', ' }}@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@endif{{''}}@endforeach
                     @if ($post->category)
-                    @if($post->category->parent['slug'])
+                    @if(!empty($post->category->parent['slug']))
                     <a href="/category/{{ $post->category->parent['slug'] }}/{{ $post->category->slug }}">{{ $post->category->name }}</a>
                     @else
                     <a href="/category/{{ $post->category->slug }}">{{ $post->category->name }}</a>

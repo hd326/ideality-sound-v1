@@ -53,18 +53,17 @@ class PageController extends Controller
     public function budget($tag)
     {
         $tag = Tag::where('slug', $tag)->first();
-        $posts = Post::whereHas('tags', function($query) use ($tag) { return $query->where('slug', $tag); })->orderBy('created_at', 'desc')->paginate(12);
+        $posts = Post::whereHas('tags', function($query) use ($tag) { return $query->where('tag_id', $tag->id); })->orderBy('created_at', 'desc')->paginate(12);
         return view('pages.budget', compact('posts', 'tag'));
     }
 
     public function category($slug)
     {
         $category = Category::where('slug', $slug)->first();
-
+        $subcategoryIds[] = $category->id;
         foreach ($category->categories as $subcategory) {
                 $subcategoryIds[] = $subcategory->id;
         }
-
         $posts = Post::whereIn('category_id', $subcategoryIds)->orderBy('created_at', 'desc')->paginate(12);
         return view('pages.category', compact('posts', 'category'));
     }

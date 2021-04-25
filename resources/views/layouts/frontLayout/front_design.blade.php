@@ -2,6 +2,7 @@
 <html lang="">
 
 <head>
+    <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="@yield('title')">
@@ -32,6 +33,14 @@
     <script src="https://kit.fontawesome.com/e032011ee4.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HFPMDG7M1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-7HFPMDG7M1');
+    </script>
 </head>
 
 <body>

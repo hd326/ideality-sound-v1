@@ -1,4 +1,5 @@
 @extends('layouts.frontLayout.front_design')
+@section('title', 'Home | idealitysound')
 @section('description', 'Headphone Reviews, Earphone Reviews, IEM reviews, Amplifier Reviews, DAC Reviews, Audiophile
 Reviews')
 @section('keywords', 'Headphone Reviews, Earphone Reviews, IEM reviews, Amplifier Reviews, DAC Reviews, Audiophile
@@ -17,9 +18,9 @@ Reviews')
         </a>
         <h2><a href="{{ url('/'.$post->slug) }}">{{ $post->title }}</a></h2>
         <p><i class="fas fa-tags"></i>
-            @foreach($post->tags as $tag)@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{', '}}@endif{{''}}@endforeach
+        @foreach($post->tags as $tag)@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{', '}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{', '}}@endif{{''}}@endforeach
             @if ($post->category)
-            @if($post->category->parent['slug'])
+            @if(!empty($post->category->parent['slug']))
             <a href="/category/{{ $post->category->parent['slug'] }}/{{ $post->category->slug }}">{{ $post->category->name }}</a>
             @else
             <a href="/category/{{ $post->category->slug }}">{{ $post->category->name }}</a>

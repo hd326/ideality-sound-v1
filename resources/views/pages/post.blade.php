@@ -19,9 +19,9 @@
         <h1>{{ $post->title }} Review</h1>
         <i class="fas fa-user"></i> <span>Richard</span>
         <i class="fas fa-clock"></i> <span>{{ $post->created_at->format('F j, Y') }}</span>
-        <i class="fas fa-folder"></i> <span>            @foreach($post->tags as $tag)@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{''}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{', '}}@endif{{''}}@endforeach
+        <i class="fas fa-folder"></i> <span>@foreach($post->tags as $tag)@if(\Str::contains($tag->name, ['$']))<a title="View all posts in {{ $tag->name }}" href="/category/budget/{{ $tag->slug }}">{{ $tag->name }}</a>{{', '}}@else{{''}}<a title="View all posts in {{ $tag->name }}" href="/category/tags/{{ $tag->slug }}">{{ $tag->name }}</a>{{', '}}@endif{{''}}@endforeach
             @if ($post->category)
-            @if($post->category->parent['slug'])
+            @if(!empty($post->category->parent['slug']))
             <a href="/category/{{ $post->category->parent['slug'] }}/{{ $post->category->slug }}">{{ $post->category->name }}</a>
             @else
             <a href="/category/{{ $post->category->slug }}">{{ $post->category->name }}</a>
